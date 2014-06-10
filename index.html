@@ -2,19 +2,102 @@
 layout: default
 ---
 
-<div class="home">
+<div id="content" class="content-home">
+    <div id="article" class="article-home">
+        <div id="entry-presentation" class="entry">
+                    <div class="alignleft text">
+                        <h1>The Open Graph Viz Platform</h1>
+                        <p class="accroche">Gephi is an interactive visualization and exploration <a href="/features/">platform</a> for all kinds of networks and complex systems, dynamic and hierarchical graphs.</p>
+                        <p class="accroche">Runs on Windows, Linux and Mac OS X. Gephi is open-source and free.</p><!-- What else? ;-) -->
+                        <span class="learn_more"><a href="/features/">Learn More on Gephi Platform »</a></span>
+                        <div class="download_gephi">
+                            <a href="/users/download/" class="button_download"></a>
+                            <div>
+                                <a href="https://wiki.gephi.org/index.php/Gephi_Releases">Release Notes</a> |
+                                <a href="/users/requirements/">System Requirements</a>
+                            </div>
+                        </div>
+                        <ul>
+                        <li><a href="/features/">Features</a></li>
+                        <li><a href="/screenshots/">Screenshots</a></li>
+                        <li><a href="/users/quick-start/">Quick start</a></li>
+                        <li><a href="/videos/">Videos</a></li>
+                        </ul>
+                    </div>
+                    <div class="alignleft screenshot">
+                    <a title="Introducing Gephi 0.7" href="http://player.vimeo.com/video/9726202" rel="zoombox[s 700 394]">
+                    <img src="{{ site.baseurl }}/css/images/illustrations/home_screenshot.jpg" alt="screenshot" width="570px" height="358px" /></a>
+                    </div>
+        </div>
+    <div class="clear"></div>
+        <div class="entry">
+            <div class="reclame">Support us! We are <a href="https://consortium.gephi.org/">non-profit</a>. Help us to <a href="https://wiki.gephi.org/index.php/Manifesto">innovate</a> and <a href="https://marketplace.gephi.org/">empower</a> the community by donating only 8€:<br /><br />
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="FHDMLJQQF4ZYY">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+</form>
+<!--span class="learn_more"><a href="/2012/0-8-1-beta-released/">Learn More »</a></span--></div>
 
-  <h1>Posts</h1>
+            <div class="alignleft column-3">
+                <h2>Applications</h2>
+                <p class="tick"><b>Exploratory Data Analysis</b>: intuition-oriented analysis by networks manipulations in real time.</p>
+                <p class="tick"><b>Link Analysis</b>: revealing the underlying structures of associations between objects, in particular in scale-free networks.</p>
+                <p class="tick"><b>Social Network Analysis</b>: easy creation of social data connectors to map community organizations and small-world networks.</p>
+                <p class="tick"><b>Biological Network analysis</b>: representing patterns of biological data.</p>
+                <p class="tick"><b>Poster creation</b>: scientific work promotion with hi-quality printable maps.</p>
+                <span class="learn_more"><a href="/features/">Learn More »</a></span>
 
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+                <hr />
+                <h2>Metrics ready</h2>
+                <p class="tick"><b>Centrality</b>: used in sociology to indicate how well a node is connected. Available: degree (power-law), betweenness, closeness.</p>
+                <p class="tick"><b>And more</b>: density, path length, diameter, HITS, modularity, clustering coefficient.</p>
+                <span class="learn_more"><a href="/features/">Learn More »</a></span>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+                <hr />
+                <h2>Technology</h2>
+                <p class="tick"><b>Ergonomic interface</b>: based on NetBeans UI</p>
+                <p class="tick"><b>High-performance</b>: built-in 3D rendering engine.</p>
+                <p class="tick"><b>Native file formats</b>: GDF (GUESS), GraphML (NodeXL), GML, NET (Pajek), GEXF and <a href="/users/supported-graph-formats/">more</a>.</p>
+                <p class="tick"><b>Customizable by plugins</b>: layouts, metrics, data sources, manipulation tools, rendering presets and more.</p>
+                <span class="learn_more"><a href="/features/">Learn More »</a></span>
+            </div>
+            <div class="alignleft column-3">
+                <p class="quote" style="margin-top:25px;font-weight:bold;">Like Photoshop™ for graphs.</p>
+                <span class="quote_who">— the Community</span>
+                <div class="clear"></div>
 
+                <hr />
+                <h2>Latest News <a href="#" title="Subscribe to our RSS feed" rel="alternate" type="application/rss+xml"><img src="{{ site.baseurl }}/css/images/icons/icon-feed-15x15.png" alt="rss" width="15px" height="15px" /></a></h2>
+                <ul>
+                </ul>
+                <span class="learn_more"><a href="/blog/">See All »</a></span>
+
+                <hr />
+                <h2>Latest Forum Topics <a href="https://forum.gephi.org/feed.php" title="Subscribe to our forum RSS feed" rel="alternate" type="application/atom+xml"><img src="{{ site.baseurl }}/css/images/icons/icon-feed-15x15.png" alt="rss" width="15px" height="15px" /></a></h2>
+                <span class="learn_more"><a href="https://forum.gephi.org/">See All »</a></span>
+
+                <hr />
+                <h2>Announcements</h2>
+                <p>Enter your email to stay up to date:</p>
+                <p><img src="{{ site.baseurl }}/css/images/icons/information.png" title="We will not disclose your email address to third parties; only announcements of new versions will be sent; every email has a one-click unsubscribe link." style="display:block;float:left;padding-top:5px" alt="" width="16px" height="16px" /></p>
+                <div class="clear"></div>
+            </div>
+            <div class="alignleft column-3">
+                <h2>Papers</h2>
+                <a href="/users/publications/"><img src="{{ site.baseurl }}/css/images/illustrations/paper.png" width="200px" style="border:1px solid grey" alt="paper" width="200px" height="260px" /></a>
+                <p>Bastian M., Heymann S., Jacomy M. (2009). <i>Gephi: an open source software for exploring and manipulating networks.</i> International AAAI Conference on Weblogs and Social Media. From <a href="http://www.aaai.org/ocs/index.php/ICWSM/09/paper/view/154">AAAI</a> [<a href="/publications/gephi-bastian-feb09.pdf">PDF</a>].</p>
+                <span class="learn_more"><a href="/users/publications/">Learn More »</a></span>
+
+                <hr />
+                <h2>Google Summer of Code</h2>
+                <a href="/users/gsoc/"><img src="{{ site.baseurl }}/images/GSoC_2012_logo_250px.png" alt="" width="250px" height="127px" /></a><br />
+                <p>The Gephi project has been selected again by Google to be part of the Summer of Code 2012 (GSoC)!</p>
+                <span class="learn_more"><a href="/users/gsoc/">Learn More »</a></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
 </div>
