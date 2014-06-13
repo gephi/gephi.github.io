@@ -1,5 +1,46 @@
 ---
 layout: page
-title:
+title: Supported Graph Formats
 ---
 
+<p>This article tries to explain a bit of each format: what are supported data files and the general structure to follow. If you experienced problems when importing or exporting files, please <a href="mailto:support@gephi.org">let us know</a> to fill this documentation.</p>
+<h2>Import</h2>
+<p>Gephi can import following standard graph file formats. Articles contains documentation, samples and implementation details. They helps outlining differences between formats.</p>
+<p>* <a href="http://gexf.net/format/">GEXF</a></p>
+<p>* <a href="/users/supported-graph-formats/gdf-format">GDF</a></p>
+<p>* <a href="/users/supported-graph-formats/gml-format">GML</a></p>
+<p>* <a href="/users/supported-graph-formats/graphml-format">GraphML</a></p>
+<p>* <a href="/users/supported-graph-formats/pajek-net-format">Pajek NET</a></p>
+<p>* <a href="/users/supported-graph-formats/graphviz-dot-format">GraphViz DOT</a></p>
+<p>* <a href="/users/supported-graph-formats/csv-format">CSV</a></p>
+<p>* <a href="/users/supported-graph-formats/ucinet-dl-format">UCINET DL</a></p>
+<p>* <a href="/users/supported-graph-formats/tulip-tlp-format">Tulip TPL</a></p>
+<p>* <a href="/users/supported-graph-formats/netdraw-vna-format">Netdraw VNA</a></p>
+<p>* <a href="/users/supported-graph-formats/spreadsheet/">Spreadsheet</a></p>
+<h3>Compare</h3>
+<p>The following table will help if you want to choose in which format you want to encode your data. If you plan to work only with Gephi, we recommend to use GEXF, for many reasons. The table criteria don&#8217;t mention all features of formats but concentrate on these supported by Gephi.</p>
+<p style="text-align: center;"><img src="/wp-content/uploads/2009/03/graph-format-table-comparison.png" alt="" title="Graph Format Table Comparison" width="503" height="340" /></p>
+<p>Some details:</p>
+<p><strong>* Visualization attributes:</strong> Only GraphML, GDF and GEXF importers are able to recognize nodes position, color and size attributes. Positions in Pajek NET files are also found.<br />
+<strong>* Hierarchical graphs: </strong>Implemented since Gephi 0.7.<br />
+<strong>* Dynamic:</strong> See details on <a href="http://gexf.net/format/schema.html">GEXF specification page</a>.<br />
+<strong>* Spreadsheet: </strong>Node tables and edge tables can be loaded in the Data Laboratory only.</p>
+<p>The following decision tree will help you to select the encoding format of your data, regardless technical constraints. Formats at the top can express more features than those at the bottom.</p>
+<div style="height:1em"></div>
+<p><img src="/wp-content/uploads/2009/03/choose-file-format.png" alt="" title="How to Choose a File Format" width="500px" /></p>
+<h2>Concepts</h2>
+<h3>Data-centered</h3>
+<p>What are the essential data Gephi is looking for in a graph file? We distinguish tree types of data: <strong>nodes</strong>, <strong>edges</strong> and <strong>attributes</strong>. Basically, edges are always between two nodes and attributes are data associated to nodes or edges, like some string or integer results.</p>
+<p>Nodes and edges structure is called the <strong>network topology</strong>. Attributes are rather called <strong>network data</strong>. The structure (i.e. topology) is required for any graph but data are optional. However, these days focus is made on network analysis based on data attributes. Data are everywhere.</p>
+<h3>Attributes</h3>
+<p>A bunch of data can be stored within attributes. The concept is the same as table data or SQL. An attribute has a <strong>title/name</strong> and a <strong>value</strong>. Attribute&#8217;s name/title must be declared for the whole graph. It could be for instance &#8216;degree&#8217;, &#8216;valid&#8217; or &#8216;url&#8217;. Besides the name of the attribute a column also contains the type. See further details about attribute system in the <a href="http://wiki.gephi.org/index.php?title=Gephi_Developer_Handbook">developer manual</a>.</p>
+<p>You may understand attributes whel looking at this node definition. besides native fiels (id, label), values are set for three attributes.<br />
+<code><br />
+&lt;node id="0" label="Hello world"&gt;<br />
+&lt;attvalues&gt;<br />
+&lt;attvalue for="0" value="samplevalue"/&gt;<br />
+&lt;attvalue for="1" value="1831"/&gt;<br />
+&lt;attvalue for="2" value="true"/&gt;<br />
+&lt;/attvalues&gt;<br />
+&lt;/node&gt;<br />
+</code></p>

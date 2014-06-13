@@ -1,5 +1,47 @@
 ---
 layout: page
-title:
+title: Gephi requirements
 ---
 
+<p>Gephi is a cross-platform application, as it is developed in Java. It was successfully tested on many different architecture, OS and graphical configuration. Gephi requires Java version 6 and later, get it <a href="http://www.java.com/getjava">here</a>.</p>
+<h3>Minimum hardware requirements</h3>
+<p>500 MHz CPU + 128 MB RAM + OpenGL 1.2<br />
+There is no absolute minimum. This is a practical minimum. Performance is a function of graph size.</p>
+<table>
+<thead>
+<tr>
+<th class="box">Network size<br />
+(nodes + edges)</th>
+<th class="box">~Memory suggested</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="box">~1000</td>
+<td class="box">128mo</td>
+</tr>
+<tr>
+<td class="box">~10,000</td>
+<td class="box">512mo</td>
+</tr>
+<tr>
+<td class="box">~100,000</td>
+<td class="box">2go</td>
+</tr>
+<tr>
+<td class="box">~1M</td>
+<td class="box">&gt;8go</td>
+</tr>
+</tbody>
+</table>
+<p>Note that Gephi has been successfully tested on Netbooks, running on Intel® Atom.</p>
+<h3>Graphics</h3>
+<p>Gephi uses an OpenGL 3D engine to speed up graph visualization. However a compatible graphic card is required. If your graphic card is  older than 5 years, or if your laptop doesn&#8217;t have a dedicated graphic card, you may have to upgrade your hardware to run Gephi.</p>
+<ul>
+<li><a href="/detect-and-fix-graphical-problems/">Detect and fix graphical problems</a></li>
+</ul>
+<p>If you&#8217;re running on Linux, get latest vendor graphical drivers to ensure OpenGL hardware acceleration.</p>
+<h3>Mac OS X</h3>
+<p>Java 1.6 is unfortunately only available on 64-bit Intel Macs. The community is waiting for a full 1.6 support.</p>
+<p>For Macs that can have Java 6, see how to enable it: <a href="/users/install-java-6-mac-os-x-leopard">Install Java 6 on Mac  OS X Leopard</a></p>
+<p>Note that Soylatte/OpenJDK isn&#8217;t supported.</p>
