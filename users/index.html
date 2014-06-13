@@ -1,22 +1,21 @@
 ---
 layout: default
+title: Learn how to use Gephi
 ---
 
 <div id="content">
     <div id="article">
     <div class="entry">
-
-            <img class="alignright size-full wp-image-70" src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/gtk-dialog-question.png" alt="" width="64" height="64" />
             <div class="entrytitle">
-                <h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
+                <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
             </div>
 
             <p>Welcome to Gephi! Gephi is an open-source software for visualizing and analysing large networks graphs. Gephi uses a 3D render engine to display graphs in real-time and speed up the exploration. You can use it to explore, analyse, spatialise, filter, cluterize, manipulate and export all types of graphs.</p>
 
             <h2>Getting Started</h2>
             <p>New to Gephi? These guides are for you. The following pages should introduce you to the Gephi project, basic features and installation.</p>
-            <img src="<?php bloginfo('stylesheet_directory'); ?>/images/puce_important.png" /> <b><a href="/users/quick-start/">Quick Start Guide</a></b><br />
-            <img src="<?php bloginfo('stylesheet_directory'); ?>/images/puce_important.png" /> <b><a href="/users/supported-graph-formats/">Supported Graph File Formats</a></b>
+            <img src="{{ site.baseurl }}/css/images/puce_important.png" /> <b><a href="/users/quick-start/">Quick Start Guide</a></b><br />
+            <img src="{{ site.baseurl }}/css/images/puce_important.png" /> <b><a href="/users/supported-graph-formats/">Supported Graph File Formats</a></b>
             <ul>
                 <!--li><a href="/users/screencast-overview/">Video Tour of Key Gephi Features</a></li-->
                 <li><a href="https://wiki.gephi.org/index.php/Manifesto">Goals and Principles of the project</a></li>
@@ -27,9 +26,9 @@ layout: default
 
             <h2>Official Tutorials</h2>
             <p>Gephi is really easy to handle if you learn the basics. Let's follow these tutorials to quickly manage the main features!</p>
-            <a href="/users/quick-start/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/buttons/quick-start-guide.png" alt="Quick Start Guide" title="Read the tutorial" /></a>&nbsp;
-            <a href="/users/tutorial-visualization/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/buttons/visualization-tutorial.png" alt="Tutorial Visualization" title="Read the tutorial" /></a>&nbsp;
-            <a href="/users/tutorial-layouts/"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/buttons/layouts-tutorial.png" alt="Tutorial Layouts" title="Read the tutorial" /></a>&nbsp; <br />
+            <a href="/users/quick-start/"><img src="{{ site.baseurl }}/css/images/buttons/quick-start-guide.png" alt="Quick Start Guide" title="Read the tutorial" /></a>&nbsp;
+            <a href="/users/tutorial-visualization/"><img src="{{ site.baseurl }}/css/images/buttons/visualization-tutorial.png" alt="Tutorial Visualization" title="Read the tutorial" /></a>&nbsp;
+            <a href="/users/tutorial-layouts/"><img src="{{ site.baseurl }}/css/images/buttons/layouts-tutorial.png" alt="Tutorial Layouts" title="Read the tutorial" /></a>&nbsp; <br />
 
             <a href="/users/quick-start/"><img src="https://wiki.gephi.org/images/thumb/3/37/Gephi_tutorial_quickstart.png/200px-Gephi_tutorial_quickstart.png" alt="Quick Start Guide" title="Read the tutorial" /></a>&nbsp;
             <a href="/users/tutorial-visualization/"><img src="https://wiki.gephi.org/images/thumb/9/90/Gephi_tutorial_visualization.png/200px-Gephi_tutorial_visualization.png" alt="Tutorial Visualization" title="Read the tutorial" /></a>&nbsp;
@@ -119,15 +118,9 @@ layout: default
 
             <h2>Store</h2>
             <p><b>Proud to be part of the Gephi Community?</b> On our fresh <a href="http://www.comboutique.com/shop/homeboutique-44270-0-0-0-0-0.html?lang=EN">new store</a> you can buy mugs, T-shirts and more to show it!</p>
-<a href="http://www.comboutique.com/shop/t_shirt_impression-dark_t-shirt___men-44270-2476389.html"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/comboutique1.jpg" alt="man" /></a> <a href="http://www.comboutique.com/shop/t_shirt_impression-tank_top__women-44270-2476390.html"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/comboutique2.jpg" alt="woman" /></a> <a href="http://www.comboutique.com/shop/t_shirt_impression-official_mug_gephi-44270-2476372.html"><img src="<?php bloginfo('stylesheet_directory'); ?>/images/comboutique3.jpg" alt="mug" /></a>
-            <a href="http://astore.amazon.com/gephi-20/"><img class="alignleft" style="margin-right: 10px;" src="<?php bloginfo('stylesheet_directory'); ?>/images/417Sf6LcveL._SL125_.jpg" alt="" width="87" height="131" /></a><p><b>More interested in reading books?</b> <a href="http://astore.amazon.com/gephi-20/">Here</a> you'll find books to discover the key theories beyond networks, information visualization and best practices in programming. They give valuable information for understanding what is guiding the people who are developing Gephi. <a href="https://gephi.org/2010/book-store-theory-practice/">More info.</a></p>
+<a href="http://www.comboutique.com/shop/t_shirt_impression-dark_t-shirt___men-44270-2476389.html"><img src="{{ site.baseurl }}/css/images/comboutique1.jpg" alt="man" /></a> <a href="http://www.comboutique.com/shop/t_shirt_impression-tank_top__women-44270-2476390.html"><img src="{{ site.baseurl }}/css/images/comboutique2.jpg" alt="woman" /></a> <a href="http://www.comboutique.com/shop/t_shirt_impression-official_mug_gephi-44270-2476372.html"><img src="{{ site.baseurl }}/css/images/comboutique3.jpg" alt="mug" /></a>
+            <a href="http://astore.amazon.com/gephi-20/"><img class="alignleft" style="margin-right: 10px;" src="{{ site.baseurl }}/css/images/417Sf6LcveL._SL125_.jpg" alt="" width="87" height="131" /></a><p><b>More interested in reading books?</b> <a href="http://astore.amazon.com/gephi-20/">Here</a> you'll find books to discover the key theories beyond networks, information visualization and best practices in programming. They give valuable information for understanding what is guiding the people who are developing Gephi. <a href="https://gephi.org/2010/book-store-theory-practice/">More info.</a></p>
     </div>
-    </div>
-
-    <div id="sidebar-box">
-        <div id="sidebar">
-        </div>
-        <div id="sidebar-box-bottom"></div>
     </div>
     <div class="clear"></div>
 </div>

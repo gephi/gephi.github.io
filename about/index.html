@@ -1,14 +1,13 @@
 ---
 layout: default
+title: about
 ---
 
 <div id="content">
     <div id="article">
     <div class="entry">
-
-            <img class="alignright size-full wp-image-393" title="about" src="/wp-content/uploads/HLIC/5919cf3555cec8c8ff255b886af8eae3.png" alt="" width="64" height="64" />
             <div class="entrytitle">
-                <h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
+                <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
             </div>
 
             <h2>Gephi</h2>
@@ -48,12 +47,6 @@ layout: default
 
             <p>Learn more: <a href="http://en.wikipedia.org/wiki/Network_science">http://en.wikipedia.org/wiki/Network_science</a></p>
     </div>
-    </div>
-
-    <div id="sidebar-box">
-        <div id="sidebar">
-        </div>
-        <div id="sidebar-box-bottom"></div>
     </div>
     <div class="clear"></div>
 </div>

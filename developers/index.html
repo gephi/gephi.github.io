@@ -1,14 +1,13 @@
 ---
 layout: default
+title: Learn how to code in Gephi
 ---
 
 <div id="content">
     <div id="article">
     <div class="entry">
-
-            <img class="alignright size-full wp-image-70" src="<?php bloginfo('stylesheet_directory'); ?>/images/icons/applications-development.png" alt="" width="64" height="64" />
             <div class="entrytitle">
-                <h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
+                <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
             </div>
 
             <p>For developers only. If you're looking for Gephi, click on <a href="/users/">Learn</a>. The Gephi Development Center is a repository of code, collection of builds, and a library of API references all designed to help you extend Gephi's functionalities and build new cool applications upon Gephi Platform.</p>
@@ -65,13 +64,6 @@ layout: default
             <iframe src="http://webchat.freenode.net?channels=gephi&uio=d4" width="720" height="340"></iframe>
 
     </div>
-    </div>
-
-    <div id="sidebar-box">
-        <div id="sidebar">
-        <?php get_sidebar('developers'); ?>
-        </div>
-        <div id="sidebar-box-bottom"></div>
     </div>
     <div class="clear"></div>
 </div>

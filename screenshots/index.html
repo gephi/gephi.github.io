@@ -1,24 +1,16 @@
 ---
 layout: default
+title: Screenshots
 ---
 
 <div id="content">
-    <!--div id="article">
     <div class="entry">
-            <img class="alignright size-full wp-image-87" title="screenshot" src="/wp-content/uploads/2008/07/screenshot.png" alt="" width="64" height="64" />
-            <div class="entrytitle">
-                <h1><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h1>
-            </div>
+        <div class="entrytitle">
+            <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+        </div>
+        <a href="http://www.flickr.com/photos/gephi/"><img src="http://l.yimg.com/g/images/flickr_logo_gamma.gif.v59899.14" /></a> Gephi is on <a href="http://www.flickr.com/photos/gephi/">FlickR</a> (<a href="http://api.flickr.com/services/feeds/photos_public.gne?id=34194250@N08&lang=fr-fr&format=rss_200"><img src="{{ site.baseurl }}/css/images/icons/icon-feed-15x15.png" /> Subscribe</a>).
 
+        Consider also <a href="/videos/">watching the videos</a>!
     </div>
-    </div-->
-
-    <?php echo do_shortcode('[nggallery id=1]'); ?>
-
-
-    <a href="http://www.flickr.com/photos/gephi/"><img src="http://l.yimg.com/g/images/flickr_logo_gamma.gif.v59899.14" /></a> Gephi is on <a href="http://www.flickr.com/photos/gephi/">FlickR</a> (<a href="http://api.flickr.com/services/feeds/photos_public.gne?id=34194250@N08&lang=fr-fr&format=rss_200"><img src="/wp-content/themes/gephi/images/icons/rss-mini.png" /> Subscribe</a>).
-
-    Consider also <a href="/videos/">watching the videos</a>!
-
     <div class="clear"></div>
 </div>
