@@ -12,18 +12,20 @@ title: Screenshots
 
 	    <div id="ngg-gallery-1-0" class="ngg-galleryoverview">
             {% for file in site.static_files %}
-                {% if file.path contains 'images/screenshots/' AND file.path contains 'mini' %}
+                {% if file.path contains 'images/screenshots/' and file.path contains 'mini' %}
                     <!-- Thumbnails -->
                     <div id="ngg-image-{{ forloop.index }}" class="ngg-gallery-thumbnail-box">
                         <div class="ngg-gallery-thumbnail">
-                            <a href="{{ file.path }}" title=" " class="thickbox" rel="set_{{ forloop.index }}">
-                                <img title="{{ file.name }}" alt="{{ file.name }}" src="{{ file.path | replace:'mini','' }}" width="150" height="112">
+                            <a href="{{ file.path | replace:'-mini','' }}" title=" " class="thickbox" rel="set_{{ forloop.index }}">
+                                <img title="{{ file.name }}" alt="{{ file.name }}" src="{{ file.path }}" width="150" height="112">
                             </a>
                         </div>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
+
+        <div class="clear"></div>
 
         <a href="http://www.flickr.com/photos/gephi/"><img src="http://l.yimg.com/g/images/flickr_logo_gamma.gif.v59899.14" /></a> Gephi is on <a href="http://www.flickr.com/photos/gephi/">FlickR</a> (<a href="http://api.flickr.com/services/feeds/photos_public.gne?id=34194250@N08&lang=fr-fr&format=rss_200"><img src="{{ site.baseurl }}/css/images/icons/icon-feed-15x15.png" /> Subscribe</a>).
 
