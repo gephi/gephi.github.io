@@ -1,0 +1,39 @@
+---
+layout: page
+title: Developers introduction
+---
+
+<p>Gephi is a collaborative open-source project. It has been built to be easily extended and reused. Although initiators have a strong vision about the ideal software, Gephi’s future is in the hand of its contributors.  Anyone can join the network today and start developing, testing, designing, translating or writing tutorials. Follow the steps.</p>
+<h2>Quick start</h2>
+<p>Gephi is developed in Java and use OpenGL for its visualization engine. Built on the top of <a href="http://platform.netbeans.org">Netbeans Platform</a>, it follows a loosely-coupled, modular architecture philosophy. That permits to build large applications and make it grow in a sustainable way. Gephi is spitted into modules, which depend on each other through well-written APIs. Plugins are allowed to reuse existing APIs, create new services and even replace a default implementation by a new one.</p>
+<h2>Get the sources</h2>
+<p>Gephi source code is hosted on <a href="https://github.com/gephi/gephi">Github</a> platform, and use <a href="http://git-scm.com/">Git</a> for source control. Getting Gephi’s sources is straightforward and you don’t need to register.</p>
+<p>You can get source in several ways:</p>
+<ul>
+<li>Through Github and Git (see below)</li>
+<li>Get an archived snapshot on the <a href="/users/download">download</a> page</li>
+<li><a href="https://github.com/gephi/gephi">Browse online</a></li>
+</ul>
+<h3>Get the latests sources from Github</h3>
+<ol>
+<li>Get <a href="http://git-scm.com/">Git</a> for your system and install it. Checkout Github’s help for <a href="http://help.github.com/win-set-up-git/">Windows</a>, <a href="http://help.github.com/mac-set-up-git/">Mac</a> and <a href="http://help.github.com/linux-set-up-git/">Linux</a>.</li>
+<li>Clone the project by typing “git clone git://github.com/gephi/gephi.git”. This downloads the latest trunk to a gephi directory.</li>
+</ol>
+<p>You’ll get the sources without authentification. If you want to get the sources via your GitHub account, follow these <a href="http://wiki.gephi.org/index.php/Checkout_Code">instructions</a>.</p>
+<p><strong>Note: </strong>We recently moved the project from Launchpad to Github. The Launchpad project still exists and can be found <a href="https://launchpad.net/gephi">here</a>.</p>
+<h2>Build the sources</h2>
+<p>Because Gephi is built on top of the Netbeans Platform, all development needs to take place in Netbeans IDE, which fully integrates all tools for Netbeans Platform developers.</p>
+<ol>
+<li>Get <a href="http://netbeans.org">Netbeans IDE</a>, currently 7.0 version. Only Java SE version is required for Gephi. You need to get the <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK</a> before installing Netbeans.</li>
+<li>Start Netbeans IDE and check for updates (Help &gt; Check for Updates). Netbeans must be up to date. Note that you <strong>must</strong> have administrator privileges.</li>
+<li>Restrart Netbeans IDE and open the Gephi project, Netbeans automatically recognize the Netbeans Platform application.</li>
+<li>You can see Gephi’s project and the list of its modules. Right click on the project and Run it. Done.</li>
+</ol>
+<p>During Netbeans installation, if asked to install JUnit, click Yes. If you have issues, consult the <a href="http://wiki.gephi.org/index.php/Configuring_NetBeans#Troubleshooting">Troubleshooting</a> section on the wiki.</p>
+<h3>Create executable and bundles</h3>
+<ul>
+<li>For <strong>Windows</strong>, right click on Gephi’s project and select “Package as &gt; ZIP Distribution”. The bundle is created in the “dist” folder in the project directory.</li>
+<li>For <strong>Mac OS X</strong>, right click on Gephi’s project and select “Package as &gt; Mac OS X Application”. This creates the application folder in the “dist” folder of the project’s directory.</li>
+<li>For <strong>Linux</strong> users, follow Windows instructions and see that a launch script has been created in the “bin” folder.</li>
+</ul>
+<p></p>
