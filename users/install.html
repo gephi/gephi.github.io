@@ -1,0 +1,59 @@
+---
+layout: page
+title: Installing Gephi
+---
+
+<h2>Installing the software</h2>
+<h3><a name="windows"></a>Windows</h3>
+<ol>
+<li>Be sure you have a recent Java JRE installed on your system. Download Free Java <a href="http://www.java.com/getjava">here</a>.</li>
+<li>After the download completes, run the installer and follow the steps.</li>
+</ol>
+<p><img class="alignnone size-full wp-image-1920" title="Gephi setup" src="{{ site.baseurl }}/images/setup-win07.png" alt="" height="394" width="511"></p>
+<h3><a name="mac"></a>Mac OS X</h3>
+<ol>
+<li>The application needs Java SE 6, which may not be enabled by default. See this <a href="../install-java-6-mac-os-x-leopard">install</a> page for <strong>Leopard</strong>. If you have <strong>Lion or Mountain Lion</strong>, you need to <a href="http://helpx.adobe.com/x-productkb/global/install-java-jre-mac-os.html" target="_blank">install Java</a> first.</li>
+<li>After the download completes, click on the downloaded <em>.dmg</em> file.</li>
+<li>Drag the gephi application in your Application folder.</li>
+</ol>
+<h3><a name="linux"></a>Linux</h3>
+<ol>
+<li>Update your distribution with the last official JRE packages (update 25+), don’t use OpenJDK.</li>
+<li>After the download completes, unzip and untar the file in a directory.</li>
+<li>Run it by executing <em>./bin/gephi</em> script file.</li>
+</ol>
+<p><strong>Ubuntu users</strong>: Install Sun Java via <a href="http://help.ubuntu.com/community/SynapticHowto">Synaptic</a>, do a Quick Search Search for “sun java” and install the jre and jdk. Do not forget to run <em>update-alternatives –config java</em> and  <em>update-alternatives –config javac</em>.<br>
+If you’re on the 8.10 version, please install Java manually from the <a href="http://java.sun.com/javase/downloads/index.jsp">Oracle website</a>, because the distributed packages are obsolete.<br>
+<strong>ArchLinux users</strong>: a community package is available <a href="http://aur.archlinux.org/packages.php?ID=43580">here</a>.</p>
+<h2>Troubleshooting</h2>
+<h3>JVM Creation failed</h3>
+<p>This error message is due to memory settings, see following section.</p>
+<h3><a name="memory"></a>Memory</h3>
+<p>Memory available to Gephi is determined by Java. Less or more memory can  be allocated by configuring Gephi’s <strong>startup settings</strong>. If too less memory is allocated, Gephi will stop running when it reached the limit and you will loose your current work. If too much memory is set, Java will not be able to start and return “JVM Creation failed” message. By default, maximum memory is set to 256mo or 512mo.</p>
+<p>To modify memory settings, you need to edit gephi settings file. Modify the value after the <strong>-Xmx</strong> option to change the maximum heap space. For example, to use a heap size between 256 and 1024 MB, change the options to -Xms256m and -Xmx1024m. If you have Gephi open, you must close and reopen Gephi before new options take effect. On computers with 2GB of memory, you can set -Xmx1400 to get maximum performance.</p>
+<p>How to edit <em>gephi.conf</em>:</p>
+<ul>
+<li>On Windows, go to the Gephi folder in Start menu and click on Startup Settings. Edit this file with Notepad or WordPad. Alternatively, go in <em>C:\Program Files\Gephi\etc\gephi.conf</em> and edit file manually.</li>
+<li>On Mac OS X, right-click on Gephi application icon and select <strong>Show Package Contents</strong> to open a new Finder window displaying a Contents folder. Open the Contents folder, and then open the <em>Resources/gephi/etc</em> folder, in which the gephi.conf file resides. Use TextEdit to edit the file.</li>
+<li>On Linux, go into your application directory and then into the <em>etc</em> folder. Edit the file with a text editor.</li>
+</ul>
+<p><strong>To use Gephi with more than ~1.5GB of memory, which could happen with large graphs, you need to use A 64-bit version of Java. See following section.</strong></p>
+<h3>64-bit</h3>
+<p>Gephi has been successfully tested on 64-bit architecture (AMD64, Intel Core 2 Duo, Intel Core i7), 64 bits OS (Windows Vista 64-bit, Windows 7 64-bit) and 64-bit version of Java (JVM 64-Bit Server). To use more than ~1.5GB of memory in Gephi, which could happen with large graphs, you need to have a 64-bit architecture, OS and a 64-bit JVM. A compatible 64-bit JRE or JDK can be downloaded from the Java website.</p>
+<ul>
+<li><a href="http://java.sun.com/javase/downloads">Get 64-bit JVM</a></li>
+</ul>
+<p>When multiple JRE or JDK are installed on the same machine, you can specifty to Gephi to use a particular path. Edit <em>gephi.conf </em>as&nbsp; described in the upper section, uncomment the <em>jdkhome</em> line and set the JRE or JDK path.</p>
+<h3>Linux JRE Path</h3>
+<p>If you still have the wrong Java package running after following the linux installation procedure described above, then manually set the Java virtual machine. To do so, you have to set the home folder of the desired JVM in the environment variable JAVA_HOME or in the environment variable JDK_HOME.</p>
+<h3>User files</h3>
+<p>Locate and delete gephi user directory to clean your installation.</p>
+<ul>
+<li>On Windows 2K/XP, user diretory is located in <code>C:\Documents and Settings\username\Application Data\.gephi</code></li>
+<li>On Windows Vista/Seven, user directory is located in <code>C:\Users\username\AppData\Roaming\.gephi</code></li>
+<li>On Mac OS X, user directory is located in <code>/Users/username/Library/Application Support/gephi</code></li>
+<li>On Linux, user diretory is located in <code>/home/username/.gephi</code></li>
+</ul>
+<h3>OpenJDK</h3>
+<p>OpenJDK is not supported, be sure to run the official Java 6 version from Oracle’s website.</p>
+<p>Gephi may be able to start with OpenJDK but the graph window will fail to load in most cases.</p>
