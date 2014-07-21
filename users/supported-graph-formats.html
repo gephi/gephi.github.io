@@ -18,8 +18,8 @@ title: Supported Graph Formats
 <p>* <a href="/users/supported-graph-formats/netdraw-vna-format">Netdraw VNA</a></p>
 <p>* <a href="/users/supported-graph-formats/spreadsheet/">Spreadsheet</a></p>
 <h3>Compare</h3>
-<p>The following table will help if you want to choose in which format you want to encode your data. If you plan to work only with Gephi, we recommend to use GEXF, for many reasons. The table criteria don&#8217;t mention all features of formats but concentrate on these supported by Gephi.</p>
-<p style="text-align: center;"><img src="/wp-content/uploads/2009/03/graph-format-table-comparison.png" alt="" title="Graph Format Table Comparison" width="503" height="340" /></p>
+<p>The following table will help if you want to choose in which format you want to encode your data. If you plan to work only with Gephi, we recommend to use GEXF, for many reasons. The table criteria don&#8217;t mention all features of formats but concentrate on these supported by Gephi.</p>{{ site.baseurl }}/images/
+<p style="text-align: center;"><img src="{{ site.baseurl }}/images/graph-format-table-comparison.png" alt="" title="Graph Format Table Comparison" width="503" height="340" /></p>
 <p>Some details:</p>
 <p><strong>* Visualization attributes:</strong> Only GraphML, GDF and GEXF importers are able to recognize nodes position, color and size attributes. Positions in Pajek NET files are also found.<br />
 <strong>* Hierarchical graphs: </strong>Implemented since Gephi 0.7.<br />
@@ -27,7 +27,7 @@ title: Supported Graph Formats
 <strong>* Spreadsheet: </strong>Node tables and edge tables can be loaded in the Data Laboratory only.</p>
 <p>The following decision tree will help you to select the encoding format of your data, regardless technical constraints. Formats at the top can express more features than those at the bottom.</p>
 <div style="height:1em"></div>
-<p><img src="/wp-content/uploads/2009/03/choose-file-format.png" alt="" title="How to Choose a File Format" width="500px" /></p>
+<p><img src="{{ site.baseurl }}/images/choose-file-format.png" alt="" title="How to Choose a File Format" width="500px" /></p>
 <h2>Concepts</h2>
 <h3>Data-centered</h3>
 <p>What are the essential data Gephi is looking for in a graph file? We distinguish tree types of data: <strong>nodes</strong>, <strong>edges</strong> and <strong>attributes</strong>. Basically, edges are always between two nodes and attributes are data associated to nodes or edges, like some string or integer results.</p>
