@@ -82,8 +82,10 @@ If you are looking for data samples to test Gephi, look at <a href="https://wiki
 #donate-content-content {padding: 16px;}
 </style>
 <p><script type="text/javascript">
-$(".donate").click(function (e) {
-  $("#donate-content").modal();
-  return true;
+$(document).ready(function() {
+	$(".donate").click(function (e) {
+	  $("#donate-content").modal();
+	  return true;
+	});
 });
 </script></p>
