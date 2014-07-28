@@ -1,0 +1,58 @@
+---
+layout: page
+title: Spreadsheet (Excel)
+---
+<p>Nodes tables and edge tables are the file formats used in the Data Laboratory to import data from Excel. It is a convenient way to transform any Excel data for Gephi without programming. The file extension is CSV thought it should not be confused with the <a href="csv-format/">CSV file format</a> itself.</p>
+<p>Each row is a node or edge entry. It supports nodes and edges attributes, edge weight and dynamics with time intervals.</p>
+<p>See how to <a href="http://wiki.gephi.org/index.php/Import_CSV_Data">import spreadsheet data</a> on the wiki.</p>
+<h3>Examples</h3>
+<h4>Basic example</h4>
+<p>The sample below shows a <strong>node table</strong> of of three nodes. The column of node identifiers must be named “Id”.<br>
+<code>Id<br>
+A<br>
+B<br>
+C<br>
+</code></p>
+<p>The sample below shows an <strong>edge table</strong> of of two edge. The columns must be named “Source” and “Target”.<br>
+<code>Source;Target<br>
+A;B<br>
+C;A<br>
+</code></p>
+<h4>Labels</h4>
+<p>There tables are the same as above with labels. The columns of labels must be named “Label”.</p>
+<p>Node Table:<br>
+<code>Id;Label<br>
+A;"Node A"<br>
+B;"Node B"<br>
+C;"Node C"<br>
+</code><br>
+Edge Table:<br>
+<code>Source;Target;Label<br>
+A;B;"Edge from A to B"<br>
+C;A;"Edge from C to A"<br>
+</code></p>
+<h4>Edge identifiers</h4>
+<p>Add a column named “Id” in the edge table.</p>
+<h4>Edge types</h4>
+<p>Add a column named “Type” in the edge table. Values must be either “Directed”, “Undirected” or “Mixed”.</p>
+<h4>Edge weights</h4>
+<p>Add a column named “Weight” in the edge table.</p>
+<h4>Node and edge attributes</h4>
+<p>Add a column with the name of your attribute in the corresponding table.</p>
+<h4>Node and edge time intervals</h4>
+<p>Add a column named “Time Interval” in the corresponding table. The characters “[ ]” are used to define closed intervals.This sample shows a node existing at the time steps &lt;1,2&gt; and 4.<br>
+<code>Id,Time Interval<br>
+n0,"&lt;[1,2];[4,4]&gt;"<br>
+</code></p>
+<p>The characters “( )” are used to define open intervals. This sample shows a node existing just after the step 1 until step 10 included.<br>
+<code>Id,Time Interval<br>
+n0,"&lt;(1,10]&gt;"<br>
+</code></p>
+<h4>Attribute time intervals</h4>
+<p>A dynamic string:<br>
+<code>&lt;[1.0, 2.0,a]; [4.0, 4.0,b]&gt;</code><br>
+The dynamic parser splits intervals by ‘;’ and then [start,end,value] by ‘,’ (to a maximum of 3 parts) so If you put spaces they will get to the string values. Also ‘;’ can’t be used in the strings because of this.</p>
+<p>A dynamic number:<br>
+<code>&lt;[1.0, 2.0, 1]; [4.0, 4.0, 3]; [6.0, 8.0, -2]&gt;</code></p>
+
+				<p></p>

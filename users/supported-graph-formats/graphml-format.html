@@ -1,0 +1,107 @@
+---
+layout: page
+title: GraphML Format
+---
+
+<p>The GraphML file format uses <em>.graphml</em> extension and is XML structured. It supports attributes for nodes and edges, hierarchical graphs and benefits from a flexible architecture. Gephi supports a limited set of this format (no sub-graphs and hyperedges). This format is supported by <a href="http://www.codeplex.com/NodeXL">NodeXL</a>, <a href="http://www.sonivis.org/">Sonivis</a>, <a href="http://guess.wikispot.org/GraphML">GUESS</a> and <a href="http://networkx.lanl.gov/">NetworkX</a>.</p>
+<table style="background: none repeat scroll 0% 0% #f6f8e4; font-size: 1.4em; font-weight: bold; text-decoration: none; width: 470px;" border="0">
+<tbody>
+<tr>
+<td><img class="alignleft size-full wp-image-779" title="GraphML Specification" src="{{ site.baseurl }}/images/99f160e8df346e02e0dea11de339264f.png" alt="GraphML Specification" height="32" width="32"></td>
+<td><a href="http://graphml.graphdrawing.org/">Official GraphML Specification and Documentation</a></td>
+</tr>
+</tbody>
+</table>
+<h3>File structure</h3>
+<p>The file content is wrapped into a <em>graphml</em> element. Then attributes columns (i.e. titles) are defined in <em>key</em> elements and finally the network in the <em>graph</em> markup.</p>
+<p>Basic options can be set to set the graph element:<br>
+<code>&lt;graph edgedefault="directed"&gt;</code><br>
+or<br>
+<code>&lt;graph edgedefault="undirected"&gt;</code></p>
+<h3>Attributes definition</h3>
+<p>Each attribute title is defined in a <em>key</em> element with an identifier, a name, a title, edge or node, and the type of data. The supported data types:</p>
+<ul>
+<li>boolean</li>
+<li>int</li>
+<li>long</li>
+<li>float</li>
+<li>double</li>
+<li>string</li>
+</ul>
+<p>Inside the markup, a <em>default</em> element can set the default value for the attribute. Below is an example of definition of two attributres, one for nodes and one for edges.</p>
+<p><code>&lt;key id="d0" for="node" attr.name="color" attr.type="string"&gt;<br>
+&lt;default&gt;yellow&lt;/default&gt;<br>
+&lt;/key&gt;<br>
+&lt;key id="d1" for="edge" attr.name="weight" attr.type="double"/&gt;<br>
+</code></p>
+<p>Custom data can be added by other software. The example under represents graphical representations (i.e. shapes), but it is not supported by Gephi at all. Verify files namespace to ensure compatibility.<br>
+<code>&lt;node id="n2"&gt;<br>
+&lt;data key="d0"&gt;<br>
+&lt;y:ShapeNode&gt;<br>
+&lt;y:NodeLabel visible="true" autoSizePolicy="content"&gt;n2&lt;/y:NodeLabel&gt;<br>
+&lt;/y:ShapeNode&gt;<br>
+&lt;/data&gt;<br>
+&lt;/node&gt;<br>
+</code></p>
+<h3>Attributes values</h3>
+<p>Attributes values have to be set within the node element as the following example:</p>
+<p><code>&lt;node id="n0"&gt;<br>
+&lt;data key="d0"&gt;green&lt;/data&gt;<br>
+&lt;/node&gt;<br>
+</code></p>
+<h3>Basic Sample</h3>
+<p><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>
+&lt;graphml xmlns="http://graphml.graphdrawing.org/xmlns"<br>
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br>
+xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns<br>
+http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"&gt;<br>
+&lt;graph id="G" edgedefault="undirected"&gt;<br>
+&lt;node id="n0"/&gt;<br>
+&lt;node id="n1"/&gt;<br>
+&lt;edge id="e1" source="n0" target="n1"/&gt;<br>
+&lt;/graph&gt;<br>
+&lt;/graphml&gt;<br>
+</code></p>
+<h3>With one attribute example</h3>
+<p><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;<br>
+&lt;graphml xmlns="http://graphml.graphdrawing.org/xmlns"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br>
+xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"&gt;<br>
+&lt;key id="d0" for="node" attr.name="color" attr.type="string"&gt;<br>
+&lt;default&gt;yellow&lt;/default&gt;<br>
+&lt;/key&gt;<br>
+&lt;key id="d1" for="edge" attr.name="weight" attr.type="double"/&gt;<br>
+&lt;graph id="G" edgedefault="undirected"&gt;<br>
+&lt;node id="n0"&gt;<br>
+&lt;data key="d0"&gt;green&lt;/data&gt;<br>
+&lt;/node&gt;<br>
+&lt;node id="n1"/&gt;<br>
+&lt;node id="n2"&gt;<br>
+&lt;data key="d0"&gt;blue&lt;/data&gt;<br>
+&lt;/node&gt;<br>
+&lt;node id="n3"&gt;<br>
+&lt;data key="d0"&gt;red&lt;/data&gt;<br>
+&lt;/node&gt;<br>
+&lt;node id="n4"/&gt;<br>
+&lt;node id="n5"&gt;<br>
+&lt;data key="d0"&gt;turquoise&lt;/data&gt;<br>
+&lt;/node&gt;<br>
+&lt;edge id="e0" source="n0" target="n2"&gt;<br>
+&lt;data key="d1"&gt;1.0&lt;/data&gt;<br>
+&lt;/edge&gt;<br>
+&lt;edge id="e1" source="n0" target="n1"&gt;<br>
+&lt;data key="d1"&gt;1.0&lt;/data&gt;<br>
+&lt;/edge&gt;<br>
+&lt;edge id="e2" source="n1" target="n3"&gt;<br>
+&lt;data key="d1"&gt;2.0&lt;/data&gt;<br>
+&lt;/edge&gt;<br>
+&lt;edge id="e3" source="n3" target="n2"/&gt;<br>
+&lt;edge id="e4" source="n2" target="n4"/&gt;<br>
+&lt;edge id="e5" source="n3" target="n5"/&gt;<br>
+&lt;edge id="e6" source="n5" target="n4"&gt;<br>
+&lt;data key="d1"&gt;1.1&lt;/data&gt;<br>
+&lt;/edge&gt;<br>
+&lt;/graph&gt;<br>
+&lt;/graphml&gt;<br>
+</code></p>
+
+				<p></p>

@@ -1,0 +1,81 @@
+---
+layout: page
+title: GML Format
+---
+
+<p>GML (Graph Modeling Language) is a text file format supporting network data with a very easy syntax. It is used by <a href="http://www.fmi.uni-passau.de/Graphlet/">Graphlet</a>, <a href="http://vlado.fmf.uni-lj.si/pub/networks/data/mix/mixed.htm">Pajek</a>, <a href="http://www.yworks.com/en/products_yed_about.htm">yEd</a>, <a href="http://www.algorithmic-solutions.info/leda_guide/graphs/gml_graph.html">LEDA</a> and <a href="http://networkx.lanl.gov/">NetworkX</a>.</p>
+<table style="background:#F6F8E4;font-size:1.4em;font-weight:bold;text-decoration:none;width:350px" border="0">
+<tbody>
+<tr>
+<td><img class="alignleft size-full wp-image-779" title="GML Specification" src="{{ site.baseurl }}/images/99f160e8df346e02e0dea11de339264f.png" alt="GML Specification" height="32" width="32"></td>
+<td><a href="http://www.infosun.fim.uni-passau.de/Graphlet/GML/gml-tr.html">Official GML Specification</a></td>
+</tr>
+</tbody>
+</table>
+<p>Gephi currently doesn’t provide a complete support of the GML format. Data structures are not supported.</p>
+<h3>Datasets</h3>
+<p>Mark Newman’s page provides a large range of networks in GML <a href="http://www-personal.umich.edu/~mejn/netdata/">here</a>.</p>
+<h3>Examples</h3>
+<h4>Basic examples</h4>
+<p>The sample below shows a graph of three nodes and two edges.<br>
+<code>graph<br>
+[<br>
+&nbsp;  node<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    id A<br>
+&nbsp;  ]<br>
+&nbsp;  node<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    id B<br>
+&nbsp;  ]<br>
+&nbsp;  node<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    id C<br>
+&nbsp;  ]<br>
+&nbsp;&nbsp;  edge<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    source B<br>
+&nbsp;&nbsp;    target A<br>
+&nbsp;  ]<br>
+&nbsp;  edge<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    source C<br>
+&nbsp;&nbsp;    target A<br>
+&nbsp;  ]<br>
+]<br>
+</code></p>
+<h4>Labels</h4>
+<p>The sample below shows the same example but with both node and edge labels.<br>
+<code>graph<br>
+[<br>
+&nbsp;  node<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    id A<br>
+&nbsp;&nbsp;    label "Node A"<br>
+&nbsp;  ]<br>
+&nbsp;  node<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    id B<br>
+&nbsp;&nbsp;    label "Node B"<br>
+&nbsp;  ]<br>
+&nbsp;  node<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    id C<br>
+&nbsp;&nbsp;    label "Node C"<br>
+&nbsp;  ]<br>
+&nbsp;&nbsp;  edge<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    source B<br>
+&nbsp;&nbsp;    target A<br>
+&nbsp;&nbsp;    label "Edge B to A"<br>
+&nbsp;  ]<br>
+&nbsp;  edge<br>
+&nbsp;  [<br>
+&nbsp;&nbsp;    source C<br>
+&nbsp;&nbsp;    target A<br>
+&nbsp;&nbsp;    label "Edge C to A"<br>
+&nbsp;  ]<br>
+]<br>
+</code></p>
+
+				<p></p>

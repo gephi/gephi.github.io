@@ -1,0 +1,25 @@
+---
+layout: page
+title: TLP Format
+---
+				<p>TLP is the file format used by <a href="http://tulip.labri.fr/TulipDrupal/">Tulip</a>. Only network topology (nodes and edges) is currently supported.</p>
+<table style="background: none repeat scroll 0% 0% #f6f8e4; font-size: 1.4em; font-weight: bold; text-decoration: none; width: 350px;" border="0">
+<tbody>
+<tr>
+<td><img class="alignleft size-full wp-image-779" title="TLP Specification" src="{{ site.baseurl }}/images/99f160e8df346e02e0dea11de339264f.png" alt="TLP Specification" height="32" width="32"></td>
+<td><a href="http://tulip.labri.fr/TulipDrupal/?q=tlp-file-format">Official TLP Specification (Tulip)</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Example</h3>
+<p>The sample below shows a graph of three nodes and two edges.<br>
+<code>(tlp "2.0"<br>
+(nodes 0 1 2)<br>
+(edge 0 1 0)<br>
+(edge 1 0 2)<br>
+)<br>
+</code></p>
+<p>Nodes syntax: <code>(nodes node_id node_id ...)</code><br>
+Edges syntax: <code>(edge edge_id source_id target_id)</code></p>
+
+				<p></p>

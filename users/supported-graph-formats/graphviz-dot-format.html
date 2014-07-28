@@ -1,0 +1,44 @@
+---
+layout: page
+title: GraphViz DOT Format
+---
+
+<p>DOT is the text file format of the suite GraphViz. It has a human-readable syntax that describes network data, including subgraphs and elements appearances (i.e. color, width, label). <a href="http://networkx.lanl.gov">NetworkX</a>, <a href="http://tulip.labri.fr">Tulip</a> or <a href="http://zvtm.sourceforge.net/zgrviewer.html">ZGRViewer</a> can import DOT files as well. Additional informations can be found on <a href="http://en.wikipedia.org/wiki/DOT_language">Wikipedia</a>.</p>
+<p>The following link shows the official website, where information is available about the DOT format.</p>
+<table style="background: none repeat scroll 0% 0% #f6f8e4; font-size: 1.4em; font-weight: bold; text-decoration: none; width: 350px;" border="0">
+<tbody>
+<tr>
+<td><img class="alignleft size-full wp-image-779" title="DOT Specification" src="{{ site.baseurl }}/images/99f160e8df346e02e0dea11de339264f.png" alt="DOT Specification" height="32" width="32"></td>
+<td><a href="http://www.graphviz.org/">GraphViz website</a></td>
+</tr>
+</tbody>
+</table>
+<p>Gephi currently doesn’t provide a complete support of the DOT format. Subgraphs are not supported, nor custom attributes or size. Only labels and colors are imported if present. Directed and undirected graphs are supported.</p>
+<h3>Examples</h3>
+<h4>Basic example</h4>
+<p>The sample below shows a directed graph with two edges.<br>
+<code><br>
+digraph sample {<br>
+A -&gt; B;<br>
+B -&gt; C;<br>
+}<br>
+</code></p>
+<h4>Labels</h4>
+<p>The sample below shows the same example but with both node and edge labels.<br>
+<code><br>
+digraph sample2 {<br>
+A -&gt; B [ label = "Edge A to B" ];<br>
+B -&gt; C [ label = "Edge B to C" ];<br>
+A [label="Node A"];<br>
+}<br>
+</code></p>
+<h4>Adjacency lists</h4>
+<p>The sample below shows edges can be put as adjacency lists.<br>
+<code><br>
+digraph sample3 {<br>
+A -&gt; {B ; C ; D}<br>
+C -&gt; {B ; A}<br>
+}<br>
+</code></p>
+
+				<p></p>

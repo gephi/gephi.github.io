@@ -1,0 +1,39 @@
+---
+layout: page
+title: CSV Format
+---
+<p>Gephi supports CSV files that simply represents relationships. The CSV format can be obtained from any row data, databases or Excel export. Each line must contains at least two elements, separated by a separator <strong>(coma, semicolon, pipe or whitespace)</strong>. Values can be encapsulated by single or double quotes. By default graphs imported from CSV are directed graphs, but the user can select undirected in the import report dialog.</p>
+<h3>Edge List</h3>
+<p>The CSV example below represents a graph with two edges: “a” -&gt; “b” and “b” -&gt; “c”.<br>
+<code><br>
+a;b<br>
+b;c<br>
+</code></p>
+<h3>Adjacency List</h3>
+<p>All edges can be written as node pairs. It’s also possible to write all node’s connection on the same line. The example below represents a graph with 3 edges: “a” -&gt; “b”, “b” -&gt; “c” and “b” -&gt; “d”<br>
+<code>a;b<br>
+b;c;d<br>
+</code></p>
+<h3>Mixed</h3>
+<p>The following example shows various cases that CSV supports as well. Self-loops and mutual edges are supported. It’s also possible to repeat an edge, “D” -&gt; “E” is repeated twice in this example. <strong>As a consequence the edge weight is incremented</strong>. “D” -&gt; “E” has a edge weight at two, whereas default value is one.<br>
+<code>A,B<br>
+B,A<br>
+C,C<br>
+D,E<br>
+A,D<br>
+D,B,E<br>
+F,G,A,B<br>
+</code></p>
+<h3>Matrix</h3>
+<p>The sample below shows a graph with 5 nodes. An edge is created when the the cell is ‘1′.<br>
+<code>;A;B;C;D;E<br>
+A;0;1;0;1;0<br>
+B;1;0;0;0;0<br>
+C;0;0;1;0;0<br>
+D;0;1;0;1;0<br>
+E;0;0;0;0;0<br>
+</code></p>
+<h4>Edge weight</h4>
+<p>Simply replace ‘1′ values by the edge weight value, formatted as a ‘double’.</p>
+
+				<p></p>

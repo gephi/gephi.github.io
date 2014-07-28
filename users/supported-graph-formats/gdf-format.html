@@ -1,0 +1,87 @@
+---
+layout: page
+title: GDF Format
+---
+<p>GDF is the file format used by <a href="http://graphexploration.cond.org/">GUESS</a>. It is built like a database table or a coma separated file (CSV). It supports attributes to both nodes and edges. A standard file is divided in two sections, one for nodes and one for edges. Each section has a header line, which basically is the column title. Each element (i.e. node or edge) is on a line and values are separated by coma. The GDF format is therefore very easy to read and can be easily converted from CSV.</p>
+<p>The following link shows the official manual, where information is available about attributes types and logic.</p>
+<table style="background: none repeat scroll 0% 0% #f6f8e4; font-size: 1.4em; font-weight: bold; text-decoration: none; width: 350px;" border="0">
+<tbody>
+<tr>
+<td><img class="alignleft size-full wp-image-779" title="GDF Specification" src="{{ site.baseurl }}/images/99f160e8df346e02e0dea11de339264f.png" alt="GDF Specification" height="32" width="32"></td>
+<td><a href="http://guess.wikispot.org/The_GUESS_.gdf_format">Official GDF Specification (GUESS)</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Examples</h3>
+<h4>Basic example</h4>
+<p>The GDF below is the minimum you need to be supported by Gephi’s current file Importer. The label column is optional.<br>
+<code><br>
+nodedef&gt;name VARCHAR,label VARCHAR<br>
+s1,Site number 1<br>
+s2,Site number 2<br>
+s3,Site number 3<br>
+edgedef&gt;node1 VARCHAR,node2 VARCHAR<br>
+s1,s2<br>
+s2,s3<br>
+s3,s2<br>
+s3,s1<br>
+</code></p>
+<h4>With edge weight</h4>
+<p>Edge weight is basically edge thickness and is defined as follow.<br>
+<code><br>
+nodedef&gt;name VARCHAR,label VARCHAR<br>
+s1,Site number 1<br>
+s2,Site number 2<br>
+s3,Site number 3<br>
+edgedef&gt;node1 VARCHAR,node2 VARCHAR, weight DOUBLE<br>
+s1,s2,1.2341<br>
+s2,s3,0.453<br>
+s3,s2, 2.34<br>
+s3,s1, 0.871<br>
+</code></p>
+<h4>Various attributes</h4>
+<p>Add as many attributes as you need. Add attributes title in the header line and respect order, as you would do for CSV. On the below example, all attributes are design attributes expect “class” that I added. Attributes are central in Gephi, because they can be used by Filter Module.<br>
+<code><br>
+nodedef&gt;name VARCHAR,label VARCHAR,class VARCHAR, visible BOOLEAN,labelvisible BOOLEAN,width DOUBLE,height DOUBLE,x DOUBLE,y DOUBLE,color VARCHAR<br>
+s1,SiteA,blog,true,true,10.0,10.0,-52.11296,-25.921143,'114,116,177'<br>
+s2,SiteB,forum,true,true,10.986123,10.986123,-20.114172,25.740356,'219,116,251'<br>
+s3,SiteC,webpage,true,true,10.986123,10.986123,8.598924,-26.867584,'192,208,223'<br>
+edgedef&gt;node1 VARCHAR,node2 VARCHAR,directed BOOLEAN,color VARCHAR<br>
+s1,s2,true,'114,116,177'<br>
+s2,s3,true,'219,116,251'<br>
+s3,s2,true,'192,208,223'<br>
+s3,s1,true,'192,208,223'<br>
+</code></p>
+<h4>Working with texts</h4>
+<p>Problems often comes when coma, apostrophe (i.e. single-quote) or double-quote are used in texts. The example below shows how to manage these strings, wrap single-quotes around it.<br>
+<code><br>
+nodedef&gt;name VARCHAR,label VARCHAR,class VARCHAR, visible BOOLEAN,labelvisible BOOLEAN,width DOUBLE,height DOUBLE,x DOUBLE,y DOUBLE,color VARCHAR<br>
+s1,'Hello "world" !',type1,true,true,10.0,10.0,-52.11296,-25.921143,'114,116,177'<br>
+s2,'Well, this is',type1,true,true,10.986123,10.986123,-20.114172,25.740356,'219,116,251'<br>
+s3,'A correct 'GDF' file',type1,true,true,10.986123,10.986123,8.598924,-26.867584,'192,208,223'<br>
+edgedef&gt;node1 VARCHAR,node2 VARCHAR,directed BOOLEAN,color VARCHAR<br>
+s1,s2,true,'114,116,177'<br>
+s2,s3,true,'219,116,251'<br>
+s3,s2,true,'192,208,223'<br>
+s3,s1,true,'192,208,223'<br>
+</code></p>
+<h3>Implementation details</h3>
+<h4>Missing values</h4>
+<p>When values are missing, don’t omit to put the coma.<br>
+<code><br>
+nodedef&gt;name VARCHAR, label VARCHAR, att1 VARCHAR, att2 VARCHAR, att3 VARCHAR,att4 BOOLEAN<br>
+s1,SiteA,blabla,blabla,blabla,true<br>
+s2,SiteB, , , ,false<br>
+s3,SiteC,blabla, , ,true</code></p>
+<h4>Colors</h4>
+<p>Color is a <em>VARCHAR</em> attribute with 3 values for red, blue and green. Values should be from 0 to 255.<br>
+Example: ‘114,116,177′</p>
+<h4>Position &amp; size</h4>
+<p>Position is set with X and Y values, plus an optional Z value. They must be <em>DOUBLE</em> columns. Size of nodes is set with the <em>width DOUBLE</em> attribute.</p>
+<h3>Common problems</h3>
+<p><strong>* I don’t see my special characters. Square are drawn instead.</strong><br>
+For characters different from ASCII, encode your file in UTF-8 (with BOM). One can use Notepad++ for doing this.</p>
+<p><strong>* ArrayIndexOutOfBoundsException: 1</strong><br>
+Be sure you mentioned a label in each node line.</p>
+
+				<p></p>

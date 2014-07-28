@@ -1,0 +1,94 @@
+---
+layout: page
+title: Netdraw VNA format
+---
+				<p>The VNA format is commonly used by <a href="http://www.analytictech.com/netdraw/netdraw.htm">Netdraw</a>, and is very similar to Pajek format. It defines nodes and edges (ties), and supports attributes. Each section of the file is separated by an asterisk. </p>
+<p>More details about the format can be found in Netdraw’s <a href="http://www.analytictech.com/Netdraw/NetdrawGuide.doc">manual</a>.</p>
+<h3>Basic example</h3>
+<p>The VNA sample below shows a graph with 3 nodes and 4 edges. Each section has a column header line. The “ties” are edges, and ‘from’ and ‘to’ defines the direction. The ’strength’ attribute encodes the weight of the edge.</p>
+<p><code><br>
+*node data<br>
+ID name gender age<br>
+j101 joe  male  56<br>
+w067 wendy female  23<br>
+b303 bill male 48<br>
+*tie data<br>
+from to strength<br>
+j101 w067 1<br>
+w067 j101 2<br>
+j101 b303 1<br>
+w067 b303 5<br>
+</code></p>
+<h3>With node properties</h3>
+<p>This example from the VNA manual includes properties for nodes, like position or labels. Gephi supports X, Y, SIZE, COLOR (int between 0 and 255, only red) and SHORTLABEL.<br>
+<code><br>
+*Node data<br>
+ID, gender, role, betweenness<br>
+ HOLLY female participant 78.33333588<br>
+ BRAZEY female participant 0<br>
+ CAROL female participant 1.333333373<br>
+ PAM female participant 32.5<br>
+ PAT female participant 39.5<br>
+ JENNIE female participant 6.333333492<br>
+ PAULINE female participant 12.5<br>
+ ANN female participant 0.5<br>
+ MICHAEL male participant 58.83333206<br>
+ BILL male participant 0<br>
+ LEE male participant 5<br>
+ DON male participant 16.33333397<br>
+ JOHN male participant 0<br>
+ HARRY male participant 2.333333254<br>
+ GERY male instructor 54.66666794<br>
+ STEVE male instructor 16.83333397<br>
+ BERT male instructor 13.66666698<br>
+ RUSS male instructor 47.33333206<br>
+*Node properties<br>
+ID x y color shape size shortlabel<br>
+HOLLY 1160 271 255 1 10 HOLLY<br>
+BRAZEY 1214 577 255 1 10 BRAZEY<br>
+CAROL 671 612 255 1 10 CAROL<br>
+PAM 985 127 255 1 10 PAM<br>
+PAT 802 402 255 1 10 PAT<br>
+JENNIE 729 187 255 1 10 JENNIE<br>
+PAULINE 69 590 255 1 10 PAULINE<br>
+ANN 877 818 255 1 10 ANN<br>
+MICHAEL 182 224 255 1 10 MICHAEL<br>
+BILL 380 137 255 1 10 BILL<br>
+LEE 617 44 255 1 10 LEE<br>
+DON 281 656 255 1 10 DON<br>
+JOHN 617 839 255 1 10 JOHN<br>
+HARRY 382 410 255 1 10 HARRY<br>
+GERY 1051 706 255 1 10 GERY<br>
+STEVE 64 394 255 1 10 STEVE<br>
+BERT 348 812 255 1 10 BERT<br>
+RUSS 1176 426 255 1 10 RUSS<br>
+*Tie data<br>
+from to friends strength<br>
+HOLLY PAM 1 1<br>
+PAT HOLLY 1 2<br>
+PAULINE PAT 1 2<br>
+JOHN RUSS 1 3<br>
+HARRY HOLLY 1 2<br>
+HARRY MICHAEL 1 1<br>
+BERT RUSS 1 3<br>
+RUSS GERY 1 1<br>
+RUSS STEVE 1 3<br>
+RUSS BERT 1 2<br>
+HOLLY BRAZEY 0 7<br>
+HOLLY CAROL 0 17<br>
+BRAZEY PAULINE 0 7<br>
+BRAZEY ANN 0 6<br>
+BRAZEY MICHAEL 0 15<br>
+PAM MICHAEL 0 9<br>
+PAM BILL 0 16<br>
+PAM LEE 0 13<br>
+JENNIE BRAZEY 0 8<br>
+PAULINE JENNIE 0 5<br>
+PAULINE ANN 0 4<br>
+ANN PAT 0 7<br>
+ANN MICHAEL 0 9<br>
+BILL LEE 0 10<br>
+DON ANN 0 12<br>
+</code></p>
+
+				<p></p>

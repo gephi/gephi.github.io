@@ -1,0 +1,77 @@
+---
+layout: page
+title: Pajek NET Format
+---
+
+				<p>This format use NET extension and is easy to use. Attributes support is however missing, only the network topology can be represented with a Pajek File. The structure is easy, Pajek files are text files, where each line is an element, and the list of edges follows the list of nodes. It is supported by nearly most of graph softwares, including <a href="http://vlado.fmf.uni-lj.si/pub/networks/pajek/">Pajek</a>, <a href="http://www.codeplex.com/NodeXL">NodeXL</a> and <a href="http://networkx.lanl.gov">NetworkX</a>.</p>
+<p>The following manual contains documentation about the NET format and several samples.</p>
+<table style="background: none repeat scroll 0% 0% #f6f8e4; font-size: 1.4em; font-weight: bold; text-decoration: none; width: 180px;" border="0">
+<tbody>
+<tr>
+<td><img class="alignleft size-full wp-image-779" title="Pajek Manual" src="{{ site.baseurl }}/images/99f160e8df346e02e0dea11de339264f.png" alt="Pajek Manual" height="32" width="32"></td>
+<td><a href="http://vlado.fmf.uni-lj.si/pub/networks/pajek/doc/pajekman.pdf">Pajek Manual</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Nodes</h3>
+<p>Nodes have basically one unique identifier and a label. The definition of nodes starts with the chain <em>*vertices N</em> where N is the number of nodes following. For instance this is the beginning of a Pajek file of 82670 nodes. Labels are quoted directly after the nodes identifier.<br>
+<code>*Vertices 82670<br>
+1 "entity"<br>
+2 "thing"<br>
+3 "anything"<br>
+4 "something"<br>
+5 "nothing"<br>
+6 "whole"<br>
+</code></p>
+<p>When nodes donâ€™t have labels, the list of identifier is hence useless (only ordered numbers). Thus only the vertices count is set. The importer will create the exact number of edges.</p>
+<p><code>*Vertices 2536<br>
+</code></p>
+<h3>Edges</h3>
+<p>Edges are either defined as list of nodes identifier or pair of two nodes.<br>
+For the first case; edges are defined as pair of nodes identifier. The <em>*arcs</em> marker goes before the pairs list.<br>
+<code>*arcs<br>
+4244 107<br>
+4244 238<br>
+4244 4292<br>
+4247 107<br>
+4248 1<br>
+4248 54<br>
+</code></p>
+<p><strong>Weight</strong> is added by a third column, here the weight of the first edge is 5:<br>
+<code>*arcs<br>
+4244 107 5</code></p>
+<p>For the second scheme, the first identifier is the source node and all following are the neighbors. The dedicated marker is <em>edgeslist</em>.</p>
+<p><code>*edgeslist<br>
+4941 386 395 451<br>
+1 3553 3586 3587 3637<br>
+2 3583<br>
+3 4930<br>
+4 88<br>
+5 13 120<br>
+</code></p>
+<h3>Additional information</h3>
+<p>* Commentary can be put in Pajek files. A commentary line starts with %.<br>
+* The following sample is supported, but only label is taken into account.<br>
+<code>*vertices  45<br>
+1 "154:codon usage/sequence bias" x_fact 7.2814 y_fact 7.2814 ic RawSienna<br>
+2 "156:cytokine bias/t helper" x_fact 7.2814 y_fact 7.2814 ic RawSienna<br>
+3 "158:incorporation bias/verification bias" x_fact 7.2814 y_fact 7.2814 ic RawSienna<br>
+</code></p>
+<h3>Sample</h3>
+<p><code>*Vertices 9<br>
+*Edges<br>
+1 2<br>
+1 9<br>
+2 9<br>
+2 3<br>
+2 8<br>
+3 8<br>
+3 4<br>
+4 5<br>
+4 7<br>
+5 7<br>
+5 6<br>
+6 4<br>
+</code></p>
+
+				<p></p>
