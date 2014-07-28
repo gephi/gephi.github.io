@@ -1,0 +1,16 @@
+---
+layout: empty
+title: Screenshots
+---
+            {% for file in site.static_files %}
+                {% if file.path contains 'images/screenshots/' and file.path contains 'mini' %}
+                    <!-- Thumbnails -->
+                    <div id="ngg-image-{{ forloop.index }}" class="ngg-gallery-thumbnail-box">
+                        <div class="ngg-gallery-thumbnail">
+                            <a href="{{ file.path | replace:'-mini','' }}" title=" " class="thickbox" rel="set_{{ forloop.index }}">
+                                <img title="{{ file.name }}" alt="{{ file.name }}" src="{{ file.path }}" width="150" height="112">
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
