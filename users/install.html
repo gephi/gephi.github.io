@@ -27,8 +27,21 @@ sidebar: users
 If you’re on the 8.10 version, please install Java manually from the <a href="http://java.sun.com/javase/downloads/index.jsp">Oracle website</a>, because the distributed packages are obsolete.<br>
 <strong>ArchLinux users</strong>: a community package is available <a href="http://aur.archlinux.org/packages.php?ID=43580">here</a>.</p>
 <h2>Troubleshooting</h2>
+
+<h3>Gephi does not start or closes unexpectedly upon start</h3>
+Gephi 0.8.2 has a known problem that causes it to crash in Mac OS since Java 7 and Windows since Java 8.
+These problems will be fixed in next release.
+
+Meanwhile, apply the following instructions as a workaround:
+
+<ul>
+<li>Windows: https://forum.gephi.org/viewtopic.php?f=3&t=3580&p=10712#p10712</li>
+<li>Mac OS: http://clementlevallois.net/gephi/tuto/en/How%20to%20install%20Gephi%20on%20Mavericks%20or%20Yosemite.pdf</li>
+</ul>
+
 <h3>JVM Creation failed</h3>
 <p>This error message is due to memory settings, see following section.</p>
+
 <h3><a name="memory"></a>Memory</h3>
 <p>Memory available to Gephi is determined by Java. Less or more memory can  be allocated by configuring Gephi’s <strong>startup settings</strong>. If too less memory is allocated, Gephi will stop running when it reached the limit and you will loose your current work. If too much memory is set, Java will not be able to start and return “JVM Creation failed” message. By default, maximum memory is set to 256mo or 512mo.</p>
 <p>To modify memory settings, you need to edit gephi settings file. Modify the value after the <strong>-Xmx</strong> option to change the maximum heap space. For example, to use a heap size between 256 and 1024 MB, change the options to -Xms256m and -Xmx1024m. If you have Gephi open, you must close and reopen Gephi before new options take effect. On computers with 2GB of memory, you can set -Xmx1400 to get maximum performance.</p>
@@ -39,14 +52,17 @@ If you’re on the 8.10 version, please install Java manually from the <a href="
 <li>On Linux, go into your application directory and then into the <em>etc</em> folder. Edit the file with a text editor.</li>
 </ul>
 <p><strong>To use Gephi with more than ~1.5GB of memory, which could happen with large graphs, you need to use A 64-bit version of Java. See following section.</strong></p>
+
 <h3>64-bit</h3>
 <p>Gephi has been successfully tested on 64-bit architecture (AMD64, Intel Core 2 Duo, Intel Core i7), 64 bits OS (Windows Vista 64-bit, Windows 7 64-bit) and 64-bit version of Java (JVM 64-Bit Server). To use more than ~1.5GB of memory in Gephi, which could happen with large graphs, you need to have a 64-bit architecture, OS and a 64-bit JVM. A compatible 64-bit JRE or JDK can be downloaded from the Java website.</p>
 <ul>
 <li><a href="http://java.sun.com/javase/downloads">Get 64-bit JVM</a></li>
 </ul>
 <p>When multiple JRE or JDK are installed on the same machine, you can specifty to Gephi to use a particular path. Edit <em>gephi.conf </em>as&nbsp; described in the upper section, uncomment the <em>jdkhome</em> line and set the JRE or JDK path.</p>
+
 <h3>Linux JRE Path</h3>
 <p>If you still have the wrong Java package running after following the linux installation procedure described above, then manually set the Java virtual machine. To do so, you have to set the home folder of the desired JVM in the environment variable JAVA_HOME or in the environment variable JDK_HOME.</p>
+
 <h3>User files</h3>
 <p>Locate and delete gephi user directory to clean your installation.</p>
 <ul>
