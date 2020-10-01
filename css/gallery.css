@@ -6,7 +6,7 @@ Version: 1.50
 
 This is a template stylesheet that can be used with NextGEN Gallery. I tested the
 styles with a default theme Kubrick. Modify it when your theme struggle with it,
-it's only a template design
+it's only a template design.
 
 */
 
@@ -57,7 +57,7 @@ it's only a template design
 	text-align: left;
 }
 
-/* ----------- Album Styles Compact -------------*/
+/* ----------- Album Styles Compact ------------*/
 
 .ngg-album-compact {
 	float:left;
@@ -139,7 +139,7 @@ it's only a template design
 	clear: both;
 }
 
-/* ----------- Gallery navigation -------------*/
+/* ------------ Gallery navigation -------------*/
 
 .ngg-navigation {
 	font-size:0.9em !important;
