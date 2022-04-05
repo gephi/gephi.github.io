@@ -7,7 +7,6 @@ sidebar: users
 <h2>Installing the software</h2>
 <h3><a name="windows"></a>Windows</h3>
 <ol>
-<li>Make sure you have a recent Java JRE installed on your system. Gephi is compatible with Java 7 and 8 versions. Download Free Java <a href="http://www.java.com/getjava">here</a>.</li>
 <li>After the download completes, run the installer and follow the steps.</li>
 </ol>
 <p><img class="alignnone size-full wp-image-1920" title="Gephi setup" src="{{ site.baseurl }}/images/setup-win07.png" alt="" height="394" width="511"></p>
@@ -16,36 +15,39 @@ sidebar: users
 <li>After the download completes, click on the downloaded <em>.dmg</em> file.</li>
 <li>Drag the gephi application in your Application folder.</li>
 </ol>
+<p><img class="alignnone size-full wp-image-1920" title="Gephi setup" src="{{ site.baseurl }}/images/setup-mac.png" alt="" height="380" width="670"></p>
+
 <h3><a name="linux"></a>Linux</h3>
 <ol>
-<li>Update your distribution with the last official JRE 7 ir 8 packages.</li>
 <li>After the download completes, unzip and untar the file in a directory.</li>
 <li>Run it by executing <em>./bin/gephi</em> script file.</li>
 </ol>
 <h2>Troubleshooting</h2>
 
-<h3>Java 7 standard edition or newer required</h3>
-<p>Check you have Java properly installed on your system. If you're on Linux, you may provide the path to the jdk with <em>./bin/gephi --jdkhome $JAVA_HOME</em></p>
+<h3>Use your own Java VM</h3>
+<p>By default, Gephi embeds the Java JRE 11 (x64) from <a href="https://adoptium.net/" target="_blank">Adoptium.</a> Follow the instructions below if you would like to use your own JVM instead. We discourage using newer versions of the JRE (beyond 11) at the moment due to OpenGL compatibility issues.</p>
+<h4>Linux</h4>
+<p>You may provide the path to the jdk with <em>./bin/gephi --jdkhome $JAVA_HOME</em></p>
 
 <h3>JVM Creation failed</h3>
 <p>This error message is due to memory settings, see following section.</p>
 
 <h3><a name="memory"></a>Memory</h3>
-<p>Memory available to Gephi is determined by Java. Less or more memory can  be allocated by configuring Gephi’s <strong>startup settings</strong>. If too less memory is allocated, Gephi will stop running when it reached the limit and you will loose your current work. If more memory than what the system is equipped with is set, Java will not be able to start and return “JVM Creation failed” message. By default, maximum memory is set to 512mo.</p>
-<p>To modify memory settings, you need to edit gephi settings file. Modify the value after the <strong>-Xmx</strong> option to change the maximum heap space. For example, to use a heap size between 256 and 1024 MB, change the options to -Xms256m and -Xmx1024m. If you have Gephi open, you must close and reopen Gephi before new options take effect. On computers with 2GB of memory, you can set -Xmx1400 to get maximum performance.</p>
+<p>Memory available to Gephi is determined by Java automatically. If you would like to control the maximum memory Gephi can use you can do that by tweaking Gephi’s <strong>startup settings</strong>. Note that if more memory than what the system is equipped with is set, Java will not be able to start and return “JVM Creation failed” message.</p>
+<p>To modify memory settings, you need to edit the <em>gephi.conf</em> settings file. Modify the <strong>default_options</strong> line and add a <strong>-J-Xmx2048m</strong> option to set the maximum heap space. For example, here it was set to 2G (2048m). If you have Gephi open, you must close and reopen Gephi before new options take effect.</p>
 <p>How to edit <em>gephi.conf</em>:</p>
 <ul>
-<li>On Windows, go to the Gephi folder in Start menu and click on Startup Settings. Edit this file with Notepad or WordPad. Alternatively, go in <em>C:\Program Files (x86)\Gephi 0.9\etc\gephi.conf</em> and edit file manually.</li>
+<li>On Windows, go to the Gephi folder in Start menu and click on Startup Settings. Edit this file with Notepad or WordPad. Alternatively, go in <em>C:\Program Files (x86)\Gephi 0.9.3\etc\gephi.conf</em> and edit file manually.</li>
 <li>On Mac OS X, right-click on Gephi application icon and select <strong>Show Package Contents</strong> to open a new Finder window displaying a Contents folder. Open the Contents folder, and then open the <em>Resources/gephi/etc</em> folder, in which the gephi.conf file resides. Use TextEdit to edit the file.</li>
 <li>On Linux, go into your application directory and then into the <em>etc</em> folder. Edit the file with a text editor.</li>
 </ul>
-<p>When multiple JRE or JDK are installed on the same machine, you can specifty to Gephi to use a particular path. Edit <em>gephi.conf </em>as&nbsp; described in the upper section, uncomment the <em>jdkhome</em> line and set the JRE or JDK path.</p>
+<p>When multiple JRE or JDK are installed on the same machine, you can specify to Gephi to use a particular path. Edit <em>gephi.conf </em>as&nbsp; described in the upper section, uncomment the <em>jdkhome</em> line and set the JRE or JDK path.</p>
 
 <h3>User files</h3>
 <p>Locate and delete gephi user directory to clean your installation.</p>
 <ul>
-<li>On Windows 2K/XP, user diretory is located in <code>C:\Documents and Settings\username\Application Data\.gephi</code></li>
-<li>On Windows Vista/Seven/8/10, user directory is located in <code>C:\Users\username\AppData\Roaming\.gephi</code></li>
-<li>On Mac OS X, user directory is located in <code>/Users/username/Library/Application Support/gephi</code></li>
-<li>On Linux, user diretory is located in <code>/home/username/.gephi</code></li>
+<li>On Windows 2K/XP, user directory is located in <code>C:\Documents and Settings\username\Application Data\.gephi</code></li>
+<li>On Windows Vista/Seven/8/10, user directory is located in <code>C:\Users\username\AppData\Roaming\gephi\0.9</code></li>
+<li>On Mac OS X, user directory is located in <code>/Users/username/Library/Application Support/gephi/0.9/config</code></li>
+<li>On Linux, user directory is located in <code>/home/username/.gephi</code></li>
 </ul>
