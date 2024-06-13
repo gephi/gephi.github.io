@@ -1,0 +1,25 @@
+@use "sass:map";
+
+.inset-0 {
+  inset: 0 !important;
+}
+
+body {
+  // Handle dynamic font:
+  font-optical-sizing: auto;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  & > main {
+    flex-grow: 1;
+  }
+}
+
+.container.container-medium {
+  max-width: map.get($container-max-widths, "md") !important;
+}
+.container.container-large {
+  max-width: map.get($container-max-widths, "lg") !important;
+}

@@ -1,0 +1,180 @@
+---
+import { Image } from "astro:assets";
+
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <header class="container container-medium my-5 py-5 text-center pt-5">
+    <section>
+      <Image src="/gephi-logo.svg" class="mb-3 mb-md-0" alt="Gephi logo" width="240" height="240" />
+      <h1>Welcome to Gephi</h1>
+      <h2>the Open Graph Viz platform</h2>
+
+      <p class="fs-3 mb-0">
+        Gephi is an <strong>open-source</strong> project dedicated to helping people <strong
+          >visually analyze networks</strong
+        >.
+      </p>
+    </section>
+  </header>
+
+  <main class="my-5 py-5">
+    <section class="container">
+      <!-- Main applications -->
+      <div class="row mb-5">
+        <div class="col-6">
+          <p class="text-center">
+            <a href="/gephi"
+              ><Image
+                src="/gephi-screenshot.jpg"
+                alt="Gephi screenshot"
+                width="600"
+                height="300"
+                class="shadow border mw-100 h-auto"
+              /></a
+            >
+          </p>
+          <h3>Gephi</h3>
+          <p>
+            Our flagship Java-based desktop software offers robust features for comprehensive network analysis and
+            visualization. Ideal for in-depth work, it supports large-scale network data and complex layouts.
+          </p>
+          <p class="text-center">
+            <a class="btn btn-primary btn-lg" href="/gephi">Download</a>
+          </p>
+        </div>
+        <div class="col-6">
+          <p class="text-center">
+            <a href="/gephi-lite">
+              <Image
+                src="/gephi-lite-screenshot.png"
+                alt="Gephi Lite screenshot"
+                width="600"
+                height="300"
+                class="shadow border mw-100 h-auto"
+              /></a
+            >
+          </p>
+          <h3>Gephi Lite</h3>
+          <p>
+            A streamlined web version of Gephi, Gephi Lite allows for quick and easy network visualization and analysis
+            directly in your browser. Perfect for getting started or for lightweight projects.
+          </p>
+          <p class="text-center">
+            <a class="btn btn-primary btn-lg" href="/gephi-lite">Try online</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Secondary applications -->
+      <div class="row">
+        <div class="col-4">
+          <p class="text-center">
+            <a href="https://jacomyma.github.io/gephisto/">
+              <Image
+                src="/gephisto-hipster.png"
+                alt="Gephisto Hipster"
+                width="200"
+                height="300"
+                class="shadow border mw-100 h-auto"
+              /></a
+            >
+          </p>
+          <h3>Gephisto</h3>
+          <p>A web application to generate network maps in <strong>one click</strong>.</p>
+        </div>
+        <div class="col-4">
+          <p class="text-center">
+            <a href="https://github.com/gephi/gephi-toolkit">
+              <Image
+                src="/gephi-toolkit-illustration.png"
+                alt="A toolkit"
+                width="600"
+                height="300"
+                class="shadow border mw-100 h-auto"
+              /></a
+            >
+          </p>
+          <h3>Gephi Toolkit</h3>
+          <p>
+            The Gephi Toolkit packages key modules (Graph, Layout, Filters, IO…) into a Java library for any project.
+            This JAR file enables Java applications to perform Gephi tasks automatically, like command-line programs,
+            enhancing their capabilities and utility.
+          </p>
+        </div>
+        <div class="col-4">
+          <p class="text-center">
+            <a href="https://gephi.org/plugins/#/">
+              <Image
+                src="/gephi-plugins-illustration.jpg"
+                alt="A nice customized car, as a metaphor for customizing Gephi with plugins"
+                width="600"
+                height="300"
+                class="shadow border mw-100 h-auto"
+              /></a
+            >
+          </p>
+          <h3>Gephi Plugins</h3>
+          <p>
+            A collection of plugins to enhance your version of Gephi. They are related to layers, metrics, data import,
+            etc...
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <br />
+
+    <section class="my-5 py-5">
+      <div class="container container-large">
+        <h2 class="text-center">...but Gephi is also its <strong>community</strong></h2>
+        <p>
+          The Gephi community is crucial to its success. Open source contributions from global developers drive
+          continuous improvement. Community-made resources like tutorials and plugins enhance accessibility. Scientific
+          papers validate its effectiveness, and conferences foster collaboration and knowledge exchange. This
+          collective effort makes Gephi a powerful tool for network analysis and visualization.
+        </p>
+      </div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-4">
+            <p class="text-center">
+              <Image src="/sponsor-illustration.svg" alt="" width="200" height="200" class="mw-100 h-auto" />
+            </p>
+            <h3>Sponsor Gephi</h3>
+            <p>
+              You can financially support Gephi through <a href="https://opencollective.com/gephi">Open Collective</a>.
+              Money pays developers and community events.
+            </p>
+          </div>
+
+          <div class="col-4">
+            <p class="text-center">
+              <Image src="/help-illustration.svg" alt="" width="200" height="200" class="mw-100 h-auto" />
+            </p>
+            <h3>Share your expertise</h3>
+            <p>
+              There are many Gephi users who could use some help! You can help by them on <a
+                href="https://github.com/gephi/gephi/discussions">GitHub discussions</a
+              >, <a href="https://stackoverflow.com/questions/tagged/gephi">StackOverflow</a> or <a
+                href="https://www.reddit.com/r/gephi">Reddit</a
+              >.
+            </p>
+          </div>
+
+          <div class="col-4">
+            <p class="text-center">
+              <Image src="/code-illustration.svg" alt="" width="200" height="200" class="mw-100 h-auto" />
+            </p>
+            <h3>Contribute</h3>
+            <p>
+              Gephi is and will remain <strong>open source</strong>. Whether you are a Java developer or a web
+              developer, you could help <a href="https://github.com/gephi/gephi/issues">fixing issues</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

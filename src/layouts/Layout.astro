@@ -1,0 +1,96 @@
+---
+import "../styles/main.scss";
+import { Image } from "astro:assets";
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href="https://gephi.org" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta
+      name="description"
+      content="Gephi is the leading visualization and exploration software for all kinds of graphs and networks. Gephi is open-source and free."
+    />
+    <title>Gephi - The Open Graph Viz Platform</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand text-primary py-0 position-relative bg-white">
+      <div class="container">
+        <a href="/" class="navbar-brand mr-auto mb-0">
+          <Image src="/gephi-logo.svg" alt="Gephi logo" width="50" height="50" />
+          <span class="ms-2">Gephi</span>
+        </a>
+        <div class="flex-grow-1"></div>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="https://docs.gephi.org">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://gephi.wordpress.com/">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/gephi">GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <slot />
+
+    <footer class="container py-5 my-5 border-top">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+        <div class="col mb-3">
+          <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
+            <Image src="/gephi-logo.svg" alt="Gephi logo" width="50" height="50" />
+          </a>
+          <p class="text-body-secondary">© 2024</p>
+        </div>
+
+        <div class="col mb-3"></div>
+        <div class="col mb-3"></div>
+
+        <div class="col mb-3">
+          <h5>The Project</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-body-secondary">Homepage</a></li>
+            <li class="nav-item mb-2"><a href="/gephi" class="nav-link p-0 text-body-secondary">Gephi</a></li>
+            <li class="nav-item mb-2"><a href="/gephi-lite" class="nav-link p-0 text-body-secondary">Gephi Lite</a></li>
+            <li class="nav-item mb-2">
+              <a href="https://gephi.org/plugins" class="nav-link p-0 text-body-secondary">Gephi Plugins</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://docs.gephi.org" class="nav-link p-0 text-body-secondary">Documentation</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://gephi.wordpress.com/" class="nav-link p-0 text-body-secondary">Blog</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col mb-3">
+          <h5>The Community</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+              <a href="https://x.com/gephi" class="nav-link p-0 text-body-secondary">Twitter</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://www.facebook.com/groups/gephi/" class="nav-link p-0 text-body-secondary">Facebook</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://reddit.com/r/gephi" class="nav-link p-0 text-body-secondary">Reddit</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://github.com/gephi" class="nav-link p-0 text-body-secondary">Github</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
