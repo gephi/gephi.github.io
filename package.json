@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@cospired/i18n-iso-languages": "^4.2.0",
     "astro": "^5.13.2",
     "bootstrap": "^5.3.7",
     "prettier": "^3.6.2",

@@ -1,0 +1,17 @@
+---
+import LangSwitcher from "../../components/LangSwitcher.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+  <header class="container container-medium mt-5 mb-5 text-center">
+    <section>
+      <h1>Probieren Gephi Lite</h1>
+    </section>
+  </header>
+
+  <main class="container">
+    Guten tag!
+    <LangSwitcher fromPath={Astro.originPathname} />
+  </main>
+</Layout>

@@ -1,0 +1,22 @@
+---
+import LangSwitcher from "../../components/LangSwitcher.astro";
+import Layout from "../../layouts/Layout.astro";
+// const = Astro
+// try {
+//   await fs.open()
+// }
+---
+
+<Layout>
+  <header class="container container-medium mt-5 mb-5 text-center">
+    <section>
+      <h1>Essayer Gephi Lite</h1>
+    </section>
+  </header>
+
+  <main class="container">
+    Bonjour
+
+    <LangSwitcher fromPath={Astro.originPathname} />
+  </main>
+</Layout>
