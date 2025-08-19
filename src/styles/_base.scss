@@ -17,6 +17,10 @@ body {
   }
 }
 
+.gephi-font {
+  font-family: $gephi-title-font-family;
+}
+
 .container.container-medium {
   max-width: map.get($container-max-widths, "md") !important;
 }

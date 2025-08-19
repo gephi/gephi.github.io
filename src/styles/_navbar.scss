@@ -1,0 +1,117 @@
+.navbar {
+  @extend .text-primary;
+  @extend .bg-white;
+  @extend .py-2;
+  @extend .shadow;
+
+  position: sticky;
+  top: 0;
+}
+
+.navbar-nav {
+  .nav-dropdown {
+    position: relative;
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      color: var(--bs-navbar-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      border: none;
+      background: none;
+      font-size: inherit;
+      font-family: inherit;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "▾";
+      margin-left: 0.5rem;
+      transition: transform 0.2s;
+    }
+
+    &[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    summary:hover,
+    summary:focus {
+      color: var(--bs-navbar-hover-color);
+      background-color: var(--bs-navbar-hover-bg);
+    }
+
+    &[open] .dropdown-menu {
+      display: block;
+    }
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: var(--bs-body-color);
+    text-align: left;
+    background-color: var(--bs-body-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.375rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+
+  .dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: var(--bs-body-color);
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+
+    &:hover,
+    &:focus {
+      color: var(--bs-dropdown-link-hover-color);
+      background-color: var(--bs-dropdown-link-hover-bg);
+    }
+
+    &:focus {
+      outline: 2px solid var(--bs-primary);
+      outline-offset: -2px;
+    }
+  }
+
+  .dropdown-divider {
+    height: 0;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid var(--bs-border-color);
+  }
+
+  /* Mobile responsiveness */
+  @media (max-width: 991.98px) {
+    .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+      padding-left: 1rem;
+    }
+  }
+}

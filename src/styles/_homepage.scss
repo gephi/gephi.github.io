@@ -1,0 +1,9 @@
+.banner {
+  width: 100%;
+  background-image: url("/banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $gephi-project-logo;
+  @extend .text-light;
+}
