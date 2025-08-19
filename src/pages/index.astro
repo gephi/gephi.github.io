@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 
 import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout>
@@ -22,12 +23,16 @@ import Layout from "../layouts/Layout.astro";
 
           <div class="d-flex gap-5">
             <div>
-              <a href="/desktop" class="btn btn-white fs-4 me-1 fw-bold">Download Gephi</a>
+              <a href="/desktop" class="btn btn-white fs-4 me-1 fw-bold"
+                ><Icon name="ph:download-simple" /> Download Gephi</a
+              >
               <div class="fs-6">Available for Mac, Windows, Linux</div>
             </div>
 
             <div>
-              <a href="https://lite.gephi.org" class="btn btn-white fs-4">Try Gephi Lite online</a>
+              <a href="https://lite.gephi.org" class="btn btn-white fs-4"
+                ><Icon name="ph:graph" /> Try Gephi Lite online</a
+              >
               <div class="fs-6">Works on desktop, tablets and mobiles</div>
             </div>
           </div>
@@ -43,7 +48,7 @@ import Layout from "../layouts/Layout.astro";
     <section class="feature" style="background-image: url(/homepage/network-analysis.png);">
       <section class="feature-headline">
         <div class="feature-text">
-          <h2 class="emphasized">Powerful Network Analysis</h2>
+          <h2><Icon name="ph:graph" /> <span class="emphasized">Powerful Network Analysis</span></h2>
           <p>
             Discover <strong>patterns</strong>, <strong>clusters</strong>, and <strong>insights</strong> in your connected
             data. From social networks to biological systems, Gephi handles networks of <strong>any size</strong> and complexity
@@ -74,7 +79,7 @@ import Layout from "../layouts/Layout.astro";
     <section class="feature" style="background-image: url(/homepage/visualizations.png);">
       <section class="feature-headline">
         <div class="feature-text">
-          <h2 class="emphasized">Beautiful Visualizations</h2>
+          <h2><Icon name="ph:presentation-chart" /> <span class="emphasized">Beautiful Visualizations</span></h2>
           <p>
             Create stunning, publication-ready <strong>network visualizations</strong> with advanced layout algorithms and
             customizable styling options. Export in multiple formats for presentations and publications.
@@ -109,7 +114,7 @@ import Layout from "../layouts/Layout.astro";
     <section class="feature" style="background-image: url(/homepage/academic.png);">
       <section class="feature-headline">
         <div class="feature-text">
-          <h2 class="emphasized">Trusted by Researchers Worldwide</h2>
+          <h2><Icon name="ph:graduation-cap" /> <span class="emphasized">Trusted by Researchers Worldwide</span></h2>
           <p>
             Used in thousands of academic publications across disciplines from sociology to biology. Gephi has become
             the <strong>standard tool</strong> for network analysis in research, trusted by universities and research institutions
@@ -136,11 +141,12 @@ import Layout from "../layouts/Layout.astro";
     <section class="feature" style="background-image: url(/homepage/community.png);">
       <section class="feature-headline">
         <div class="feature-text">
-          <h2 class="emphasized">Open Source &amp; Free</h2>
+          <h2><Icon name="ph:heart" /> <span class="emphasized">Open Source &amp; Free</span></h2>
           <p>
             Built by the <strong>community</strong>, for the <strong>community</strong>. Gephi is completely free, with
-            full source code available under GPL license. No vendor lock-in, no subscription fees, just powerful network
-            analysis for everyone.
+            full source code available under <a href="https://github.com/gephi/gephi/blob/master/LICENSE.md"
+              >GPL license</a
+            >. No vendor lock-in, no subscription fees, just powerful network analysis for everyone.
           </p>
         </div>
       </section>
@@ -148,11 +154,17 @@ import Layout from "../layouts/Layout.astro";
       <section class="feature-arguments">
         <div>
           <h3>Contribute</h3>
-          <p>Join our GitHub community. Contribute code, report bugs, or create plugins to help improve Gephi.</p>
+          <p>
+            Join our <a href="https://github.com/gephi">GitHub community</a>. Contribute code, report bugs, or create
+            plugins to help improve Gephi.
+          </p>
         </div>
         <div>
           <h3>Donate</h3>
           <p>We are non-profit. Help us innovate by donating to fund development and keep Gephi free for everyone.</p>
+          <p>
+            <a class="btn btn-dark" href="https://opencollective.com/gephi/donate">Donate on Open Collective</a>
+          </p>
         </div>
       </section>
     </section>

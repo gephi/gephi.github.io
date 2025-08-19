@@ -3,9 +3,7 @@
   @extend .bg-white;
   @extend .py-2;
   @extend .shadow;
-
-  position: sticky;
-  top: 0;
+  @extend .sticky-top;
 }
 
 .navbar-nav {
@@ -30,13 +28,13 @@
       display: none;
     }
 
-    summary::after {
+    .caret {
       content: "▾";
-      margin-left: 0.5rem;
+      margin-left: 0.2rem;
       transition: transform 0.2s;
     }
 
-    &[open] summary::after {
+    &[open] .caret {
       transform: rotate(180deg);
     }
 

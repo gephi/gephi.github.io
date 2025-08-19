@@ -9,6 +9,7 @@
 }
 
 .emphasized {
+  display: inline-block;
   position: relative;
   margin-bottom: 1.5rem;
 
@@ -16,10 +17,10 @@
     content: "";
     position: absolute;
     top: 100%;
-    margin-top: 0.5rem;
-    left: 0;
+    margin-top: 0.3rem;
+    left: 2px;
     height: 3px;
-    width: 100px;
+    width: 180px;
     max-width: 100%;
     background: $gephi-project-logo;
   }

@@ -27,3 +27,7 @@ body {
 .container.container-large {
   max-width: map.get($container-max-widths, "lg") !important;
 }
+
+svg[data-icon] {
+  margin-bottom: 0.3rem;
+}
