@@ -1,9 +1,84 @@
 .banner {
   width: 100%;
-  background-image: url("/banner.png");
+  background-image: url("/homepage/banner.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: $gephi-project-logo;
   @extend .text-light;
+}
+
+.emphasized {
+  position: relative;
+  margin-bottom: 1.5rem;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    margin-top: 0.5rem;
+    left: 0;
+    height: 3px;
+    width: 100px;
+    max-width: 100%;
+    background: $gephi-project-logo;
+  }
+}
+
+.feature {
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @extend .gap-4;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 0;
+
+  &:not(:last-child) {
+    @extend .mb-5;
+  }
+
+  .feature-headline {
+    display: flex;
+    align-items: center;
+  }
+
+  .feature-text,
+  .feature-arguments > * {
+    @extend .shadow;
+    background: #fffffff6;
+
+    max-width: 60%;
+  }
+
+  .feature-text {
+    @extend .p-5;
+
+    p {
+      @extend .fs-4;
+      margin: 0;
+    }
+  }
+
+  .feature-arguments {
+    @extend .gap-3;
+    display: flex;
+    align-items: start;
+
+    & > * {
+      @extend .p-4;
+      @extend .fs-5;
+      max-width: 450px;
+    }
+  }
+
+  &:nth-child(2n) {
+    background-position: left top;
+
+    .feature-headline,
+    .feature-arguments {
+      justify-content: end;
+    }
+  }
 }

@@ -1,0 +1,3 @@
+@use "sass:map";
+
+$theme-colors: map.merge($theme-colors, $custom-colors);

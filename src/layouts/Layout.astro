@@ -52,7 +52,7 @@ import { Image } from "astro:assets";
             <a
               class="btn btn-outline-dark fw-bold"
               href="https://opencollective.com/gephi/donate?interval=oneTime&amount=5&name=&legalName=&email="
-              >Donate 5€</a
+              >Donate 5€ ♥</a
             >
           </li>
         </ul>
@@ -84,24 +84,27 @@ import { Image } from "astro:assets";
 
     <footer class="container py-5 my-5 border-top">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
-        <div class="col mb-3">
+        <div class="col d-flex flex-column align-items-start gap-2">
           <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-            <Image src="/gephi-logo.svg" alt="Gephi logo" width="50" height="50" />
+            <Image src="/gephi-logo-circle.svg" class="mb-3 mb-md-0" alt="Gephi logo" width="100" height="100" />
           </a>
-          <p class="text-body-secondary">© 2024</p>
+
+          <a href="/desktop" class="btn btn-outline-dark fw-bold">Download Gephi</a>
+
+          <a href="https://lite.gephi.org" class="btn btn-outline-dark">Try Gephi Lite online</a>
         </div>
 
         <div class="col mb-3"></div>
-        <div class="col mb-3"></div>
 
         <div class="col mb-3">
-          <h5>The Project</h5>
+          <h5 class="mb-3">Project</h5>
           <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="/" class="nav-link p-0 text-body-secondary">Homepage</a></li>
-            <li class="nav-item mb-2"><a href="/gephi" class="nav-link p-0 text-body-secondary">Gephi</a></li>
-            <li class="nav-item mb-2"><a href="/gephi-lite" class="nav-link p-0 text-body-secondary">Gephi Lite</a></li>
+            <li class="nav-item mb-2"><a href="/about" class="nav-link p-0 text-body-secondary">About</a></li>
             <li class="nav-item mb-2">
-              <a href="https://gephi.org/plugins" class="nav-link p-0 text-body-secondary">Gephi Plugins</a>
+              <a href="/help" class="nav-link p-0 text-body-secondary">Get some help</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="/contribute" class="nav-link p-0 text-body-secondary">Contribute</a>
             </li>
             <li class="nav-item mb-2">
               <a href="https://docs.gephi.org" class="nav-link p-0 text-body-secondary">Documentation</a>
@@ -109,23 +112,42 @@ import { Image } from "astro:assets";
             <li class="nav-item mb-2">
               <a href="https://gephi.wordpress.com/" class="nav-link p-0 text-body-secondary">Blog</a>
             </li>
+            <li class="nav-item mb-2 fw-bold">
+              <a
+                href="https://opencollective.com/gephi/donate?interval=oneTime&amount=5&name=&legalName=&email="
+                class="nav-link p-0 text-body-secondary">Donate</a
+              >
+            </li>
           </ul>
         </div>
 
         <div class="col mb-3">
-          <h5>The Community</h5>
+          <h5 class="mb-3">Applications</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="/desktop" class="nav-link p-0 text-body-secondary">Gephi</a></li>
+            <li class="nav-item mb-2">
+              <a href="/desktop/plugins" class="nav-link p-0 text-body-secondary">Gephi Plugins</a>
+            </li>
+            <li class="nav-item mb-2"><a href="/lite" class="nav-link p-0 text-body-secondary">Gephi Lite</a></li>
+            <li class="nav-item mb-2"><a href="/toolkit" class="nav-link p-0 text-body-secondary">Gephi Toolkit</a></li>
+            <li class="nav-item mb-2"><a href="/gephisto" class="nav-link p-0 text-body-secondary">Gephisto</a></li>
+          </ul>
+        </div>
+
+        <div class="col mb-3">
+          <h5 class="mb-3">Community</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2">
-              <a href="https://x.com/gephi" class="nav-link p-0 text-body-secondary">Twitter</a>
+              <a href="https://opencollective.com/gephi" class="nav-link p-0 text-body-secondary">Open Collective</a>
             </li>
             <li class="nav-item mb-2">
-              <a href="https://www.facebook.com/groups/gephi/" class="nav-link p-0 text-body-secondary">Facebook</a>
+              <a href="https://github.com/gephi" class="nav-link p-0 text-body-secondary">GitHub</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://vis.social/@Gephi" class="nav-link p-0 text-body-secondary">Mastodon</a>
             </li>
             <li class="nav-item mb-2">
               <a href="https://reddit.com/r/gephi" class="nav-link p-0 text-body-secondary">Reddit</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="https://github.com/gephi" class="nav-link p-0 text-body-secondary">Github</a>
             </li>
           </ul>
         </div>
