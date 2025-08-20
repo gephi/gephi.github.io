@@ -9,46 +9,56 @@ import { Icon } from "astro-icon/components";
   <header class="banner py-5">
     <section class="container my-5 py-4">
       <div class="row align-items-center">
-        <div class="col-7 d-flex flex-column gap-4">
-          <div>
-            <h1 class="gephi-font">Gephi</h1>
-            <div class="fs-2">the <strong>Open Graph Viz</strong> platform</div>
-          </div>
+        <div class="col-lg-8 mb-5">
+          <h1 class="gephi-font">Gephi</h1>
 
           <p class="fs-3">
             Gephi is an <strong>open-source</strong> project dedicated to helping people <strong
               >visually analyze networks</strong
             >.
           </p>
+        </div>
+      </div>
 
-          <div class="d-flex gap-5">
-            <div>
-              <a href="/desktop" class="btn btn-white fs-4 me-1 fw-bold"
-                ><Icon name="ph:download-simple" /> Download Gephi</a
-              >
-              <div class="fs-6">Available for Mac, Windows, Linux</div>
-            </div>
-
-            <div>
-              <a href="https://lite.gephi.org" class="btn btn-white fs-4"
-                ><Icon name="ph:graph" /> Try Gephi Lite online</a
-              >
-              <div class="fs-6">Works on desktop, tablets and mobiles</div>
-            </div>
+      <div class="d-flex gap-5">
+        <div class="p-5 bg-gephi-desktop-bg text-dark d-flex flex-row gap-5 flex-shrink-0">
+          <div>
+            <Image src="/icons/gephi-desktop-logo.svg" alt="Gephi logo" class="h-100" width="130" height="130" />
+          </div>
+          <div class="flex-shrink-0">
+            <h2 class="gephi-font">Gephi</h2>
+            <p class="fs-4">Available for Mac, Windows, Linux</p>
+            <a href="/desktop" class="btn btn-dark fs-4 me-1 fw-bold"><Icon name="ph:download-simple" /> Download</a>
           </div>
         </div>
-        <div class="col-5 text-end">
-          <Image src="/gephi-logo-circle-light.svg" class="mb-3 mb-md-0" alt="Gephi logo" width="400" height="400" />
+        <div class="p-5 bg-gephi-lite-bg text-lite d-flex flex-row gap-5 flex-shrink-0">
+          <div>
+            <Image
+              src="/icons/gephi-lite-logo-inverted.svg"
+              alt="Gephi Lite logo"
+              class="h-100"
+              width="130"
+              height="130"
+            />
+          </div>
+          <div class="flex-shrink-0">
+            <h2 class="gephi-font">Gephi Lite</h2>
+            <p class="fs-4">Works on desktop, tablets and mobiles</p>
+            <a href="https://lite.gephi.org" class="btn btn-light fs-4 fw-bold"
+              ><Icon name="ph:graph" /> Open in browser</a
+            >
+          </div>
         </div>
       </div>
     </section>
   </header>
 
   <main class="container py-5">
-    <section class="feature" style="background-image: url(/homepage/network-analysis.png);">
+    <section class="feature feature-network-analysis">
+      <div class="feature-background" style="background-image: url(/homepage/network-analysis.png);"></div>
       <section class="feature-headline">
         <div class="feature-text">
-          <h2><Icon name="ph:graph" /> <span class="emphasized">Powerful Network Analysis</span></h2>
+          <h2><Icon name="ph:graph" /> <span>Powerful Network Analysis</span></h2>
           <p>
             Discover <strong>patterns</strong>, <strong>clusters</strong>, and <strong>insights</strong> in your connected
             data. From social networks to biological systems, Gephi handles networks of <strong>any size</strong> and complexity
@@ -76,10 +86,11 @@ import { Icon } from "astro-icon/components";
       </section>
     </section>
 
-    <section class="feature" style="background-image: url(/homepage/visualizations.png);">
+    <section class="feature feature-visualizations">
+      <div class="feature-background" style="background-image: url(/homepage/visualizations.png);"></div>
       <section class="feature-headline">
         <div class="feature-text">
-          <h2><Icon name="ph:presentation-chart" /> <span class="emphasized">Beautiful Visualizations</span></h2>
+          <h2><Icon name="ph:presentation-chart" /> <span>Beautiful Visualizations</span></h2>
           <p>
             Create stunning, publication-ready <strong>network visualizations</strong> with advanced layout algorithms and
             customizable styling options. Export in multiple formats for presentations and publications.
@@ -90,10 +101,7 @@ import { Icon } from "astro-icon/components";
       <section class="feature-arguments">
         <div>
           <h3>Layout Algorithms</h3>
-          <p>
-            Force Atlas 2 algorithm where linked nodes attract and non-linked nodes repel. Choose from dozens of layout
-            options including Fruchterman-Reingold, Yifan Hu, OpenOrd...
-          </p>
+          <p>Choose from various options including Force Atlas 2, Fruchterman-Reingold, Yifan Hu, OpenOrd...</p>
         </div>
         <div>
           <h3>Appearance Customization</h3>
@@ -111,10 +119,11 @@ import { Icon } from "astro-icon/components";
       </section>
     </section>
 
-    <section class="feature" style="background-image: url(/homepage/academic.png);">
+    <section class="feature feature-academic">
+      <div class="feature-background" style="background-image: url(/homepage/academic.png);"></div>
       <section class="feature-headline">
         <div class="feature-text">
-          <h2><Icon name="ph:graduation-cap" /> <span class="emphasized">Trusted by Researchers Worldwide</span></h2>
+          <h2><Icon name="ph:graduation-cap" /> <span>Trusted by Researchers Worldwide</span></h2>
           <p>
             Used in thousands of academic publications across disciplines from sociology to biology. Gephi has become
             the <strong>standard tool</strong> for network analysis in research, trusted by universities and research institutions
@@ -130,18 +139,31 @@ import { Icon } from "astro-icon/components";
             The foundational "Gephi: An Open Source Software" paper has thousands of citations, establishing Gephi as
             the research standard.
           </p>
+          <div class="d-flex align-items-center">
+            <a href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937"
+              ><img class="border" src="/homepage/gephi-paper.png" /></a
+            >
+            <p class="fs-6 text-center">
+              Bastian M., Heymann S., Jacomy M. (2009). <i
+                >Gephi: an open source software for exploring and manipulating networks.</i
+              > International AAAI Conference on Weblogs and Social Media. From <a
+                href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937">AAAI</a
+              > [<a href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937/13786">PDF</a>].
+            </p>
+          </div>
         </div>
         <div>
           <h3>The <strong>Gephi Lite</strong> Paper</h3>
-          <p>Our web-based Gephi Lite brings network analysis directly to browsers without installation required.</p>
+          <p class="fw-bold">TODO:<br />Insert paper from DH2025</p>
         </div>
       </section>
     </section>
 
-    <section class="feature" style="background-image: url(/homepage/community.png);">
+    <section class="feature feature-community">
+      <div class="feature-background" style="background-image: url(/homepage/community.png);"></div>
       <section class="feature-headline">
         <div class="feature-text">
-          <h2><Icon name="ph:heart" /> <span class="emphasized">Open Source &amp; Free</span></h2>
+          <h2><Icon name="ph:heart" /> <span>Open Source &amp; Free</span></h2>
           <p>
             Built by the <strong>community</strong>, for the <strong>community</strong>. Gephi is completely free, with
             full source code available under <a href="https://github.com/gephi/gephi/blob/master/LICENSE.md"

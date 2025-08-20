@@ -4,40 +4,31 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: $gephi-project-logo;
+  background-color: $gray-800;
   @extend .text-light;
 }
 
-.emphasized {
-  display: inline-block;
-  position: relative;
-  margin-bottom: 1.5rem;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    margin-top: 0.3rem;
-    left: 2px;
-    height: 3px;
-    width: 180px;
-    max-width: 100%;
-    background: $gephi-project-logo;
-  }
-}
-
 .feature {
-  background-position: right top;
-  background-repeat: no-repeat;
-  background-size: contain;
-
   @extend .gap-4;
   display: flex;
   flex-direction: column;
+  position: relative;
   padding: 5rem 0;
 
   &:not(:last-child) {
     @extend .mb-5;
+  }
+
+  .feature-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  & > *:not(.feature-background) {
+    z-index: 1;
   }
 
   .feature-headline {
@@ -75,11 +66,27 @@
   }
 
   &:nth-child(2n) {
-    background-position: left top;
+    .feature-background {
+      background-position: left top;
+    }
 
     .feature-headline,
     .feature-arguments {
       justify-content: end;
     }
+  }
+
+  &.feature-academic {
+    padding-bottom: 0;
+
+    .feature-background {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &.feature-visualizations .feature-background,
+  &.feature-academic .feature-background,
+  &.feature-community .feature-background {
+    filter: saturate(0.4);
   }
 }
