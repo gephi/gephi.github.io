@@ -1,0 +1,44 @@
+.plugins-main {
+  .card {
+    .card-img-top {
+      height: 10rem;
+      object-fit: cover;
+    }
+  }
+  .plugins-filters {
+    padding: 0 0.5rem;
+    .checkbox-group {
+      .checkbox:not(:last-child) {
+        margin-bottom: 0.4rem;
+      }
+      .bar {
+        height: 5px;
+      }
+    }
+  }
+}
+
+.plugin-page {
+  h2 {
+    .authors {
+      .author:not(:last-child)::after {
+        content: ", ";
+      }
+    }
+  }
+  .info-box {
+    details {
+      ul {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  article {
+    img.cover {
+      float: left;
+      max-width: 50dvw;
+    }
+  }
+}
