@@ -14,6 +14,7 @@
     "@iconify-json/bi": "^1.2.6",
     "@iconify-json/ph": "^1.2.2",
     "@astrojs/react": "^4.3.0",
+    "@astropub/md": "^1.0.0",
     "@cospired/i18n-iso-languages": "^4.2.0",
     "@ouestware/hooks": "^0.0.1-alpha.6",
     "astro": "^5.13.2",

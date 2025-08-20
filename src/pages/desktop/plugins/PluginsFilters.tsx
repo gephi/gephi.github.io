@@ -1,5 +1,5 @@
 import { useDebounce } from "@ouestware/hooks";
-import { countBy, flatten, keys, omit, sortBy, sum, toPairs, values } from "lodash-es";
+import { countBy, flatten, keys, omit, reverse, sortBy, sum, toPairs, values } from "lodash-es";
 import { useEffect, useMemo, useState, type FC } from "react";
 import { CheckboxInputGroup } from "./CheckboxInput";
 import type { Plugin } from "./type";
@@ -72,9 +72,17 @@ function aggregatePlugins(field: "versions" | "categories", filteredPlugins: Plu
   );
   const total = sum(values(valuesCount));
   return {
-    values: sortBy(
-      toPairs(valuesCount).map(([value, count]) => ({ value, count })),
-      (o) => (field === "categories" ? -1 * o.count : o.value),
+    values: reverse(
+      sortBy(
+        toPairs(valuesCount).map(([value, count]) => ({ value, count })),
+        (o) =>
+          field === "categories"
+            ? o.count
+            : o.value
+                .split(".")
+                .map((vPart) => vPart.padStart(3, "0"))
+                .join(""),
+      ),
     ),
     total,
   };
@@ -115,7 +123,7 @@ export const PluginsFilters: FC<{ plugins: Plugin[] }> = ({ plugins }) => {
       });
     }
   }, [plugins, filteredPlugins]);
-
+  console.log(versionsOptions);
   return (
     <div className="plugins-filters">
       <fieldset className={`facets-container`}>

@@ -1,4 +1,5 @@
 ---
+import { reverse, sortBy, toPairs } from "lodash-es";
 import Layout from "../../../layouts/Layout.astro";
 import type { Plugin } from "./type";
 
@@ -20,8 +21,70 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const { plugin } = Astro.props;
+const gephiVersionsChrono = reverse(
+  sortBy(toPairs(plugin.versions), ([v, version]) => new Date(version.last_update)),
+).map(([v]) => v);
+const latestGephiVersion = gephiVersionsChrono[0];
 ---
 
 <Layout>
   <header><h1>{plugin.name}</h1></header>
+  <main class="plugin-page">
+    <!-- author -->
+    {
+      (
+        <h2 class="authors">
+          by{" "}
+          {plugin.authors.map((a) =>
+            a.link ? (
+              <a class="author" href={a.link}>
+                {a.name}
+              </a>
+            ) : (
+              <span class="author">a.name</span>
+            ),
+          )}
+        </h2>
+      )
+    }
+    <div class="info-box">
+      <div>
+        <a class="btn btn-primary" href={plugin.versions[latestGephiVersion].url}
+          >Download for Gephi {latestGephiVersion}</a
+        >
+      </div>
+      {
+        gephiVersionsChrono.length > 1 && (
+          <details>
+            <summary>For older versions</summary>
+            <ul class="list-unstyled">
+              {gephiVersionsChrono.slice(1).map((vId) => (
+                <li>
+                  <a class="btn btn-secondary" href={plugin.versions[vId].url}>
+                    for Gephi {vId}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )
+      }
+      <div>Last release on {plugin.last_update}</div>
+      <div><a href={plugin.sourcecode}>source code</a> ({plugin.license})</div>
+    </div>
+    <article>
+      <!-- cover -->
+      {
+        plugin.images && plugin.images[0] && (
+          <img
+            class="cover"
+            src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`}
+          />
+        )
+      }
+      <!-- Description -->
+
+      <p class="description" set:html={plugin.long_description} />
+    </article>
+  </main>
 </Layout>

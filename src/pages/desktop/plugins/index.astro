@@ -21,13 +21,13 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
       pluginsData === null ? (
         <h2>Sorry plugins data could not be loaded</h2>
       ) : (
-        <div class="d-flex flex-columns">
+        <div class="d-flex flex-columns ">
           <PluginsFilters plugins={pluginsData} client:only />
           <div>
             <h2>
               <span id="plugins-list-total">{pluginsData.length}</span> plugins
             </h2>
-            <div class="row g-4">
+            <div class="row g-4 w-100">
               {pluginsData.map((p) => (
                 <div
                   id={pluginElementId(p.id)}

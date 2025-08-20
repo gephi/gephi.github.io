@@ -17,3 +17,28 @@
     }
   }
 }
+
+.plugin-page {
+  h2 {
+    .authors {
+      .author:not(:last-child)::after {
+        content: ", ";
+      }
+    }
+  }
+  .info-box {
+    details {
+      ul {
+        display: flex;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  article {
+    img.cover {
+      float: left;
+      max-width: 50dvw;
+    }
+  }
+}
