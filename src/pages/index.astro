@@ -13,9 +13,7 @@ import { Icon } from "astro-icon/components";
           <h1 class="gephi-font">Gephi</h1>
 
           <p class="fs-3">
-            <strong>Open-source</strong> project for <strong
-              >visual network analysis</strong
-            >
+            <strong>Open-source</strong> project for <strong>visual network analysis</strong>
           </p>
         </div>
       </div>
@@ -28,13 +26,12 @@ import { Icon } from "astro-icon/components";
           <div class="flex-shrink-0">
             <h2 class="gephi-font">Gephi</h2>
             <p class="fs-4">
-              Desktop application
-              &nbsp;
+              Desktop application &nbsp;
               <Icon name="ph:apple-logo" />
               <Icon name="ph:windows-logo" />
               <Icon name="ph:linux-logo" />
             </p>
-            <a href="/desktop" class="btn btn-dark fs-4 me-1 fw-bold"><Icon name="ph:download-simple" /> Download</a>
+            <a href="/desktop" class="btn btn-dark fs-4 me-1 fw-bold"><Icon name="ph:download-simple-bold" /> Download</a>
           </div>
         </div>
         <div class="p-5 bg-gephi-lite-bg text-lite d-flex flex-row gap-5 flex-shrink-0">
@@ -50,15 +47,14 @@ import { Icon } from "astro-icon/components";
           <div class="flex-shrink-0">
             <h2 class="gephi-font">Gephi Lite</h2>
             <p class="fs-4">
-              Online tool
-              &nbsp;
+              Online tool &nbsp;
               <Icon name="ph:desktop" />
               <Icon name="ph:laptop" />
               <Icon name="ph:device-tablet-camera" />
               <Icon name="ph:device-mobile-camera" />
             </p>
             <a href="https://lite.gephi.org" class="btn btn-light fs-4 fw-bold"
-              ><Icon name="ph:graph" /> Open in browser</a
+              ><Icon name="ph:arrow-square-out-bold" /> Open in browser</a
             >
           </div>
         </div>
@@ -67,13 +63,7 @@ import { Icon } from "astro-icon/components";
         <div class="mt-5 text-end">
           Too complicated? Make a deal with
           <a href="https://jacomyma.github.io/gephisto/" role="button" class="btn btn-sm fw-bold">
-            <Image
-              src="/icons/gephisto-logo-inverted.svg"
-              alt="Gephi Lite logo"
-              class="h-100"
-              width="32"
-              height="32"
-            />
+            <Image src="/icons/gephisto-logo-inverted.svg" alt="Gephi Lite logo" class="h-100" width="32" height="32" />
             <span style="color:#f4a2b9;">Gephisto</span>
           </a>
           the one-click Gephi. 😈
@@ -183,7 +173,22 @@ import { Icon } from "astro-icon/components";
         </div>
         <div>
           <h3>The <strong>Gephi Lite</strong> Paper</h3>
-          <p class="fw-bold">TODO:<br />Insert paper from DH2025</p>
+          <p>
+            The foundational "Gephi: An Open Source Software" paper has thousands of citations, establishing Gephi as
+            the research standard. (TODO: Insert paper from DH2025).
+          </p>
+          <div class="d-flex align-items-center">
+            <a href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937"
+              ><img class="border" src="/homepage/gephi-paper.png" /></a
+            >
+            <p class="fs-6 text-center">
+              Bastian M., Heymann S., Jacomy M. (2009). <i
+                >Gephi: an open source software for exploring and manipulating networks.</i
+              > International AAAI Conference on Weblogs and Social Media. From <a
+                href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937">AAAI</a
+              > [<a href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937/13786">PDF</a>].
+            </p>
+          </div>
         </div>
       </section>
     </section>

@@ -35,16 +35,16 @@ const alternativeLangs = files
 
 {
   pagePath && (
-    <div>
-      Other available languages:{" "}
-      <ul>
+    <div class="text-muted text-end">
+      This page exists in other languages:
+      <div class="d-flex gap-1 justify-content-end">
         {alternativeLangs.map((al) => (
-          <li>
+          <span>
             {/* link to local: default is on index */}
             <a href={path.join(pagePath, al === defaultLocale ? "" : al)}>{languages.getName(al, al)}</a>
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }

@@ -1,18 +1,219 @@
 ---
 import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout>
-  <header class="container container-medium mt-5 mb-5 text-center">
-    <section>
-      <h1>Try Gephi Lite</h1>
+  <style>
+    :root {
+      --bs-primary: var(--bs-gephi-lite-bg);
+      --bs-primary-rgb: var(--bs-gephi-lite-bg-rgb);
+      --bs-link-color-rgb: var(--bs-gephi-lite-bg-rgb);
+    }
+  </style>
+  <header class="banner py-5 bg-gephi-lite-bg-dark">
+    <section class="container my-5 py-4">
+      <div class="row align-items-center">
+        <div class="col-7 d-flex flex-column gap-4">
+          <div>
+            <h1 class="gephi-font">Gephi Lite</h1>
+          </div>
+
+          <p class="fs-3">
+            Gephi Lite is an <strong>open-source</strong> web application dedicated to <strong
+              >visually analyze networks</strong
+            >.
+          </p>
+
+          <div>
+            <a href="https://lite.gephi.org" class="btn btn-white fs-4"
+              ><Icon name="ph:arrow-square-out" /> Open in your browser</a
+            >
+            <div class="fs-6">Works on desktop, tablets and mobiles</div>
+          </div>
+        </div>
+        <div class="col-5 text-end">
+          <Image
+            src="/icons/gephi-lite-logo-inverted.svg"
+            class="mb-3 mb-md-0"
+            alt="Gephi logo"
+            width="400"
+            height="400"
+          />
+        </div>
+      </div>
     </section>
   </header>
 
-  <main class="container">
-    TODO
+  <main class="pt-5">
+    <section class="container">
+      <LangSwitcher fromPath={Astro.originPathname} />
+    </section>
 
-    <LangSwitcher fromPath={Astro.originPathname} />
+    <section class="container pb-5">
+      <section class="feature feature-flat">
+        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:app-window" class="text-primary" />
+              <span>Gephi in your <strong>browser</strong></span>
+            </h2>
+            <p>
+              Import graph data, run network ranking and layout algorithms, customize the graph appearance to analyze
+              your networks, from any modern web browsers. <strong>No installation required</strong>.
+            </p>
+            <p>
+              Also, Gephi Lite has <strong>no server</strong>, your data remains on your computer. But you can log into
+              a GitHub account, and save and load your graphs as <strong
+                ><a href="https://gist.github.com/" class="text-nowrap">GitHub Gists</a></strong
+              >!
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-arguments">
+          <figure class="figure">
+            <img src="/lite/appearance.png" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">
+              Graph view with graph appearance customization
+            </figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="/lite/caption-filters.png" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">
+              Dynamic caption for nodes and edges colors and sizes
+            </figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="/lite/datatable.png" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">
+              Data table to explore nodes and edges attributes
+            </figcaption>
+          </figure>
+        </section>
+      </section>
+
+      <section class="feature feature-flat">
+        <div class="feature-background" style="opacity: 0.075; background-image: url(/lite/code.png);"></div>
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:plugs" class="text-primary" />
+              <span>Gephi in your <strong>web application</strong></span>
+            </h2>
+            <p>
+              Deploy Gephi Lite next to your web application, and use our <a
+                class="fw-bold"
+                href="https://www.npmjs.com/package/@gephi/gephi-lite-broadcast">dedicated JavaScript driver</a
+              > to open Gephi Lite in a new tab, and control it directly from your web application.
+            </p>
+            <p>
+              The driver exposes <strong>Gephi Lite TypeScript types definition</strong>, to help you properly set up
+              filters, appearance, data...
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-arguments">
+          <figure class="figure">
+            <img src="/lite/retina.png" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">
+              <a href="https://ouestware.gitlab.io/retina">Retina</a> supports opening graphs in Gephi Lite
+            </figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="/lite/clone-graphs.png" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">
+              Gephi Lite uses the driver to <strong>clone graphs</strong> in new tabs
+            </figcaption>
+          </figure>
+        </section>
+      </section>
+
+      <section class="feature feature-flat">
+        <div class="feature-background" style="opacity: 0.075; background-image: url(/lite/graph.png);"></div>
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:devices" class="text-primary" />
+              <span>Gephi on your <strong>mobile device</strong></span>
+            </h2>
+            <p>
+              Gephi Lite supports <strong>touch</strong> and <strong>multitouch</strong> interactions, so that you can browse
+              your networks as you would manipulate a map.
+            </p>
+            <p>
+              Also, its UI is responsive, so that you can access all of its content from mobiles, tablets and desktops
+              seamlessly.
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-arguments" style="filter: saturate(0);">
+          <figure class="figure">
+            <img src="/lite/multi-touch.jpg" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">Multi-touch support</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="/lite/responsiveness.jpg" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">Responsive user interfaces</figcaption>
+          </figure>
+        </section>
+      </section>
+    </section>
+
+    <section class="bg-gephi-lite-bg-dark text-light py-5">
+      <section class="container">
+        <div class="row justify-content-center fs-4 gap-5">
+          <div class="col-lg-5">
+            <h3 class="mb-4"><Icon name="ph:graduation-cap-bold" class="text-primary" /> How to cite Gephi Lite</h3>
+            <p>
+              The foundational "Gephi: An Open Source Software" paper has thousands of citations, establishing Gephi as
+              the research standard. (TODO: Insert paper from DH2025).
+            </p>
+            <div class="d-flex align-items-center">
+              <a href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937"
+                ><img class="border" src="/homepage/gephi-paper.png" /></a
+              >
+              <p class="fs-6 text-center p-4">
+                Bastian M., Heymann S., Jacomy M. (2009). <i
+                  >Gephi: an open source software for exploring and manipulating networks.</i
+                > International AAAI Conference on Weblogs and Social Media. From <a
+                  href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937">AAAI</a
+                > [<a href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937/13786">PDF</a>].
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <h3 class="mb-4"><Icon name="ph:books-bold" class="text-primary" /> Resources</h3>
+            <p>
+              Gephi Lite is a <strong>free open-source</strong> web application, published under the <a
+                class="text-light"
+                href="https://github.com/gephi/gephi-lite/blob/main/LICENSE.md">GPL-3.0 licence</a
+              > on <a class="text-light" href="https://github.com/gephi/gephi-lite"
+                ><Icon name="ph:github-logo" /> GitHub</a
+              >.
+            </p>
+            <p>
+              You can <strong>get started</strong> by following <a class="text-light" href="/howto">this tutorial</a>.
+            </p>
+            <p>
+              Finally, the full project's documentation is available on <a
+                class="text-light fw-bold"
+                href="https://docs.gephi.org/lite">docs.gephi.org/lite</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
   </main>
 </Layout>
