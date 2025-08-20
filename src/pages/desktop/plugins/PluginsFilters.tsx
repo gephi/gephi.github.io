@@ -1,6 +1,7 @@
 import { useDebounce } from "@ouestware/hooks";
 import { countBy, flatten, keys, omit, sortBy, sum, toPairs, values } from "lodash-es";
 import { useEffect, useMemo, useState, type FC } from "react";
+import { CheckboxInputGroup } from "./CheckboxInput";
 import type { Plugin } from "./type";
 import { pluginElementId } from "./utils";
 
@@ -104,18 +105,22 @@ export const PluginsFilters: FC<{ plugins: Plugin[] }> = ({ plugins }) => {
 
   // TODO: hide/show cards
   useEffect(() => {
-    const visibleIds = new Set(filteredPlugins.map((fp) => fp.id));
-    plugins.forEach((p) => {
-      const element = document.getElementById(pluginElementId(p.id));
-      if (element) element.style.display = !visibleIds.has(p.id) ? "none" : "block";
-    });
+    if (filteredPlugins) {
+      const visibleIds = new Set(filteredPlugins.map((fp) => fp.id));
+      const totalSpan = document.getElementById("plugins-list-total");
+      if (totalSpan) totalSpan.textContent = visibleIds.size + "";
+      plugins.forEach((p) => {
+        const element = document.getElementById(pluginElementId(p.id));
+        if (element) element.style.display = !visibleIds.has(p.id) ? "none" : "block";
+      });
+    }
   }, [plugins, filteredPlugins]);
 
   return (
-    <div>
+    <div className="plugins-filters">
       <fieldset className={`facets-container`}>
         <div>
-          <label>Search</label>
+          <legend>Search</legend>
           <input
             type="search"
             value={query || ""}
@@ -126,57 +131,31 @@ export const PluginsFilters: FC<{ plugins: Plugin[] }> = ({ plugins }) => {
         </div>
 
         <div>
-          <label>Gephi version</label>
-          {versionsOptions.values.map((o) => (
-            <div key={o.value}>
-              <label htmlFor={`version-checkbox-${o.value}`}>{o.value}</label>
-              <input
-                type="checkbox"
-                id={`version-checkbox-${o.value}`}
-                checked={state.versions.includes(o.value)}
-                onChange={(e) => {
-                  setState((state) => ({
-                    ...state,
-                    versions: e.target.checked
-                      ? [...state.versions, o.value]
-                      : state.versions.filter((v) => v !== o.value),
-                  }));
-                }}
-              />
-              <div
-                style={{ backgroundColor: "pink", width: `${(o.count / versionsOptions.total) * 100}%`, height: "5px" }}
-              />
-            </div>
-          ))}
+          <legend>Gephi version</legend>
+          <CheckboxInputGroup
+            options={versionsOptions}
+            selected={state.versions}
+            onChange={(value, checked) => {
+              setState((state) => ({
+                ...state,
+                versions: checked ? [...state.versions, value] : state.versions.filter((v) => v !== value),
+              }));
+            }}
+          />
         </div>
 
         <div>
-          <label>Plugin category</label>
-          {categoriesOptions.values.map((o) => (
-            <div key={o.value}>
-              <label htmlFor={`category-checkbox-${o.value}`}>{o.value}</label>
-              <input
-                type="checkbox"
-                id={`category-checkbox-${o.value}`}
-                checked={state.categories.includes(o.value)}
-                onChange={(e) => {
-                  setState((state) => ({
-                    ...state,
-                    categories: e.target.checked
-                      ? [...state.categories, o.value]
-                      : state.categories.filter((v) => v !== o.value),
-                  }));
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "pink",
-                  width: `${(o.count / categoriesOptions.total) * 100}%`,
-                  height: "5px",
-                }}
-              />
-            </div>
-          ))}
+          <legend>Plugin category</legend>
+          <CheckboxInputGroup
+            options={categoriesOptions}
+            selected={state.categories}
+            onChange={(value, checked) => {
+              setState((state) => ({
+                ...state,
+                categories: checked ? [...state.categories, value] : state.categories.filter((v) => v !== value),
+              }));
+            }}
+          />
         </div>
       </fieldset>
     </div>

@@ -8,7 +8,7 @@ export interface Plugin {
   authors: { name: string; email?: string; link?: string }[];
   category: string;
   last_update: string;
-  images: { image: string; thumbnail: string }[];
+  images?: { image: string; thumbnail: string }[];
   versions: Record<string, { url: string; last_update: string; plugin_version?: string }>;
   sourcecode: string;
   homepage: string;

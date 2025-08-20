@@ -12,15 +12,19 @@
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
+@import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
 @import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
 @import "bootstrap/scss/helpers";
 @import "bootstrap/scss/utilities/api";
 
 @import "./base";
 @import "./layout";
 @import "./homepage";
+@import "./navbar";
+@import "./plugins";

@@ -1,0 +1,27 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import type { Plugin } from "./type";
+
+interface Props {
+  plugin: Plugin;
+}
+
+export async function getStaticPaths() {
+  const pluginsDataRequest = await fetch(
+    "https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json",
+  );
+
+  if (pluginsDataRequest.ok) {
+    const pluginsData = (await pluginsDataRequest.json()).plugins as Plugin[];
+    return pluginsData.map((p) => ({ params: { id: p.id }, props: { plugin: p } }));
+  }
+  return [];
+}
+
+const { id } = Astro.params;
+const { plugin } = Astro.props;
+---
+
+<Layout>
+  <header><h1>{plugin.name}</h1></header>
+</Layout>
