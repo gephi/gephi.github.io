@@ -1,13 +1,172 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import Question from "../../components/faq/Question.astro";
+import IconOrImage from "../../components/faq/IconOrImage.astro";
+
+type Question = { question: string; answer: string };
+type Group<T> = { label: string; slug: string; children: T[]; icon?: string; image?: string };
+
+const QUESTIONS: Group<Question | Group<Question>>[] = [
+  {
+    label: "Resources",
+    icon: "ph:books",
+    slug: "resources",
+    children: [
+      {
+        question: "Where can I find tutorials to learn how to use Gephi?",
+        answer: `Visit this link to access official tutorials and other learning resources: Link to the 101 tutorial and the tutorials page`,
+      },
+      {
+        question: "Where can I find a dataset to practice with Gephi?",
+        answer: `Check out <a href="https://github.com/gephi/gephi/wiki/Datasets">this repository</a> where you can find available datasets.`,
+      },
+    ],
+  },
+  {
+    label: "About Gephi",
+    image: "/icons/gephi-desktop-logo.svg",
+    slug: "about-gephi",
+    children: [
+      {
+        question: "Should I use Gephi or Gephi Lite?",
+        answer: `If you are a beginner, if you just want to take a quick look at Gephi, or if you can’t (or don’t want to) install an application on your computer, use Gephi Lite. It runs in any recent browser.
+If you are comfortable with network analysis, or if you need to analyze large networks (more than 10,000 nodes), then install the desktop version of Gephi.`,
+      },
+      {
+        question: "Is there an official Gephi course I can take to get certified?",
+        answer: `Currently, there is no official Gephi course available that offers certification.`,
+      },
+      {
+        question: "I am going to publish my research where I used Gephi, how should I cite it?",
+        answer: `You can cite it as follows: Bastian M., Heymann S., Jacomy M. (2009). Gephi: an open source software for exploring and manipulating networks. International AAAI Conference on Weblogs and Social Media. From AAAI [PDF]`,
+      },
+      {
+        question: "Which operating systems does Gephi support?",
+        answer: `Gephi supports multiple operating systems. You can download version 0.10.1 for Mac OS (both Intel and Silicon), Windows, and Linux. Older versions are also available for download if needed. For Linux users, Gephi can additionally be found on Snapcraft and FlatHub.`,
+      },
+    ],
+  },
+  {
+    label: "Technical",
+    icon: "ph:gear",
+    slug: "technical",
+    children: [
+      {
+        label: "Data Laboratory",
+        slug: "datalab",
+        children: [
+          {
+            question: "In which format should I import my file into Gephi?",
+            answer:
+              "Gephi can import a variety of standard graph file formats. These include GEXF, GDF, GML, GraphML, Pajek NET, GraphViz DOT, CSV, UCINET DL, Tulip TPL, Netdraw VNA, and Spreadsheet formats.",
+          },
+          {
+            question: "How do I create dynamic networks?",
+            answer: "To create dynamic networks, check out these tutorials: [link] [link]",
+          },
+        ],
+      },
+      {
+        label: "Overview",
+        slug: "overview",
+        children: [
+          {
+            question: "Is there a button or function to undo an action?",
+            answer: "Currently, this feature isn’t available.",
+          },
+          {
+            question: "Is there a tutorial that explains filters?",
+            answer: "Yes, check out the following tutorials: [link] [link]",
+          },
+        ],
+      },
+    ],
+  },
+];
 ---
 
 <Layout>
-  <header class="container container-medium mt-5 mb-5 text-center">
-    <section>
-      <h1>Static page</h1>
+  <header class="banner py-5">
+    <section class="container my-5 py-4">
+      <h1>Frequently Asked Questions</h1>
     </section>
   </header>
 
-  <main class="container">TODO</main>
+  <main class="container py-5">
+    <section class="p-5 border border-5 bg-light mb-5">
+      <h2 class="fs-4">Table of Contents</h2>
+      <ul>
+        {
+          QUESTIONS.map((group) => (
+            <li>
+              <div>
+                <a class="text-dark fw-bold" href={`#${group.slug}`}>
+                  {group.label}
+                </a>
+              </div>
+              <ul>
+                {group.children.map((child, i) =>
+                  "label" in child ? (
+                    <li>
+                      <a class="text-dark fw-bold" href={`#${group.slug}-${child.slug}`}>
+                        {child.label}
+                      </a>
+
+                      <ul>
+                        {child.children.map(({ question }, j) => (
+                          <li>
+                            <a class="text-dark" href={`#${group.slug}-${child.slug}-${j + 1}`}>
+                              {question}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </li>
+                  ) : (
+                    <li>
+                      <a class="text-dark" href={`#${group.slug}-${i + 1}`}>
+                        {child.question}
+                      </a>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="mt-5">
+      {
+        QUESTIONS.map((group) => (
+          <section>
+            <h2 class="mb-4" id={group.slug}>
+              <IconOrImage icon={group.icon} image={group.image} />
+              {group.label}
+            </h2>
+            <div class="row mb-5">
+              {group.children.map((child, i) =>
+                "label" in child ? (
+                  <section>
+                    <h3 class="mb-3" id={`${group.slug}-${child.slug}`}>
+                      <IconOrImage icon={child.icon} image={child.image} />
+                      {child.label}
+                    </h3>
+                    <div class="row mb-5">
+                      {child.children.map(({ question, answer }, j) => (
+                        <Question id={`${group.slug}-${child.slug}-${j + 1}`} question={question} answer={answer} />
+                      ))}
+                    </div>
+                  </section>
+                ) : (
+                  <Question id={`${group.slug}-${i + 1}`} question={child.question} answer={child.answer} />
+                ),
+              )}
+            </div>
+          </section>
+        ))
+      }
+    </section>
+  </main>
 </Layout>

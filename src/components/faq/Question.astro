@@ -1,0 +1,14 @@
+---
+import { Icon } from "astro-icon/components";
+interface Props {
+  id: string;
+  question: string;
+  answer: string;
+}
+const { id, question, answer } = Astro.props;
+---
+
+<div class="col-md-6 col-lg-4" id={id}>
+  <h3 class="fs-4"><Icon name="ph:quotes" style="transform: scaleX(-1);" /> {question}</h3>
+  <p class="fs-5" set:html={answer} />
+</div>
