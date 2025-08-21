@@ -1,13 +1,164 @@
 ---
+import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { map, mapValues } from "lodash-es";
+
+const BROWSERS = {
+  windows64: {
+    label: "Windows (64 bits)",
+    dlSuffix: "windows-x64.exe",
+    icon: "ph:windows-logo-fill",
+  },
+  windows32: {
+    label: "Windows (32 bits)",
+    dlSuffix: "windows-x32.exe",
+    icon: "ph:windows-logo-fill",
+  },
+  macIntel: {
+    label: "Mac OS (Intel)",
+    dlSuffix: "macos-x64.dmg",
+    icon: "ph:apple-logo-fill",
+  },
+  macSilicon: {
+    label: "Mac OS (Silicon)",
+    dlSuffix: "macos-aarch64.dmg",
+    icon: "ph:apple-logo-fill",
+  },
+  linux: {
+    label: "Linux",
+    dlSuffix: "linux-x64.tar.gz",
+    icon: "ph:linux-logo-fill",
+  },
+} as const;
+
+type Browser = keyof typeof BROWSERS;
+
+async function getDownloadLinks() {
+  try {
+    const resp = await fetch("https://api.github.com/repos/gephi/gephi/releases/latest");
+    const data = (await resp.json()) as { tag_name: string; assets: { browsed_download_url: string }[] };
+
+    // TODO
+    throw new Error("TODO: Read GitHub return to generate proper links");
+  } catch (e) {
+    const version = "0.10.1";
+    return mapValues(
+      BROWSERS,
+      ({ dlSuffix }) => `https://github.com/gephi/gephi/releases/download/v${version}/gephi-${version}-${dlSuffix}`,
+    ) as Record<Browser, string>;
+  }
+}
+
+const DOWNLOAD_LINKS = await getDownloadLinks();
 ---
 
 <Layout>
-  <header class="container container-medium mt-5 mb-5 text-center">
-    <section>
-      <h1>Static page</h1>
+  <style>
+    :root {
+      --bs-primary: var(--bs-gephi-desktop-logo);
+      --bs-primary-rgb: var(--bs-gephi-desktop-logo-rgb);
+      --bs-link-color-rgb: var(--bs-gephi-desktop-logo-rgb);
+    }
+  </style>
+  <header class="banner py-5">
+    <section class="container my-5 py-4">
+      <div class="row align-items-center">
+        <div class="col-7 d-flex flex-column gap-4">
+          <div>
+            <h1 class="gephi-font">Gephi</h1>
+          </div>
+
+          <p class="fs-3">
+            Gephi is an <strong>open-source</strong> desktop application to <strong>visually analyze networks</strong>.
+          </p>
+
+          <div class="d-flex flex-column align-items-start">
+            <a
+              href="https://github.com/gephi/gephi/releases"
+              id="download-gephi"
+              class="btn btn-white fs-4 fw-bold mb-2"
+              ><Icon name="ph:download-simple-bold" /> <span class="text">Download Gephi</span></a
+            >
+            {
+              map(BROWSERS, ({ label, icon }, browser) => (
+                <a class="text-light" href={DOWNLOAD_LINKS[browser]}>
+                  <Icon name={icon} /> Download for {label}
+                </a>
+              ))
+            }
+          </div>
+          <script define:vars={{ DOWNLOAD_LINKS, BROWSERS }}>
+            let currentBrowser = "windows";
+            if (navigator.appVersion.indexOf("Win") !== -1) {
+              currentBrowser = "windows";
+            } else if (navigator.appVersion.indexOf("Mac") !== -1) {
+              currentBrowser = "mac";
+            } else if (navigator.userAgent.indexOf("Ubuntu") !== -1) {
+              currentBrowser = "linux";
+            } else if (navigator.appVersion.indexOf("X11") !== -1) {
+              currentBrowser = "linux";
+            }
+
+            const link = document.getElementById("download-gephi");
+            const linkText = link.querySelector(".text");
+
+            link.href = DOWNLOAD_LINKS[currentBrowser];
+            linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
+          </script>
+        </div>
+        <div class="col-5 text-end">
+          <Image
+            src="/icons/gephi-desktop-logo-inverted.svg"
+            class="mb-3 mb-md-0"
+            alt="Gephi logo"
+            width="400"
+            height="400"
+          />
+        </div>
+      </div>
     </section>
   </header>
 
-  <main class="container">TODO</main>
+  <main class="pt-5">
+    <section class="container">
+      <LangSwitcher fromPath={Astro.originPathname} />
+    </section>
+
+    <section class="container pb-5">
+      <section class="feature feature-flat">
+        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:lightbulb" class="text-primary" />
+              <span>Gephi is nice!</span>
+            </h2>
+            <p>
+              And then some text! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duo amet, cum aliquid
+              praesent zzril aliquid culpa euismod enim anim facer reprehenderit soluta rebum, odio diam nihil nonummy
+              fugiat exerci proident eos dolore at stet clita sed.
+            </p>
+            <p>
+              Labore nostrud, ea duis volutpat consectetuer adipisici nobis feugait nobis doming proident facilisis
+              feugait commodi sanctus.
+            </p>
+          </div>
+        </section>
+
+        <section class="feature-arguments">
+          <figure class="figure">
+            <img src="https://placecats.com/millie_neo/300/200" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">Some picture with a caption</figcaption>
+          </figure>
+
+          <figure class="figure">
+            <img src="https://placecats.com/millie_neo/280/200" class="border figure-img img-fluid" alt="" />
+            <figcaption class="figure-caption text-muted text-center">And then some more</figcaption>
+          </figure>
+        </section>
+      </section>
+    </section>
+  </main>
 </Layout>
