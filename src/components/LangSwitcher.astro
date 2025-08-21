@@ -34,7 +34,7 @@ const alternativeLangs = files
 ---
 
 {
-  pagePath && (
+  pagePath && !!alternativeLangs.length && (
     <div class="text-muted text-end">
       This page exists in other languages:
       <div class="d-flex gap-1 justify-content-end">
