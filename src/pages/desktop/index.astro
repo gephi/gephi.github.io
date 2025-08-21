@@ -3,7 +3,7 @@ import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { map, mapValues } from "lodash-es";
+import { fromPairs, map, mapValues, toPairs } from "lodash-es";
 
 const BROWSERS = {
   windows64: {
@@ -38,18 +38,33 @@ type Browser = keyof typeof BROWSERS;
 async function getDownloadLinks() {
   try {
     const resp = await fetch("https://api.github.com/repos/gephi/gephi/releases/latest");
-    const data = (await resp.json()) as { tag_name: string; assets: { browsed_download_url: string }[] };
+    const data = (await resp.json()) as { tag_name: string; assets: { browser_download_url: string }[] };
+    const version = data.tag_name.replace(/^v/, "");
+    const res = {
+      version,
+      links: mapValues(
+        BROWSERS,
+        ({ dlSuffix }) => `https://github.com/gephi/gephi/releases/download/v${version}/gephi-${version}-${dlSuffix}`,
+      ) as Partial<Record<Browser, string>>,
+    };
 
-    // TODO
-    throw new Error("TODO: Read GitHub return to generate proper links");
+    const suffixes = fromPairs(toPairs(BROWSERS).map(([browser, { dlSuffix }]) => [dlSuffix, browser]));
+    data.assets.forEach(({ browser_download_url }) => {
+      const suffix = (browser_download_url.split("/").at(-1) || "").replace(`gephi-${version}-`, "");
+      if (suffixes[suffix]) {
+        res.links[suffixes[suffix] as Browser] = browser_download_url;
+      }
+    });
+
+    return res;
   } catch (e) {
-    const version = "0.10.1";
+    const version = "1.0.0";
     return {
       version,
       links: mapValues(
         BROWSERS,
         ({ dlSuffix }) => `https://github.com/gephi/gephi/releases/download/v${version}/gephi-${version}-${dlSuffix}`,
-      ) as Record<Browser, string>,
+      ) as Partial<Record<Browser, string>>,
     };
   }
 }
@@ -85,11 +100,15 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
               ><Icon name="ph:download-simple-bold" /> <span class="text">Download Gephi</span></a
             >
             {
-              map(BROWSERS, ({ label, icon }, browser: Browser) => (
-                <a class="text-light" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
-                  <Icon name={icon} /> Download for {label}
-                </a>
-              ))
+              map(
+                BROWSERS,
+                ({ label, icon }, browser: Browser) =>
+                  DOWNLOAD_LINKS.links[browser] && (
+                    <a class="text-light" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
+                      <Icon name={icon} /> Download for {label}
+                    </a>
+                  ),
+              )
             }
             <a class="text-light" href="https://github.com/gephi/gephi/releases">
               <Icon name="ph:clock-counter-clockwise" /> Download Older Versions
@@ -110,9 +129,10 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
 
             const link = document.getElementById("download-gephi");
             const linkText = link.querySelector(".text");
-
-            link.href = DOWNLOAD_LINKS.links[currentBrowser];
-            linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
+            if (DOWNLOAD_LINKS.links[currentBrowser]) {
+              link.href = DOWNLOAD_LINKS.links[currentBrowser];
+              linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
+            }
 
             const smallLink = document.querySelector(`a[data-browser='${currentBrowser}']`);
             if (smallLink) smallLink.remove();
