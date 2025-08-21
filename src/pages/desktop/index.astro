@@ -7,7 +7,7 @@ import { map, mapValues } from "lodash-es";
 
 const BROWSERS = {
   windows64: {
-    label: "Windows (64 bits)",
+    label: "Windows",
     dlSuffix: "windows-x64.exe",
     icon: "ph:windows-logo-fill",
   },
@@ -16,14 +16,14 @@ const BROWSERS = {
     dlSuffix: "windows-x32.exe",
     icon: "ph:windows-logo-fill",
   },
+  macSilicon: {
+    label: "Mac OS",
+    dlSuffix: "macos-aarch64.dmg",
+    icon: "ph:apple-logo-fill",
+  },
   macIntel: {
     label: "Mac OS (Intel)",
     dlSuffix: "macos-x64.dmg",
-    icon: "ph:apple-logo-fill",
-  },
-  macSilicon: {
-    label: "Mac OS (Silicon)",
-    dlSuffix: "macos-aarch64.dmg",
     icon: "ph:apple-logo-fill",
   },
   linux: {
@@ -44,10 +44,13 @@ async function getDownloadLinks() {
     throw new Error("TODO: Read GitHub return to generate proper links");
   } catch (e) {
     const version = "0.10.1";
-    return mapValues(
-      BROWSERS,
-      ({ dlSuffix }) => `https://github.com/gephi/gephi/releases/download/v${version}/gephi-${version}-${dlSuffix}`,
-    ) as Record<Browser, string>;
+    return {
+      version,
+      links: mapValues(
+        BROWSERS,
+        ({ dlSuffix }) => `https://github.com/gephi/gephi/releases/download/v${version}/gephi-${version}-${dlSuffix}`,
+      ) as Record<Browser, string>,
+    };
   }
 }
 
@@ -82,19 +85,23 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
               ><Icon name="ph:download-simple-bold" /> <span class="text">Download Gephi</span></a
             >
             {
-              map(BROWSERS, ({ label, icon }, browser) => (
-                <a class="text-light" href={DOWNLOAD_LINKS[browser]}>
+              map(BROWSERS, ({ label, icon }, browser: Browser) => (
+                <a class="text-light" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
                   <Icon name={icon} /> Download for {label}
                 </a>
               ))
             }
+            <a class="text-light" href="https://github.com/gephi/gephi/releases">
+              <Icon name="ph:clock-counter-clockwise" /> Download Older Versions
+            </a>
           </div>
           <script define:vars={{ DOWNLOAD_LINKS, BROWSERS }}>
-            let currentBrowser = "windows";
+            let currentBrowser = "windows64";
+
             if (navigator.appVersion.indexOf("Win") !== -1) {
-              currentBrowser = "windows";
+              currentBrowser = "windows64";
             } else if (navigator.appVersion.indexOf("Mac") !== -1) {
-              currentBrowser = "mac";
+              currentBrowser = "macSilicon";
             } else if (navigator.userAgent.indexOf("Ubuntu") !== -1) {
               currentBrowser = "linux";
             } else if (navigator.appVersion.indexOf("X11") !== -1) {
@@ -104,8 +111,11 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
             const link = document.getElementById("download-gephi");
             const linkText = link.querySelector(".text");
 
-            link.href = DOWNLOAD_LINKS[currentBrowser];
+            link.href = DOWNLOAD_LINKS.links[currentBrowser];
             linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
+
+            const smallLink = document.querySelector(`a[data-browser='${currentBrowser}']`);
+            if (smallLink) smallLink.remove();
           </script>
         </div>
         <div class="col-5 text-end">
