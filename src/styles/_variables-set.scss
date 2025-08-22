@@ -28,6 +28,9 @@ $custom-colors: (
   "gephisto-logo": $gephisto-logo,
 );
 
+// Layout:
+$navbar-height: 5rem;
+
 // Typography:
 $font-family-sans-serif: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $gephi-title-font-family: "Montserrat Alternates", $font-family-sans-serif;
@@ -41,3 +44,5 @@ $h1-font-size: 5rem !default;
 $h2-font-size: 2.5rem !default;
 $body-bg: $light !default;
 $primary: $custom-purple !default;
+$form-check-input-bg: white !default;
+$enable-rounded: false !default;

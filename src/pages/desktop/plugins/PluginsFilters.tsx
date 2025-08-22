@@ -111,61 +111,62 @@ export const PluginsFilters: FC<{ plugins: Plugin[] }> = ({ plugins }) => {
     [state, plugins],
   );
 
-  // TODO: hide/show cards
   useEffect(() => {
     if (filteredPlugins) {
       const visibleIds = new Set(filteredPlugins.map((fp) => fp.id));
       const totalSpan = document.getElementById("plugins-list-total");
-      if (totalSpan) totalSpan.textContent = visibleIds.size + "";
+      if (totalSpan) totalSpan.textContent = `${visibleIds.size || "No"} ${visibleIds.size > 1 ? "plugins" : "plugin"}`;
       plugins.forEach((p) => {
         const element = document.getElementById(pluginElementId(p.id));
         if (element) element.style.display = !visibleIds.has(p.id) ? "none" : "block";
       });
     }
   }, [plugins, filteredPlugins]);
-  console.log(versionsOptions);
+
   return (
-    <div className="plugins-filters">
-      <fieldset className={`facets-container`}>
-        <div>
-          <legend>Search</legend>
-          <input
-            type="search"
-            value={query || ""}
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
-          />
-        </div>
+    <div className="left-scrollbar plugins-filters">
+      <div className="">
+        <fieldset className="facets-container">
+          <div>
+            <legend>Search</legend>
+            <input
+              type="search"
+              value={query || ""}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+            />
+          </div>
 
-        <div>
-          <legend>Gephi version</legend>
-          <CheckboxInputGroup
-            options={versionsOptions}
-            selected={state.versions}
-            onChange={(value, checked) => {
-              setState((state) => ({
-                ...state,
-                versions: checked ? [...state.versions, value] : state.versions.filter((v) => v !== value),
-              }));
-            }}
-          />
-        </div>
+          <div>
+            <legend>Gephi version</legend>
+            <CheckboxInputGroup
+              options={versionsOptions}
+              selected={state.versions}
+              onChange={(value, checked) => {
+                setState((state) => ({
+                  ...state,
+                  versions: checked ? [...state.versions, value] : state.versions.filter((v) => v !== value),
+                }));
+              }}
+            />
+          </div>
 
-        <div>
-          <legend>Plugin category</legend>
-          <CheckboxInputGroup
-            options={categoriesOptions}
-            selected={state.categories}
-            onChange={(value, checked) => {
-              setState((state) => ({
-                ...state,
-                categories: checked ? [...state.categories, value] : state.categories.filter((v) => v !== value),
-              }));
-            }}
-          />
-        </div>
-      </fieldset>
+          <div>
+            <legend>Plugin category</legend>
+            <CheckboxInputGroup
+              options={categoriesOptions}
+              selected={state.categories}
+              onChange={(value, checked) => {
+                setState((state) => ({
+                  ...state,
+                  categories: checked ? [...state.categories, value] : state.categories.filter((v) => v !== value),
+                }));
+              }}
+            />
+          </div>
+        </fieldset>
+      </div>
     </div>
   );
 };

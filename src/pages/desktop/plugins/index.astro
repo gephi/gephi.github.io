@@ -15,45 +15,50 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
 ---
 
 <Layout>
-  <header><h1>Gephi plugins</h1></header>
-  <main class="plugins-main">
+  <header class="banner py-5">
+    <section class="container my-5 py-4">
+      <h1>Gephi plugins</h1>
+    </section>
+  </header>
+
+  <main class="plugins-main pb-5">
     {
       pluginsData === null ? (
         <h2>Sorry plugins data could not be loaded</h2>
       ) : (
-        <div class="d-flex flex-columns ">
+        <div class="d-flex align-items-start">
           <PluginsFilters plugins={pluginsData} client:only />
-          <div>
-            <h2>
-              <span id="plugins-list-total">{pluginsData.length}</span> plugins
+
+          <section class="plugins-list">
+            <h2 id="plugins-list-total" class="mb-5">
+              {pluginsData.length || "No"} {pluginsData.length > 1 ? "plugins" : "plugin"}
             </h2>
             <div class="row g-4 w-100">
               {pluginsData.map((p) => (
-                <div
+                <article
                   id={pluginElementId(p.id)}
-                  class={`h-100  col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 category-${p.category} ${p.versions ? Object.keys(p.versions).map((v) => `version-${v}`) : ""}`}
+                  class={`mb-3 col-12 col-md-6 col-xl-4 col-xxl-3 category-${p.category} ${p.versions ? Object.keys(p.versions).map((v) => `version-${v}`) : ""}`}
                 >
-                  <div class={`card h-100 `}>
-                    <img
-                      class="card-img-top"
-                      src={
-                        p.images && p.images[0]
-                          ? `https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${p.images[0].image}`
-                          : "/plugins/default-screenshot.jpg"
-                      }
-                    />
-                    <div class="card-body">
-                      <h3 class="card-title">
-                        <a href={`/desktop/plugins/${p.id}`}>{p.name}</a>
-                      </h3>
-                      <p class="card-text">{p.short_description}</p>
+                  <a class="card border-0 text-decoration-none text-dark" href={`/desktop/plugins/${p.id}`}>
+                    <div class="d-flex flex-column gap-1">
+                      <img
+                        alt=""
+                        class="card-img-top plugin-image mb-2"
+                        src={
+                          p.images && p.images[0]
+                            ? `https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${p.images[0].image}`
+                            : "/plugins/default-screenshot.jpg"
+                        }
+                      />
+                      <h3 class="text-primary m-0 text-truncate fs-4">{p.name}</h3>
+                      <p class="fs-5 m-0">{p.short_description}</p>
+                      <div class="text-muted">last updated on {p.last_update}</div>
                     </div>
-                    <div class="card-footer">last updated on {p.last_update}</div>
-                  </div>
-                </div>
+                  </a>
+                </article>
               ))}
             </div>
-          </div>
+          </section>
         </div>
       )
     }

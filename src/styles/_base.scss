@@ -31,3 +31,10 @@ body {
 svg[data-icon] {
   margin-bottom: 0.3rem;
 }
+
+.left-scrollbar {
+  direction: rtl;
+  & > * {
+    direction: ltr;
+  }
+}

@@ -5,8 +5,20 @@
       object-fit: cover;
     }
   }
+
   .plugins-filters {
-    padding: 0 0.5rem;
+    @extend .p-4;
+    position: sticky;
+    min-width: 300px;
+
+    @include media-breakpoint-down(xl) {
+      min-width: 220px;
+    }
+
+    top: $navbar-height;
+    max-height: calc(100dvh - #{$navbar-height});
+    overflow-y: auto;
+
     .checkbox-group {
       .checkbox:not(:last-child) {
         margin-bottom: 0.4rem;
@@ -14,6 +26,24 @@
       .bar {
         height: 5px;
       }
+    }
+  }
+
+  .facets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .plugins-list {
+    @extend .p-4;
+  }
+
+  article {
+    .plugin-image {
+      background: white;
+      max-width: 100%;
+      max-height: 300px;
     }
   }
 }

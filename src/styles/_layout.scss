@@ -4,6 +4,8 @@
   @extend .py-2;
   @extend .shadow;
   @extend .sticky-top;
+
+  height: $navbar-height;
 }
 
 .navbar-nav {
