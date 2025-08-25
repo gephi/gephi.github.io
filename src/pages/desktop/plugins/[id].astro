@@ -1,7 +1,9 @@
 ---
-import { reverse, sortBy, toPairs } from "lodash-es";
+import { divide, isEmpty } from "lodash-es";
 import Layout from "../../../layouts/Layout.astro";
 import type { Plugin } from "./type";
+import { Icon } from "astro-icon/components";
+import { marked } from "marked";
 
 interface Props {
   plugin: Plugin;
@@ -21,70 +23,183 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const { plugin } = Astro.props;
-const gephiVersionsChrono = reverse(
-  sortBy(toPairs(plugin.versions), ([v, version]) => new Date(version.last_update)),
-).map(([v]) => v);
-const latestGephiVersion = gephiVersionsChrono[0];
+
+let readme = "";
+try {
+  readme = marked(plugin.readme);
+} catch (err) {
+  console.log(`README.md markdown generation failed for plugin ${plugin.name}.`);
+}
 ---
 
-<Layout>
-  <header><h1>{plugin.name}</h1></header>
-  <main class="plugin-page">
-    <!-- author -->
-    {
-      (
-        <h2 class="authors">
-          by{" "}
-          {plugin.authors.map((a) =>
-            a.link ? (
-              <a class="author" href={a.link}>
-                {a.name}
-              </a>
-            ) : (
-              <span class="author">a.name</span>
-            ),
-          )}
-        </h2>
-      )
-    }
-    <div class="info-box">
-      <div>
-        <a class="btn btn-primary" href={plugin.versions[latestGephiVersion].url}
-          >Download for Gephi {latestGephiVersion}</a
-        >
+<Layout class="plugin-page">
+  <header class="banner">
+    <div class="container">
+      <div class="py-3">
+        <a class="text-white" href="/desktop">Gephi</a> > <a class="text-white" href="/desktop/plugins">Gephi plugins</a
+        > > <a class="text-white" href={`/desktop/plugins?categories=${plugin.category}`}>{plugin.category} plugins</a>
       </div>
-      {
-        gephiVersionsChrono.length > 1 && (
-          <details>
-            <summary>For older versions</summary>
-            <ul class="list-unstyled">
-              {gephiVersionsChrono.slice(1).map((vId) => (
-                <li>
-                  <a class="btn btn-secondary" href={plugin.versions[vId].url}>
-                    for Gephi {vId}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </details>
-        )
-      }
-      <div>Last release on {plugin.last_update}</div>
-      <div><a href={plugin.sourcecode}>source code</a> ({plugin.license})</div>
-    </div>
-    <article>
-      <!-- cover -->
-      {
-        plugin.images && plugin.images[0] && (
-          <img
-            class="cover"
-            src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`}
-          />
-        )
-      }
-      <!-- Description -->
 
-      <p class="description" set:html={plugin.long_description} />
-    </article>
+      <div class="content my-3 pb-5 pt-3">
+        {
+          !!plugin.images?.length && (
+            <img
+              class="flex-shrink-0"
+              src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`}
+            />
+          )
+        }
+
+        <section class="flex-grow-1">
+          <div class="">
+            <h1>{plugin.name}</h1>
+            <div class="fs-4">last updated on {plugin.last_update}</div>
+            <p class="fs-4 mt-3">{plugin.short_description}</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-5">
+    <section class="container pb-5 plugin-page">
+      <div class="row">
+        <div>
+          <section class="mb-3">
+            <h2 class="fs-4">
+              <Icon name="ph:article" />
+              Description:
+            </h2>
+            <div class="fs-5 plugin-description"><div set:html={plugin.long_description} /></div>
+          </section>
+
+          <section class="mb-3">
+            <h2 class="fs-4">
+              <Icon name={plugin.authors.length > 1 ? "ph:users" : "ph:user"} />
+              {plugin.authors.length > 1 ? "Authors" : "Author"}:
+            </h2>
+            {
+              plugin.authors?.length > 0 ? (
+                <ul class="list-unstyled">
+                  {plugin.authors.flatMap((author) => (
+                    <li>
+                      {author.email && [
+                        <a class="text-decoration-none" href={`mailto:${author.email}`}>
+                          <Icon name="ph:envelope" />
+                        </a>,
+                        " ",
+                      ]}
+                      {author.link && [
+                        <a class="text-decoration-none" href={author.link}>
+                          <Icon name="ph:link" />
+                        </a>,
+                        " ",
+                      ]}
+                      {author.name}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <div class="text-muted">No author specified.</div>
+              )
+            }
+          </section>
+
+          <section class="mb-3">
+            <h2 class="fs-4">
+              <Icon name="ph:code" /> Sources:
+            </h2>
+            {
+              plugin.sourcecode ? (
+                <a href={plugin.sourcecode}>{plugin.sourcecode.replace(/^https?:\/\//, "")}</a>
+              ) : (
+                <div class="text-muted">No link specified.</div>
+              )
+            }
+          </section>
+
+          <section class="mb-3">
+            <h2 class="fs-4">
+              <Icon name="ph:scales" /> License:
+            </h2>
+            {plugin.license ? <div>{plugin.license}</div> : <div class="text-muted">No link specified.</div>}
+          </section>
+
+          <section class="mb-3">
+            <h2 class="fs-4">
+              <Icon name="ph:tag" /> Compatible Gephi versions:
+            </h2>
+            <div class="alert alert-primary" role="alert">
+              When possible, you should directly install this plugin from Gephi{" "}
+              <strong>
+                <pre class="d-inline">Tools > Plugins</pre>
+              </strong>
+              menu. The following download links may be useful to spread this plugin to people with no internet access, for
+              instance.
+            </div>
+            {
+              !isEmpty(plugin.versions) ? (
+                <ul class="list-unstyled">
+                  {Object.keys(plugin.versions)
+                    .reverse()
+                    .map((v) => (
+                      <li>
+                        <a href={plugin.versions[v].url} class="text-decoration-none">
+                          <Icon name="ph:download" />
+                          Download plugin for Gephi v{v}
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+              ) : (
+                <div class="text-muted">No compatible version specified.</div>
+              )
+            }
+          </section>
+        </div>
+
+        {
+          plugin.images?.length > 1 && (
+            <section class="mb-4">
+              <h2 class="fs-4">
+                <Icon name="ph:image" /> Related images:
+              </h2>
+              <div class="thumbnails">
+                {plugin.images.map(({ image }) => (
+                  <a
+                    href={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${image}`}
+                    class=""
+                  >
+                    <img
+                      class="border img-fluid"
+                      src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${image}`}
+                    />
+                  </a>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        {
+          readme && (
+            <Fragment>
+              <hr class="my-5" />
+
+              <section id="readme">
+                <h2 class="fs-4">
+                  <a class="text-decoration-none" href="#readme">
+                    <Icon name="ph:hash" />
+                  </a>{" "}
+                  README:
+                </h2>
+
+                <div set:html={readme} class="plugin-readme" />
+              </section>
+            </Fragment>
+          )
+        }
+      </div>
+    </section>
   </main>
 </Layout>

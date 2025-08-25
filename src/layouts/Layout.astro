@@ -2,6 +2,12 @@
 import "../styles/main.scss";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,7 +26,7 @@ import { Icon } from "astro-icon/components";
     />
     <title>Gephi - The Open Graph Viz Platform</title>
   </head>
-  <body>
+  <body class={className}>
     <nav class="navbar navbar-expand">
       <div class="container">
         <a href="/" class="navbar-brand mr-auto mb-0">

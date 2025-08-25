@@ -43,16 +43,28 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
                     <div class="d-flex flex-column gap-1">
                       <img
                         alt=""
-                        class="card-img-top plugin-image mb-2"
+                        class="card-img-top plugin-image mb-2 border"
                         src={
                           p.images && p.images[0]
                             ? `https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${p.images[0].image}`
                             : "/plugins/default-screenshot.jpg"
                         }
                       />
+                      <div>
+                        <small class="small badge text-bg-light border border-primary text-primary">
+                          {p.category}
+                        </small>
+                      </div>
                       <h3 class="text-primary m-0 text-truncate fs-4">{p.name}</h3>
                       <p class="fs-5 m-0">{p.short_description}</p>
                       <div class="text-muted">last updated on {p.last_update}</div>
+                      <div class="d-flex flex-wrap gap-1">
+                        {Object.keys(p.versions)
+                          .reverse()
+                          .map((v) => (
+                            <span class="badge text-bg-primary">{v}</span>
+                          ))}
+                      </div>
                     </div>
                   </a>
                 </article>

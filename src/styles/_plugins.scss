@@ -49,26 +49,50 @@
 }
 
 .plugin-page {
-  h2 {
-    .authors {
-      .author:not(:last-child)::after {
-        content: ", ";
-      }
-    }
-  }
-  .info-box {
-    details {
-      ul {
-        display: flex;
-        gap: 0.5rem;
-      }
+  .banner .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @extend .gap-5;
+
+    img {
+      background: $white;
+      max-width: 30%;
+      max-height: 300px;
+      height: auto;
     }
   }
 
-  article {
-    img.cover {
-      float: left;
-      max-width: 50dvw;
+  .thumbnails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @extend .gap-4;
+
+    img {
+      max-height: 300px;
+    }
+  }
+
+  .plugin-readme,
+  .plugin-description {
+    img,
+    iframe {
+      max-width: 100%;
+    }
+
+    h1 {
+      @extend .fs-3;
+    }
+    h2 {
+      @extend .fs-4;
+    }
+    h3 {
+      @extend .fs-5;
+    }
+    h4,
+    h5 {
+      @extend .fs-6;
     }
   }
 }
