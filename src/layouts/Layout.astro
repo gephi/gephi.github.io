@@ -33,17 +33,22 @@ const { class: className } = Astro.props;
           <Image src="/gephi-logo.svg" alt="Gephi logo" width="50" height="50" />
           <span class="ms-2 gephi-font" style="font-weight: 600;">Gephi</span>
         </a>
-        <div class="flex-grow-1"></div>
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/help">Help</a>
+            <a class="nav-link" href="/faq">FAQ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contribute">Contribute</a>
+            <a class="nav-link" href="https://github.com/gephi">GitHub</a>
           </li>
+          <!--<li class="nav-item">-->
+          <!--  <a class="nav-link" href="/help">Help</a>-->
+          <!--</li>-->
+          <!--<li class="nav-item">-->
+          <!--  <a class="nav-link" href="/contribute">Contribute</a>-->
+          <!--</li>-->
           <li class="nav-item">
             <details class="nav-dropdown">
               <summary aria-haspopup="true" aria-expanded="false"
@@ -51,9 +56,10 @@ const { class: className } = Astro.props;
               >
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/desktop">Gephi</a></li>
+                <li><a class="dropdown-item" href="/desktop/plugins">Gephi plugins</a></li>
                 <li><a class="dropdown-item" href="/lite">Gephi Lite</a></li>
-                <li><a class="dropdown-item" href="/toolkit">Gephi Toolkit</a></li>
-                <li><a class="dropdown-item" href="/gephisto">Gephisto</a></li>
+                <!--<li><a class="dropdown-item" href="/toolkit">Gephi Toolkit</a></li>-->
+                <li><a class="dropdown-item" href="https://jacomyma.github.io/gephisto">Gephisto</a></li>
               </ul>
             </details>
           </li>
@@ -95,7 +101,7 @@ const { class: className } = Astro.props;
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5">
         <div class="col d-flex flex-column align-items-start gap-2">
           <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-            <Image src="/gephi-logo-circle.svg" class="mb-3 mb-md-0" alt="Gephi logo" width="100" height="100" />
+            <Image src="/gephi-logo-circle.svg" class="mb-3 mb-md-0" alt="Gephi logo" width="80" height="80" />
           </a>
 
           <a href="/desktop" class="btn btn-dark fw-bold"><Icon name="ph:download-simple-bold" /> Download Gephi</a>
@@ -111,12 +117,13 @@ const { class: className } = Astro.props;
           <h5 class="mb-3">Project</h5>
           <ul class="nav flex-column">
             <li class="nav-item mb-2"><a href="/about" class="nav-link p-0 text-body-secondary">About</a></li>
-            <li class="nav-item mb-2">
-              <a href="/help" class="nav-link p-0 text-body-secondary">Get some help</a>
-            </li>
-            <li class="nav-item mb-2">
-              <a href="/contribute" class="nav-link p-0 text-body-secondary">Contribute</a>
-            </li>
+            <li class="nav-item mb-2"><a href="/faq" class="nav-link p-0 text-body-secondary">FAQ</a></li>
+            <!--<li class="nav-item mb-2">-->
+            <!--  <a href="/help" class="nav-link p-0 text-body-secondary">Get some help</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item mb-2">-->
+            <!--  <a href="/contribute" class="nav-link p-0 text-body-secondary">Contribute</a>-->
+            <!--</li>-->
             <li class="nav-item mb-2">
               <a href="https://docs.gephi.org" class="nav-link p-0 text-body-secondary">Documentation</a>
             </li>
@@ -140,8 +147,10 @@ const { class: className } = Astro.props;
               <a href="/desktop/plugins" class="nav-link p-0 text-body-secondary">Gephi Plugins</a>
             </li>
             <li class="nav-item mb-2"><a href="/lite" class="nav-link p-0 text-body-secondary">Gephi Lite</a></li>
-            <li class="nav-item mb-2"><a href="/toolkit" class="nav-link p-0 text-body-secondary">Gephi Toolkit</a></li>
-            <li class="nav-item mb-2"><a href="/gephisto" class="nav-link p-0 text-body-secondary">Gephisto</a></li>
+            <!--<li class="nav-item mb-2"><a href="/toolkit" class="nav-link p-0 text-body-secondary">Gephi Toolkit</a></li>-->
+            <li class="nav-item mb-2">
+              <a href="https://jacomyma.github.io/gephisto" class="nav-link p-0 text-body-secondary">Gephisto</a>
+            </li>
           </ul>
         </div>
 
