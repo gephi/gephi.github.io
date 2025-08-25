@@ -1,0 +1,17 @@
+.team-members {
+  display: flex;
+  flex-wrap: wrap;
+  @extend .gap-4;
+}
+
+.team-member {
+  text-align: center;
+
+  img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    filter: saturate(0);
+  }
+}

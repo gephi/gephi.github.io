@@ -13,10 +13,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 3rem 0;
 
-  &:not(:last-child) {
-    @extend .mb-5;
+  &:has(.feature-background) {
+    padding: 3rem 0;
   }
 
   .feature-background {
@@ -101,7 +100,7 @@
     }
   }
 
-  &:nth-child(2n) {
+  &:nth-child(2n):not(.feature-left) {
     .feature-background {
       background-position: left top;
       justify-content: start;

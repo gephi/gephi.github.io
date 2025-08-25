@@ -1,13 +1,110 @@
 ---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
 import Layout from "../../layouts/Layout.astro";
+
+type TeamMember = { image: string; name: string; role?: string };
+
+const TEAM: TeamMember[] = [
+  { image: "/team/mathieu-jacomy.png", name: "Mathieu Jacomy", role: "Project management and design" },
+  { image: "/team/mathieu-bastian.png", name: "Mathieu Bastian", role: "Java architect" },
+  { image: "/team/eduardo-ramos-ibanez.png", name: "Eduardo Ramos Ibáñez", role: "Java lead developer" },
+  { image: "/team/matthieu-totet.png", name: "Matthieu Totet", role: "Java codebase and plugins" },
+  { image: "/team/paul-girard.jpeg", name: "Paul Girard", role: "Gephi Lite team" },
+  { image: "/team/alexis-jacomy.jpg", name: "Alexis jacomy", role: "Gephi Lite team" },
+  { image: "/team/benoit-simard.jpeg", name: "Benoit Simard", role: "Gephi Lite team" },
+  { image: "/team/martin-grandjean.png", name: "Martin Grandjean", role: "Community management" },
+];
 ---
 
 <Layout>
-  <header class="container container-medium mt-5 mb-5 text-center">
-    <section>
-      <h1>Static page</h1>
+  <header class="banner py-5">
+    <section class="container my-5 py-4">
+      <h1>About Gephi</h1>
     </section>
   </header>
 
-  <main class="container">TODO</main>
+  <main class="py-5">
+    <section class="container pb-5">
+      <section class="feature feature-left feature-flat py-4">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:hourglass-medium" class="text-primary" />
+              <span>Project history</span>
+            </h2>
+            <p>
+              Gephi has been initially developed by students of the <a href="https://www.utc.fr/en/"
+                >University of Technology of Compiègne</a
+              >, in France. It has been selected for the <a href="https://summerofcode.withgoogle.com/"
+                >Google Summer of Code</a
+              > from 2009 to 2013.
+            </p>
+            <p>
+              After a less active period of development, Gephi team gathers <a
+                href="https://gephi.wordpress.com/2021/12/06/gephi-code-sustainability-retreat-2021-debriefing/"
+                >almost</a
+              >
+              <a href="https://gephi.wordpress.com/2022/10/16/gephi-week-2022-debriefing/">every</a>
+              <a href="https://gephi.wordpress.com/2024/06/13/gephi-week-2024-peek-from-the-inside/">year</a> since 2021
+              to maintain the codebase, meets users, and discuss and design new features.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:list-checks" class="text-primary" />
+              <span>Roadmap</span>
+            </h2>
+            <p>TODO: Improve that roadmap introduction paragraph.</p>
+            <ul class="fs-4 ps-md-0 mt-0">
+              <li>Undo / redo</li>
+              <li>Lorem</li>
+              <li>Ipsum</li>
+            </ul>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:users-three" class="text-primary" />
+              <span>Team</span>
+            </h2>
+            <p>
+              Gephi has been made possible by so many people that it's hard to name them all, from developers, to
+              content creators, to translators... Here is a non-exhaustive list of currently active members:
+            </p>
+          </div>
+        </section>
+
+        <div class="feature-text mw-100">
+          <div class="team-members">
+            {
+              TEAM.map((member) => (
+                <div class="team-member">
+                  <Image
+                    width="200"
+                    height="200"
+                    class="img-thumbnail"
+                    src={member.image}
+                    alt={`${member.name}'s picture`}
+                  />
+                  <h3 class="fs-5 mb-0">{member.name}</h3>
+                  {member.role && <div class="text-muted">{member.role}</div>}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
 </Layout>
