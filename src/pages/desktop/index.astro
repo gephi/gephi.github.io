@@ -1,75 +1,9 @@
 ---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import DownloadGephiDesktop from "../../components/DownloadGephiDesktop.astro";
 import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import { fromPairs, map, mapValues, toPairs } from "lodash-es";
-
-const BROWSERS = {
-  windows64: {
-    label: "Windows",
-    dlSuffix: "windows-x64.exe",
-    icon: "ph:windows-logo-fill",
-  },
-  windows32: {
-    label: "Windows (32 bits)",
-    dlSuffix: "windows-x32.exe",
-    icon: "ph:windows-logo-fill",
-  },
-  macSilicon: {
-    label: "Mac OS",
-    dlSuffix: "macos-aarch64.dmg",
-    icon: "ph:apple-logo-fill",
-  },
-  macIntel: {
-    label: "Mac OS (Intel)",
-    dlSuffix: "macos-x64.dmg",
-    icon: "ph:apple-logo-fill",
-  },
-  linux: {
-    label: "Linux",
-    dlSuffix: "linux-x64.tar.gz",
-    icon: "ph:linux-logo-fill",
-  },
-} as const;
-
-type Browser = keyof typeof BROWSERS;
-
-async function getDownloadLinks() {
-  try {
-    const resp = await fetch("https://api.github.com/repos/gephi/gephi/releases/latest");
-    const data = (await resp.json()) as { tag_name: string; assets: { browser_download_url: string }[] };
-    const version = data.tag_name.replace(/^v/, "");
-    const res = {
-      version,
-      links: mapValues(
-        BROWSERS,
-        ({ dlSuffix }) => `https://github.com/gephi/gephi/releases/download/v${version}/gephi-${version}-${dlSuffix}`,
-      ) as Partial<Record<Browser, string>>,
-    };
-
-    const suffixes = fromPairs(toPairs(BROWSERS).map(([browser, { dlSuffix }]) => [dlSuffix, browser]));
-    data.assets.forEach(({ browser_download_url }) => {
-      const suffix = (browser_download_url.split("/").at(-1) || "").replace(`gephi-${version}-`, "");
-      if (suffixes[suffix]) {
-        res.links[suffixes[suffix] as Browser] = browser_download_url;
-      }
-    });
-
-    return res;
-  } catch (e) {
-    const version = "1.0.0";
-    return {
-      version,
-      links: mapValues(
-        BROWSERS,
-        ({ dlSuffix }) => `https://github.com/gephi/gephi/releases/download/v${version}/gephi-${version}-${dlSuffix}`,
-      ) as Partial<Record<Browser, string>>,
-    };
-  }
-}
-
-const DOWNLOAD_LINKS = await getDownloadLinks();
 ---
 
 <Layout>
@@ -92,51 +26,7 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
             Gephi is an <strong>open-source</strong> desktop application to <strong>visually analyze networks</strong>.
           </p>
 
-          <div class="d-flex flex-column align-items-start">
-            <a
-              href="https://github.com/gephi/gephi/releases"
-              id="download-gephi"
-              class="btn btn-white fs-4 fw-bold mb-2"
-              ><Icon name="ph:download-simple-bold" /> <span class="text">Download Gephi</span></a
-            >
-            {
-              map(
-                BROWSERS,
-                ({ label, icon }, browser: Browser) =>
-                  DOWNLOAD_LINKS.links[browser] && (
-                    <a class="text-light" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
-                      <Icon name={icon} /> Download for {label}
-                    </a>
-                  ),
-              )
-            }
-            <a class="text-light" href="https://github.com/gephi/gephi/releases">
-              <Icon name="ph:clock-counter-clockwise" /> Download Older Versions
-            </a>
-          </div>
-          <script define:vars={{ DOWNLOAD_LINKS, BROWSERS }}>
-            let currentBrowser = "windows64";
-
-            if (navigator.appVersion.indexOf("Win") !== -1) {
-              currentBrowser = "windows64";
-            } else if (navigator.appVersion.indexOf("Mac") !== -1) {
-              currentBrowser = "macSilicon";
-            } else if (navigator.userAgent.indexOf("Ubuntu") !== -1) {
-              currentBrowser = "linux";
-            } else if (navigator.appVersion.indexOf("X11") !== -1) {
-              currentBrowser = "linux";
-            }
-
-            const link = document.getElementById("download-gephi");
-            const linkText = link.querySelector(".text");
-            if (DOWNLOAD_LINKS.links[currentBrowser]) {
-              link.href = DOWNLOAD_LINKS.links[currentBrowser];
-              linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
-            }
-
-            const smallLink = document.querySelector(`a[data-browser='${currentBrowser}']`);
-            if (smallLink) smallLink.remove();
-          </script>
+          <DownloadGephiDesktop withAlternativeLinks />
         </div>
         <div class="col-5 text-end">
           <Image

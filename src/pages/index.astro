@@ -1,8 +1,9 @@
 ---
 import { Image } from "astro:assets";
 
-import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import DownloadGephiDesktop from "../components/DownloadGephiDesktop.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
@@ -20,22 +21,24 @@ import { Icon } from "astro-icon/components";
 
       <div class="d-flex gap-5 flex-wrap flex-xl-nowrap">
         <div class="p-5 bg-gephi-desktop-bg text-dark d-flex flex-row gap-5 flex-grow-1 flex-wrap">
-          <div>
+          <a href="/desktop">
             <Image src="/icons/gephi-desktop-logo.svg" alt="Gephi logo" class="h-100" width="130" height="130" />
-          </div>
+          </a>
           <div class="flex-shrink-0">
-            <h2 class="gephi-font">Gephi</h2>
-            <p class="fs-4">
-              Desktop application &nbsp;
-              <Icon name="ph:apple-logo" />
-              <Icon name="ph:windows-logo" />
-              <Icon name="ph:linux-logo" />
-            </p>
-            <a href="/desktop" class="btn btn-dark fs-4 me-1 fw-bold"><Icon name="ph:download-simple-bold" /> Download</a>
+            <a href="/desktop" class="no-decoration">
+              <h2 class="gephi-font">Gephi</h2>
+              <p class="fs-4">
+                Desktop application &nbsp;
+                <Icon name="ph:apple-logo" />
+                <Icon name="ph:windows-logo" />
+                <Icon name="ph:linux-logo" />
+              </p>
+            </a>
+            <DownloadGephiDesktop buttonClass="btn btn-dark fs-4 me-1 fw-bold" />
           </div>
         </div>
         <div class="p-5 bg-gephi-lite-bg text-lite d-flex flex-row gap-5 flex-grow-1 flex-wrap">
-          <div>
+          <a href="/lite">
             <Image
               src="/icons/gephi-lite-logo-inverted.svg"
               alt="Gephi Lite logo"
@@ -43,16 +46,18 @@ import { Icon } from "astro-icon/components";
               width="130"
               height="130"
             />
-          </div>
+          </a>
           <div class="flex-shrink-0">
-            <h2 class="gephi-font">Gephi Lite</h2>
-            <p class="fs-4">
-              Online tool &nbsp;
-              <Icon name="ph:desktop" />
-              <Icon name="ph:laptop" />
-              <Icon name="ph:device-tablet-camera" />
-              <Icon name="ph:device-mobile-camera" />
-            </p>
+            <a href="/lite" class="no-decoration">
+              <h2 class="gephi-font">Gephi Lite</h2>
+              <p class="fs-4">
+                Online tool &nbsp;
+                <Icon name="ph:desktop" />
+                <Icon name="ph:laptop" />
+                <Icon name="ph:device-tablet-camera" />
+                <Icon name="ph:device-mobile-camera" />
+              </p>
+            </a>
             <a href="https://lite.gephi.org" class="btn btn-light fs-4 fw-bold"
               ><Icon name="ph:arrow-square-out-bold" /> Open in browser</a
             >
@@ -79,8 +84,7 @@ import { Icon } from "astro-icon/components";
         <div class="feature-text">
           <h2><Icon name="ph:graph" /> <span>Powerful Network Analysis</span></h2>
           <p>
-            Discover <strong>structural patterns</strong> in your connected data.
-            From social networks to biological systems,
+            Discover <strong>structural patterns</strong> in your connected data. From social networks to biological systems,
             Gephi handles complex networks of <strong>ten to ten million nodes</strong>
             with advanced algorithms and metrics.
           </p>
@@ -99,10 +103,8 @@ import { Icon } from "astro-icon/components";
         <div>
           <h3>Data Manipulation</h3>
           <p>
-            <strong>Draw a network</strong> like a picture,
-            or use our <strong>spreadsheet interface</strong> to manipulate data columns,
-            search and transform the data.
-            Import multiple formats and filter networks interactively.
+            <strong>Draw a network</strong> like a picture, or use our <strong>spreadsheet interface</strong> to manipulate
+            data columns, search and transform the data. Import multiple formats and filter networks interactively.
           </p>
         </div>
       </section>
@@ -116,8 +118,8 @@ import { Icon } from "astro-icon/components";
           <p>
             Explore your data with rich <strong>network visualizations</strong>
             based on advanced layout algorithms.
-            <strong>Render network maps</strong> with customizable styling options.
-            Export in multiple formats for presentations and publications.
+            <strong>Render network maps</strong> with customizable styling options. Export in multiple formats for presentations
+            and publications.
           </p>
         </div>
       </section>
@@ -125,10 +127,7 @@ import { Icon } from "astro-icon/components";
       <section class="feature-arguments">
         <div>
           <h3>Layout Algorithms</h3>
-          <p>
-            Choose from various options including Force Atlas 2,
-            Früchterman-Reingold, OpenOrd...
-          </p>
+          <p>Choose from various options including Force Atlas 2, Früchterman-Reingold, OpenOrd...</p>
         </div>
         <div>
           <h3>Appearance Customization</h3>
@@ -152,11 +151,9 @@ import { Icon } from "astro-icon/components";
         <div class="feature-text">
           <h2><Icon name="ph:graduation-cap" /> <span>Trusted by Researchers Worldwide</span></h2>
           <p>
-            Gephi has been featured in tens of thousands of academic publications
-            across disciplines from sociology to biology.
-            It has become a leading tool for network analysis in research,
-            trusted by universities and research institutions globally
-            for its reliability and comprehensive features.
+            Gephi has been featured in tens of thousands of academic publications across disciplines from sociology to
+            biology. It has become a leading tool for network analysis in research, trusted by universities and research
+            institutions globally for its reliability and comprehensive features.
           </p>
         </div>
       </section>
@@ -183,12 +180,9 @@ import { Icon } from "astro-icon/components";
         <div>
           <h3>The <strong>Gephi Lite</strong> Paper</h3>
           <div class="d-flex align-items-center">
-            <a href="#"
-              ><img class="border" src="/homepage/gephi-lite-paper.png" /></a
-            >
+            <a href="#"><img class="border" src="/homepage/gephi-lite-paper.png" /></a>
             <p class="fs-6 ms-3">
-              Girard P., Jacomy A., Simard B., Jacomy M. (2025). <i
-                >Gephi Lite: a lighter web-based version of Gephi.</i
+              Girard P., Jacomy A., Simard B., Jacomy M. (2025). <i>Gephi Lite: a lighter web-based version of Gephi.</i
               > Digital Humanities 2025. Lisbon.
             </p>
           </div>
@@ -203,10 +197,12 @@ import { Icon } from "astro-icon/components";
           <h2><Icon name="ph:heart" /> <span>Open Source &amp; Free</span></h2>
           <p>
             Built by the <strong>community</strong>, for the community.
-            <br>
-            Gephi is free as in &ldquo;free beer,&rdquo; you don't have to pay (but you can <a href="https://opencollective.com/gephi/donate?interval=oneTime&amount=5&name=&legalName=&email=">support us</a>).
-            And it is free as in &ldquo;free speech,&rdquo; having its source code fully available under <a href="https://github.com/gephi/gephi/blob/master/LICENSE.md"
-              >GPL license</a
+            <br />
+            Gephi is free as in &ldquo;free beer,&rdquo; you don't have to pay (but you can <a
+              href="https://opencollective.com/gephi/donate?interval=oneTime&amount=5&name=&legalName=&email="
+              >support us</a
+            >). And it is free as in &ldquo;free speech,&rdquo; having its source code fully available under <a
+              href="https://github.com/gephi/gephi/blob/master/LICENSE.md">GPL license</a
             >.
           </p>
         </div>
@@ -222,9 +218,14 @@ import { Icon } from "astro-icon/components";
         </div>
         <div>
           <h3>Donate</h3>
-          <p>We are <strong>non-profit</strong>. Help us innovate by donating to fund development and keep Gephi free for everyone.</p>
           <p>
-            <a class="btn btn-dark" href="https://opencollective.com/gephi/donate"><Icon name="ph:hand-heart" /> Make a donation</a>
+            We are <strong>non-profit</strong>. Help us innovate by donating to fund development and keep Gephi free for
+            everyone.
+          </p>
+          <p>
+            <a class="btn btn-dark" href="https://opencollective.com/gephi/donate"
+              ><Icon name="ph:hand-heart" /> Make a donation</a
+            >
           </p>
         </div>
       </section>
