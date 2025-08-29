@@ -1,9 +1,10 @@
 ---
-import { divide, isEmpty } from "lodash-es";
+import { Icon } from "astro-icon/components";
+import { isEmpty } from "lodash-es";
+import { marked } from "marked";
+
 import Layout from "../../../layouts/Layout.astro";
 import type { Plugin } from "./type";
-import { Icon } from "astro-icon/components";
-import { marked } from "marked";
 
 interface Props {
   plugin: Plugin;
@@ -21,12 +22,11 @@ export async function getStaticPaths() {
   return [];
 }
 
-const { id } = Astro.params;
 const { plugin } = Astro.props;
 
 let readme = "";
 try {
-  readme = marked(plugin.readme);
+  readme = await marked(plugin.readme);
 } catch (err) {
   console.log(`README.md markdown generation failed for plugin ${plugin.name}.`);
 }
@@ -159,7 +159,7 @@ try {
         </div>
 
         {
-          plugin.images?.length > 1 && (
+          plugin.images && plugin.images.length > 1 && (
             <section class="mb-4">
               <h2 class="fs-4">
                 <Icon name="ph:image" /> Related images:
@@ -183,7 +183,6 @@ try {
 
         {
           readme && (
-            <Fragment>
               <hr class="my-5" />
 
               <section id="readme">
@@ -196,7 +195,6 @@ try {
 
                 <div set:html={readme} class="plugin-readme" />
               </section>
-            </Fragment>
           )
         }
       </div>
