@@ -8,7 +8,10 @@ interface Props {
 const { id, question, answer } = Astro.props;
 ---
 
-<div class="col-md-6 col-lg-4" id={id}>
-  <h3 class="fs-4"><Icon name="ph:quotes" style="transform: scaleX(-1);" /> {question}</h3>
-  <p class="fs-5" set:html={answer} />
-</div>
+<details class="faq-item border-bottom py-3" id={id}>
+  <summary>
+    <h3 class="faq-question fs-5 d-inline fw-normal">{question}</h3>
+    <Icon class="faq-question-icon" name="ph:caret-down" />
+  </summary>
+  <div class="faq-answer fs-6 mt-3" set:html={answer} />
+</details>

@@ -1,0 +1,32 @@
+.faq-page {
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item {
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      @extend .gap-2;
+    }
+
+    .faq-question-icon {
+      transition: all 0.2s ease-out;
+    }
+    &[open] .faq-question-icon {
+      transform: rotate(180deg);
+    }
+
+    transition: all 0.2s ease-out;
+    &[open] {
+      opacity: 1;
+    }
+    &:not([open]) {
+      opacity: 0.7;
+    }
+  }
+}
