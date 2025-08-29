@@ -1,8 +1,8 @@
 ---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 ---
 
 <Layout>
@@ -23,7 +23,7 @@ import { Icon } from "astro-icon/components";
 
           <p class="fs-3">
             Gephi Lite is an <strong>open-source</strong> web application dedicated to <strong
-              >visually analyze networks</strong
+              >visual network analysis</strong
             >.
           </p>
 
@@ -53,7 +53,7 @@ import { Icon } from "astro-icon/components";
     </section>
 
     <section class="container pb-5">
-      <section class="feature feature-flat">
+      <section class="feature">
         <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
         <section class="feature-headline">
           <div class="feature-text">
@@ -66,10 +66,12 @@ import { Icon } from "astro-icon/components";
               your networks, from any modern web browsers. <strong>No installation required</strong>.
             </p>
             <p>
-              Also, Gephi Lite has <strong>no server</strong>, your data remains on your computer. But you can log into
-              a GitHub account, and save and load your graphs as <strong
-                ><a href="https://gist.github.com/" class="text-nowrap">GitHub Gists</a></strong
-              >!
+              Gephi Lite has <strong>no server</strong>, your data remains on your computer. But if you prefer you can
+              log into a
+              <strong
+                ><a href="https://docs.gephi.org/lite/user-manual/github-auth" class="text-nowrap">GitHub account</a
+                ></strong
+              >, and save and load your graphs as GitHub Gists!
             </p>
           </div>
         </section>
@@ -98,7 +100,7 @@ import { Icon } from "astro-icon/components";
         </section>
       </section>
 
-      <section class="feature feature-flat">
+      <section class="feature">
         <div class="feature-background" style="opacity: 0.075; background-image: url(/lite/code.png);"></div>
         <section class="feature-headline">
           <div class="feature-text">
@@ -106,6 +108,10 @@ import { Icon } from "astro-icon/components";
               <Icon name="ph:plugs" class="text-primary" />
               <span>Gephi in your <strong>web application</strong></span>
             </h2>
+            <p>
+              Embed <a class="fw-bold" href="https://docs.gephi.org/lite/integration/embed">Gephi lite in an iFrame</a> opening
+              your own graph as a URL.
+            </p>
             <p>
               Deploy Gephi Lite next to your web application, and use our <a
                 class="fw-bold"
@@ -136,7 +142,7 @@ import { Icon } from "astro-icon/components";
         </section>
       </section>
 
-      <section class="feature feature-flat">
+      <section class="feature">
         <div class="feature-background" style="opacity: 0.075; background-image: url(/lite/graph.png);"></div>
         <section class="feature-headline">
           <div class="feature-text">
@@ -166,6 +172,20 @@ import { Icon } from "astro-icon/components";
             <figcaption class="figure-caption text-muted text-center">Responsive user interfaces</figcaption>
           </figure>
         </section>
+      </section>
+      <section class="feature">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:cursor-click" class="text-primary" />
+              <span><strong>Try it now!</strong></span>
+            </h2>
+          </div>
+        </section>
+        <iframe
+          id="try-gephi-lite"
+          src="https://gephi.org/gephi-lite?file=https://gist.githubusercontent.com/jacomyal/08b9cdd4c629f64c299eaa8b922bc37b/raw/a85f7bb53a6f6bb17cf3f5c0991142708f120146/arctic-shaded.json"
+        ></iframe>
       </section>
     </section>
 
