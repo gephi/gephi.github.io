@@ -1,6 +1,7 @@
 import react from "@astrojs/react";
 import icon from "astro-icon";
 import { defineConfig } from "astro/config";
+import redirects from "./redirects";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,4 +12,5 @@ export default defineConfig({
     locales: ["en"],
     defaultLocale: "en",
   },
+  redirects,
 });
