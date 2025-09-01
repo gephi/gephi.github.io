@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "../layouts/Layout.astro";
+
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<Layout>
+  <header class="banner py-5">
+    <section class="container my-5 py-4 w-100">
+      <div class="d-flex gap-3 fs-1 w-100">
+        <Icon name="ph:barricade" />
+        <Icon name="ph:shovel" />
+        <Icon name="ph:toolbox" />
+        <Icon name="ph:screwdriver" />
+        <Icon name="ph:hammer" />
+        <Icon name="ph:crane-tower" />
+        <Icon name="ph:pencil-ruler" />
+        <Icon name="ph:pipe" />
+      </div>
+      <h1>
+        {title} page not ready yet!
+      </h1>
+    </section>
+  </header>
+
+  <main class="p-5">
+    <section class="fs-2">
+      <slot />
+      <p>We are working on it...</p>
+    </section>
+    <section>
+      <slot name="more-information" />
+    </section>
+  </main>
+</Layout>
