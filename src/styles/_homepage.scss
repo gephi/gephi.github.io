@@ -70,8 +70,9 @@
   }
 
   .feature-text {
+    @extend .fs-4;
+    
     p {
-      @extend .fs-4;
 
       &:last-child {
         margin: 0;
