@@ -65,11 +65,36 @@ const TEAM: TeamMember[] = [
               <Icon name="ph:list-checks" class="text-primary" />
               <span>Roadmap</span>
             </h2>
-            <p>TODO: Improve that roadmap introduction paragraph.</p>
+            <h3>Roadmap to Gephi Desktop 1.0</h3>
+            <p>
+              Gephi Desktop has been a "beta" version for more than a decade.
+              This just means that the team does not consider the tool to be <em>complete</em> yet.
+              We aim to implement the following features before getting "version 1.0":
+            </p>
             <ul class="fs-4 ps-md-0 mt-0">
-              <li>Undo / redo</li>
-              <li>Lorem</li>
-              <li>Ipsum</li>
+              <li><strong>Undo</strong> feature, limited to the “GEXF scope”: network data, metadata, positions, sizes, colors…</li>
+              <li><strong>Default save to GEXF.</strong> More stable than “.gephi” though it does not save the state of the user interface.</li>
+              <li><strong>Activity log</strong>, possibly coordinated to undo, possibly stored in the GEXF. A plugin is already exploring that direction.</li>
+              <li><strong>Parallel edges.</strong> The GraphStore supports it but not the rest of Gephi.</li>
+              <li><strong>New GPU visualization engine.</strong> We aim for comfortably visualizing 200K nodes and 1M edges on an average consumer laptop. Might be ready soon!</li>
+              <li><strong>Curved edges in visual exploration.</strong> These are important because they help identifying edge orientation.</li>
+              <li><strong>Legend generator</strong> (note: available in Gephi Lite)</li>
+            </ul>
+            <p>We are also considering the following features, but for a more distant future:</p>
+            <ul class="fs-4 ps-md-0 mt-0">
+              <li>Local exploration, i.e. at least a quick overview of a subgraph.</li>
+              <li>Edges bundling visualization technique</li>
+              <li>Integrate other visualization (treemap, scatter plots...)</li>
+            </ul>
+
+            <h3>Project roadmap</h3>
+            <p>
+              Beyond the codebase, we also work on the project's structuration and other aspects. Next up we aim at this:
+            </p>
+            <ul class="fs-4 ps-md-0 mt-0">
+              <li><strong>Consolidate governance.</strong> Clarify roles, add content to our Open Collective platform, and improve onboarding.</li>
+              <li><strong>Raise funds and facilitate donations.</strong> We need funds for the Gephi Weeks and ultimately, for a maintainer.</li>
+              <li><strong>Recruit dev contributors.</strong> Having devs familiar with the codebases is key to the sustainability of the project.</li>
             </ul>
           </div>
         </section>
