@@ -32,7 +32,7 @@ const TEAM: TeamMember[] = [
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
-              <Icon name="ph:hourglass-medium" class="text-primary" />
+              <Icon name="ph:cake" class="text-primary" />
               <span>Project history</span>
             </h2>
             <p>
@@ -62,40 +62,26 @@ const TEAM: TeamMember[] = [
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
-              <Icon name="ph:list-checks" class="text-primary" />
-              <span>Roadmap</span>
+              <Icon name="ph:road-horizon" class="text-primary" />
+              <span>Project roadmap</span>
             </h2>
-            <h3>Roadmap to Gephi Desktop 1.0</h3>
+            
             <p>
-              Gephi Desktop has been a "beta" version for more than a decade.
-              This just means that the team does not consider the tool to be <em>complete</em> yet.
-              We aim to implement the following features before getting "version 1.0":
-            </p>
-            <ul class="fs-4 ps-md-0 mt-0">
-              <li><strong>Undo</strong> feature, limited to the “GEXF scope”: network data, metadata, positions, sizes, colors…</li>
-              <li><strong>Default save to GEXF.</strong> More stable than “.gephi” though it does not save the state of the user interface.</li>
-              <li><strong>Activity log</strong>, possibly coordinated to undo, possibly stored in the GEXF. A plugin is already exploring that direction.</li>
-              <li><strong>Parallel edges.</strong> The GraphStore supports it but not the rest of Gephi.</li>
-              <li><strong>New GPU visualization engine.</strong> We aim for comfortably visualizing 200K nodes and 1M edges on an average consumer laptop. Might be ready soon!</li>
-              <li><strong>Curved edges in visual exploration.</strong> These are important because they help identifying edge orientation.</li>
-              <li><strong>Legend generator</strong> (note: available in Gephi Lite)</li>
-            </ul>
-            <p>We are also considering the following features, but for a more distant future:</p>
-            <ul class="fs-4 ps-md-0 mt-0">
-              <li>Local exploration, i.e. at least a quick overview of a subgraph.</li>
-              <li>Edges bundling visualization technique</li>
-              <li>Integrate other visualization (treemap, scatter plots...)</li>
-            </ul>
-
-            <h3>Project roadmap</h3>
-            <p>
-              Beyond the codebase, we also work on the project's structuration and other aspects. Next up we aim at this:
+              Beyond the codebase, we also work on the project’s structure and other aspects. Next up we aim at this:
             </p>
             <ul class="fs-4 ps-md-0 mt-0">
               <li><strong>Consolidate governance.</strong> Clarify roles, add content to our Open Collective platform, and improve onboarding.</li>
-              <li><strong>Raise funds and facilitate donations.</strong> We need funds for the Gephi Weeks and ultimately, for a maintainer.</li>
-              <li><strong>Recruit dev contributors.</strong> Having devs familiar with the codebases is key to the sustainability of the project.</li>
+              <li><strong>Raise funds and facilitate donations.</strong> We need funds for the Gephi Weeks and ultimately, for recurrent contributors.</li>
+              <li><strong>Recruit core contributors.</strong> Having developers familiar with the codebases is key to the sustainability of the project.</li>
+              <li><strong>Gephi Weeks.</strong> We meet for an entire week every year, and that’s a great moment to care for and contribute to the project.</li>
             </ul>
+            <p>
+              Follow the evolution of the project on our <a href="https://gephi.wordpress.com/">blog</a>,
+              and notably the Gephi Weeks:
+              <a href="https://gephi.wordpress.com/2021/12/06/gephi-code-sustainability-retreat-2021-debriefing/">2021</a>,
+              <a href="https://gephi.wordpress.com/2022/10/16/gephi-week-2022-debriefing/">2022</a>,
+              and <a href="https://gephi.wordpress.com/2024/06/13/gephi-week-2024-peek-from-the-inside/">2024</a>. (2025 upcoming)
+            </p>
           </div>
         </section>
       </section>
@@ -119,7 +105,7 @@ const TEAM: TeamMember[] = [
           <div class="team-members">
             {
               TEAM.map((member) => (
-                <div class="team-member">
+                <div class="team-member" style="width: 230px">
                   <Image
                     width="200"
                     height="200"

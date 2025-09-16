@@ -348,6 +348,39 @@ import Layout from "../../layouts/Layout.astro";
           <!-- TODO: Insert pictures or media to illustrate this topic -->
         </section>
       </section>
+
+      <section class="feature feature-flat">
+        <div class="feature-text">
+          <h2>
+            <Icon name="ph:road-horizon" class="text-primary" />
+            <span>Roadmap to Gephi Desktop 1.0</span>
+          </h2>
+          
+          <p>
+            Gephi Desktop has been a “beta” version for more than a decade. This just means that the team does not consider the tool to be complete yet. We aim to implement the following features before getting “version 1.0”:
+          </p>
+
+          <ul class="fs-4 ps-md-0 mt-0">
+            <li><strong>Undo feature</strong>, limited to the “GEXF scope”: network data, metadata, positions, sizes, colors…</li>
+            <li><strong>More readable UI</strong> with clearer icons.</li>
+            <li><strong>Activity log</strong>, possibly coordinated to undo, possibly stored in the GEXF.</li>
+            <li><strong>Parallel edges.</strong> The GraphStore (Gephi’s internal engine) supports them but they are not currently visualized or accessible from the user interface.</li>
+            <li><strong>Improved timeline</strong> for dynamic graphs.</li>
+            <li><strong>New GPU visualization engine.</strong> We aim for comfortably visualizing 200K nodes and 1M edges on an average consumer laptop. Might be ready soon!</li>
+            <li><strong>Legend generator</strong> (note: available in Gephi Lite)</li>
+          </ul>
+
+          <p>
+            We are also considering the following features, but for a more distant future:
+          </p>
+          
+          <ul class="fs-4 ps-md-0 mt-0">
+            <li>Local exploration, i.e. at least a quick overview of a subgraph.</li>
+            <li>Integrate other visualization (treemap, scatter plots...)</li>
+            <li>Rework the image export with more advanced renderers</li>
+          </ul>
+        </div>
+      </section>
     </section>
   </main>
 </Layout>
