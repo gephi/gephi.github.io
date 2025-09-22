@@ -1,5 +1,6 @@
 ---
-import Gephi from "../../components/how-to/Gephi.astro";
+import { Image } from "astro:assets";
+import Gephi from "../../components/how-to/Gephi.md";
 import GephiLite from "../../components/how-to/GephiLite.md";
 import Layout from "../../layouts/Layout.astro";
 ---
@@ -14,11 +15,37 @@ import Layout from "../../layouts/Layout.astro";
   <main class="py-5">
     <section class="how-to container">
       <article class="how-to-column" id="gephi">
-        <h2>Gephi</h2>
+        <h2>
+          <label class="form-check-label" for="viewGephiHowTo">
+            <Image
+              src="/icons/gephi-desktop-logo-inverted.svg"
+              class="mb-3 mb-md-0"
+              alt="Gephi logo"
+              width="100"
+              height="100"
+            />
+            <span class="label-content">Gephi</span></label
+          >
+
+          <input class="form-check-input bg-gephi-lite" type="checkbox" role="switch" id="viewGephiHowTo" checked />
+        </h2>
         <Gephi />
       </article>
       <article class="how-to-column" id="gephi-lite">
-        <h2>Gephi Lite</h2>
+        <h2>
+          <label class="form-check-label" for="viewGephiLiteHowTo">
+            <span class="label-content">Gephi Lite</span>
+
+            <Image
+              src="/icons/gephi-lite-logo-inverted.svg"
+              class="mb-3 mb-md-0"
+              alt="Gephi logo"
+              width="100"
+              height="100"
+            />
+          </label>
+          <input class="form-check-input bg-gephi-lite" type="checkbox" role="switch" id="viewGephiLiteHowTo" checked />
+        </h2>
         <GephiLite />
       </article>
     </section>
