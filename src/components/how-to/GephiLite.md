@@ -126,7 +126,7 @@ By default in this sample GEXF dataset, nodes are coloured according to their �
 > Enter minimum and maximum values (e.g. 10 and 60) to resize the nodes
 > Notice that a legend for size and color is automatically generated and updated at the bottom of your graph
 
-![Nodes appearance tab open and caption visible on graph](./gephi-lite/appearance_nodes_2.png)
+![Nodes appearance tab opened and caption visible on graph](./gephi-lite/appearance_nodes_2.png)
 
 </section>
 
@@ -139,6 +139,8 @@ Under "Appearance”, in the submenu “Labels”, you can change the size and d
 > Unfold the drop-down menu under “Set label sizes from...” and chose “Nodes size”
 > Set the label size to “20”
 > Move the slider under “How many labels should appear any time” to hide the smaller labels
+
+![Labels appearance tab opened](./gephi-lite/appearance_nodes_labels.png)
 
 </section>
 
@@ -162,8 +164,10 @@ In the “Layout” menu, you can modify the spatialisation of the graph by choo
 You will find that you need to play around with the settings to obtain a readable network:
 
 > Check the “Adjust size?” check-box.
-> Change the “Scaling ratio” to 50 to give the graph more space.
+> Change the “Scaling ratio” to 30 to give the graph more space.
 > Click “Start” again to launch the algorithm with the new settings.
+
+![Layout Force Atlas 2 panel opened](./gephi-lite/layout_fa2.png)
 
 </section>
 
@@ -188,6 +192,8 @@ The “Metrics” menu on the left side of the screen allows you to calculate ce
 > To calculate betweenness centrality, select it under the “Metric” menu and click on “Compute metric” at the very bottom of the menu.
 > The values for this metric are now recorded in the Nodes table of the “Data” table in fresh new columns.
 
+![Metrics betweenness centrality panel opened](./gephi-lite/metrics_betweenness_centrality.png)
+
 </section>
 
 <section>
@@ -199,6 +205,8 @@ You can now return to the “Appearance” window to change the colour of the no
 > Select “Nodes” under “ then the “Appearance”.
 > In the “Set color from...” drop-down menu select “betweennessCentrality”.
 > You can then choose the colour gradient by clicking directly on the coloured bar and change the colours manually.
+
+![Appearance nodes panel opened](./gephi-lite/appearance_after_metrics.png)
 
 </section>
 
@@ -214,12 +222,14 @@ You can now return to the “Appearance” window to change the colour of the no
 
 The “Filters” menu allows you to filter your graph in multiple ways based on attributes or properties of nodes or edges, as well as based on the overall topology of the network.
 
-> In the “Nodes” drop-down menu, select “Nodes”.
-> In the “Using” drop-down menu, select “degree (dynamic)”.
-> Click on the “Create filter” button.
+> open the filter panel by clicking on “Filters” in menu
+> Click on “Add Filter” button.
+> In the modal section entitled “Nodes attributes” click on “Degree (dynamic)”.
 > Gephi Lite will automatically generate an histogram of the distribution of the degree in your network
 > Increase the “Min” value to 2, to hide all the nodes with less than 2 connections.
 > The small histogram now shows that you are no longer viewing the entire network.
+
+![Filters panel opened with one active filter on nodes' Degree (dynamic)](./gephi-lite/filters_degree.png)
 
 </section>
 
@@ -232,11 +242,16 @@ To export your network file:
 > Open the “Workspace” menu at the top left of Gephi Lite's interface.
 > Select “Export graph file” to download your network in .gexf format.
 
+![workspace menu](./gephi-lite/workspace.png)
+
 To export the network picture:
 
 > Select “Export image” to download a .png snapshot of your network as you visualized it
 
+![export png modal](./gephi-lite//workspace_export_png.png)
+
 </section>
+
 <section>
 
 ## Saving the Gephi Lite project
@@ -248,5 +263,7 @@ Exporting the graph file or a picture is not the (only) output of your work. Bef
 > Choose if you want to download the project on your computer as a .json or save it to your GitHub account.
 
 You can then reopen it later with all your changes intact!
+
+!['save as' modal](./gephi-lite/workspace_save_as.png)
 
 </section>
