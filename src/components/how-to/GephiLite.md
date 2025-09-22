@@ -2,7 +2,7 @@
 
 ## Open Gephi Lite
 
-> Open Gephi Lite by visiting the address https://gephi.org/gephi-lite/ in your browser (preferably Firefox or Chrome)
+> - Open Gephi Lite by visiting the address https://gephi.org/gephi-lite/ in your browser (preferably Firefox or Chrome)
 
 </section>
 
@@ -111,20 +111,19 @@ In the “Appearance” menu on the left side of the graph window, you can chang
 
 By default in this sample GEXF dataset, nodes are coloured according to their “Modularity class”, a category obtained by a community detection calculation. You can change this choice or the palette of color used to represent it.
 
-> Click on "Appearance", then “Nodes”.
-> In the “Set color from...” drop-down menu select “modularity_class”.
-
-> Check the “Shade nodes colors”.
-> Select “Size” from the drop-down menu.
-> Chose black from the “Target color” color picker.
-> Set the “Shading degree” to 0,7.
+> - Click on "Appearance", then “Nodes”.
+> - In the “Set color from...” drop-down menu select “modularity_class”.
+> - Check the “Shade nodes colors”.
+> - Select “Size” from the drop-down menu.
+> - Chose black from the “Target color” color picker.
+> - Set the “Shading degree” to 0,7.
 
 ![Nodes appearance tab open](./gephi-lite/appearance_nodes_1.png)
 
-> Now unfold the “Size” drop-down menu
-> Choose the “Degree (dynamic)” option to change the size of your nodes proportionally to the number of their connections
-> Enter minimum and maximum values (e.g. 10 and 60) to resize the nodes
-> Notice that a legend for size and color is automatically generated and updated at the bottom of your graph
+> - Now unfold the “Size” drop-down menu
+> - Choose the “Degree (dynamic)” option to change the size of your nodes proportionally to the number of their connections
+> - Enter minimum and maximum values (e.g. 10 and 60) to resize the nodes
+> - Notice that a legend for size and color is automatically generated and updated at the bottom of your graph
 
 ![Nodes appearance tab opened and caption visible on graph](./gephi-lite/appearance_nodes_2.png)
 
@@ -136,9 +135,9 @@ By default in this sample GEXF dataset, nodes are coloured according to their �
 
 Under "Appearance”, in the submenu “Labels”, you can change the size and density of the labels of you graph.
 
-> Unfold the drop-down menu under “Set label sizes from...” and chose “Nodes size”
-> Set the label size to “20”
-> Move the slider under “How many labels should appear any time” to hide the smaller labels
+> - Unfold the drop-down menu under “Set label sizes from...” and chose “Nodes size”
+> - Set the label size to “20”
+> - Move the slider under “How many labels should appear any time” to hide the smaller labels
 
 ![Labels appearance tab opened](./gephi-lite/appearance_nodes_labels.png)
 
@@ -156,16 +155,16 @@ Under "Appearance”, in the submenu “Labels”, you can change the size and d
 
 In the “Layout” menu, you can modify the spatialisation of the graph by choosing one of the algorithms offered.
 
-> Unfold the “Layout” menu.
-> Select “ForceAtlas 2” — the force-directed algorithm especially developed for Gephi.
-> Click the button “Start” at the bottom of the menu to launch the algorithm and see the nodes repulse each other and the edges binding the nodes that they connects.
-> When the algorithm has reached a stable balance between the two forces and you are satisfied with the result, click “Stop” to halt the spatialization process.
+> - Unfold the “Layout” menu.
+> - Select “ForceAtlas 2” — the force-directed algorithm especially developed for Gephi.
+> - Click the button “Start” at the bottom of the menu to launch the algorithm and see the nodes repulse each other and the edges binding the nodes that they connects.
+> - When the algorithm has reached a stable balance between the two forces and you are satisfied with the result, click “Stop” to halt the spatialization process.
 
 You will find that you need to play around with the settings to obtain a readable network:
 
-> Check the “Adjust size?” check-box.
-> Change the “Scaling ratio” to 30 to give the graph more space.
-> Click “Start” again to launch the algorithm with the new settings.
+> - Check the “Adjust size?” check-box.
+> - Change the “Scaling ratio” to 30 to give the graph more space.
+> - Click “Start” again to launch the algorithm with the new settings.
 
 ![Layout Force Atlas 2 panel opened](./gephi-lite/layout_fa2.png)
 
@@ -187,10 +186,11 @@ The “Metrics” menu on the left side of the screen allows you to calculate ce
 
 <section>
 
-### “Betweeness centrality”
+### Betweeness centrality
 
-> To calculate betweenness centrality, select it under the “Metric” menu and click on “Compute metric” at the very bottom of the menu.
-> The values for this metric are now recorded in the Nodes table of the “Data” table in fresh new columns.
+> - Select “Betweeness centrality” under the “Metric” menu
+> - Click on “Compute metric” at the very bottom of the menu.
+> - The values for this metric are now recorded in the Nodes table of the “Data” table in a fresh new column labeled “BetweenessCentrality”.
 
 ![Metrics betweenness centrality panel opened](./gephi-lite/metrics_betweenness_centrality.png)
 
@@ -202,9 +202,9 @@ The “Metrics” menu on the left side of the screen allows you to calculate ce
 
 You can now return to the “Appearance” window to change the colour of the nodes based on the betweenness centrality you just calculated.
 
-> Select “Nodes” under “ then the “Appearance”.
-> In the “Set color from...” drop-down menu select “betweennessCentrality”.
-> You can then choose the colour gradient by clicking directly on the coloured bar and change the colours manually.
+> - Select “Nodes” under “ then the “Appearance”.
+> - In the “Set color from...” drop-down menu select “betweennessCentrality”.
+> - You can then choose the colour gradient by clicking directly on the coloured bar and change the colours manually.
 
 ![Appearance nodes panel opened](./gephi-lite/appearance_after_metrics.png)
 
@@ -222,12 +222,12 @@ You can now return to the “Appearance” window to change the colour of the no
 
 The “Filters” menu allows you to filter your graph in multiple ways based on attributes or properties of nodes or edges, as well as based on the overall topology of the network.
 
-> open the filter panel by clicking on “Filters” in menu
-> Click on “Add Filter” button.
-> In the modal section entitled “Nodes attributes” click on “Degree (dynamic)”.
-> Gephi Lite will automatically generate an histogram of the distribution of the degree in your network
-> Increase the “Min” value to 2, to hide all the nodes with less than 2 connections.
-> The small histogram now shows that you are no longer viewing the entire network.
+> - Open the filter panel by clicking on “Filters” in menu
+> - Click on “Add Filter” button.
+> - In the modal section entitled “Nodes attributes” click on “Degree (dynamic)
+> - Gephi Lite will automatically generate an histogram of the distribution of the degree in your network
+> - Increase the “Min” value to 2, to hide all the nodes with less than 2 connections.
+> - The small histogram now shows that you are no longer viewing the entire network.
 
 ![Filters panel opened with one active filter on nodes' Degree (dynamic)](./gephi-lite/filters_degree.png)
 
@@ -239,14 +239,14 @@ The “Filters” menu allows you to filter your graph in multiple ways based on
 
 To export your network file:
 
-> Open the “Workspace” menu at the top left of Gephi Lite's interface.
-> Select “Export graph file” to download your network in .gexf format.
+> - Open the “Workspace” menu at the top left of Gephi Lite's interface.
+> - Select “Export graph file” to download your network in .gexf format.
 
 ![workspace menu](./gephi-lite/workspace.png)
 
 To export the network picture:
 
-> Select “Export image” to download a .png snapshot of your network as you visualized it
+> - Select “Export image” to download a .png snapshot of your network as you visualized it
 
 ![export png modal](./gephi-lite//workspace_export_png.png)
 
@@ -258,9 +258,9 @@ To export the network picture:
 
 Exporting the graph file or a picture is not the (only) output of your work. Before leaving, don't forget to save your Gephi Lite project itself.
 
-> Open the “Workspace” menu
-> Click on “Save as…”
-> Choose if you want to download the project on your computer as a .json or save it to your GitHub account.
+> - Open the “Workspace” menu
+> - Click on “Save as…”
+> - Choose if you want to download the project on your computer as a .json or save it to your GitHub account.
 
 You can then reopen it later with all your changes intact!
 

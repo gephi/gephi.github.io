@@ -40,11 +40,31 @@
     section {
       position: relative;
       blockquote {
+        @extend .mt-4;
         @extend .p-2;
         @extend .rounded;
         background-color: $white;
-        p {
+
+        // Phospore icon cursor-click as action required indicator for blockquotes
+        &::before {
+          --size: 1.8rem;
+          background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik04OCwyNFYxNmE4LDgsMCwwLDEsMTYsMHY4YTgsOCwwLDAsMS0xNiwwWk0xNiwxMDRoOGE4LDgsMCwwLDAsMC0xNkgxNmE4LDgsMCwwLDAsMCwxNlpNMTI0LjQyLDM5LjE2YTgsOCwwLDAsMCwxMC43NC0zLjU4bDgtMTZhOCw4LDAsMCwwLTE0LjMxLTcuMTZsLTgsMTZBOCw4LDAsMCwwLDEyNC40MiwzOS4xNlptLTk2LDgxLjY5LTE2LDhhOCw4LDAsMCwwLDcuMTYsMTQuMzFsMTYtOGE4LDgsMCwxLDAtNy4xNi0xNC4zMVpNMjE5LjMxLDE4NGExNiwxNiwwLDAsMSwwLDIyLjYzbC0xMi42OCwxMi42OGExNiwxNiwwLDAsMS0yMi42MywwTDEzMi43LDE2OCwxMTUsMjE0LjA5YzAsLjEtLjA4LjIxLS4xMy4zMmExNS44MywxNS44MywwLDAsMS0xNC42LDkuNTlsLS43OSwwYTE1LjgzLDE1LjgzLDAsMCwxLTE0LjQxLTExTDMyLjgsNTIuOTJBMTYsMTYsMCwwLDEsNTIuOTIsMzIuOEwyMTMsODUuMDdhMTYsMTYsMCwwLDEsMS40MSwyOS44bC0uMzIuMTNMMTY4LDEzMi42OVpNMjA4LDE5NS4zMSwxNTYuNjksMTQ0aDBhMTYsMTYsMCwwLDEsNC45My0yNmwuMzItLjE0LDQ1Ljk1LTE3LjY0TDQ4LDQ4bDUyLjIsMTU5Ljg2LDE3LjY1LTQ2YzAtLjExLjA4LS4yMi4xMy0uMzNhMTYsMTYsMCwwLDEsMTEuNjktOS4zNCwxNi43MiwxNi43MiwwLDAsMSwzLS4yOCwxNiwxNiwwLDAsMSwxMS4zLDQuNjlMMTk1LjMxLDIwOFoiPjwvcGF0aD48L3N2Zz4=");
+          background-size: var(--size);
+          width: var(--size);
+          height: var(--size);
+          content: "";
+          float: left;
+          margin-top: calc(-1 * var(--size) / 2 - 0.5rem);
+          margin-left: calc(-1 * var(--size) / 2 - 0.5rem);
+        }
+
+        p,
+        ul,
+        li {
           margin: 0;
+        }
+        ul {
+          padding-left: 1rem;
         }
       }
       p:has(img) {
