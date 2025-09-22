@@ -103,10 +103,6 @@ On the bottom right of the graph, buttons allows you to switch between a series 
 
 In the “Appearance” menu on the left side of the graph window, you can change the colour and size of nodes, edges and of their label based on pre-existing attributes or metrics calculated by Gephi.
 
-</section>
-
-<section>
-
 ### “Nodes Appearance”
 
 By default in this sample GEXF dataset, nodes are coloured according to their “Modularity class”, a category obtained by a community detection calculation. You can change this choice or the palette of color used to represent it.
@@ -127,10 +123,6 @@ By default in this sample GEXF dataset, nodes are coloured according to their �
 
 ![Nodes appearance tab opened and caption visible on graph](./gephi-lite/appearance_nodes_2.png)
 
-</section>
-
-<section>
-
 ### “Labels Appearance”
 
 Under "Appearance”, in the submenu “Labels”, you can change the size and density of the labels of you graph.
@@ -146,10 +138,6 @@ Under "Appearance”, in the submenu “Labels”, you can change the size and d
 <section>
 
 ## Playing with the layout
-
-</section>
-
-<section>
 
 ### ForceAtlas2
 
@@ -174,17 +162,9 @@ You will find that you need to play around with the settings to obtain a readabl
 
 ## Graph metrics
 
-</section>
-
-<section>
-
 ### “Metrics”
 
 The “Metrics” menu on the left side of the screen allows you to calculate certain properties of the graph. For example, it includes centrality metrics and calculations that provide information about the overall structure of the network, its clusters, and communities.
-
-</section>
-
-<section>
 
 ### Betweeness centrality
 
@@ -213,10 +193,6 @@ You can now return to the “Appearance” window to change the colour of the no
 <section>
 
 ## Filtering the graph
-
-</section>
-
-<section>
 
 ### “Filters”
 
