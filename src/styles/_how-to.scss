@@ -1,152 +1,181 @@
-.how-to {
-  $nb-sections: 50; // Nombre de sections par article
-  display: grid;
-  grid-template-columns: 50% 50%;
+#how-to-page {
+  // column choice selector
+  .how-to-choice {
+    @extend .py-3;
 
-  grid-auto-rows: minmax(100px, auto);
-  grid-column-gap: 3rem;
-  grid-row-gap: 1rem;
-
-  // &:has(.form-check-input:not(:checked)) {
-  // }
-  .form-check-input {
-    display: none;
-  }
-
-  &:has(#viewGephiHowTo:checked):has(#viewGephiLiteHowTo:not(:checked)) {
-    // Gephi only
-    grid-template-columns: 1fr 100px;
-
-    #gephi-lite {
-      section,
-      .label-content {
-        display: none;
+    background-color: var(--bs-body-bg);
+    h2 {
+      .label-container {
+        text-align: center;
+        flex-grow: 1;
+        width: 1px;
+        @include media-breakpoint-down(md) {
+          img {
+            display: none;
+          }
+        }
       }
     }
   }
 
-  &:has(#viewGephiHowTo:not(:checked)):has(#viewGephiLiteHowTo:checked) {
-    // Gephi lite only
-    grid-template-columns: 100px 1fr;
-    #gephi {
-      section,
-      .label-content {
-        display: none;
+  // column management
+
+  --solo-column-width: 70%;
+  @include media-breakpoint-down(lg) {
+    --solo-column-width: 1fr;
+    input#both {
+      display: none;
+    }
+  }
+
+  // only gephi
+  &:has(input#onlyGephi:checked) {
+    .how-to {
+      grid-template-columns: [gephi] var(--solo-column-width);
+      justify-content: center;
+
+      #gephi-lite {
+        section {
+          display: none;
+        }
       }
     }
-    #gephi-lite {
+    label#gephi-lite {
+      @extend .text-muted;
+    }
+  }
+  // only gephi lite
+  &:has(input#onlyGephiLite:checked) {
+    .how-to {
+      grid-template-columns: [gephi-lite] var(--solo-column-width);
+
+      justify-content: center;
+
+      #gephi {
+        section {
+          display: none;
+        }
+      }
+    }
+    label#gephi-lite {
+      @extend .text-muted;
+    }
+  }
+  // both
+  &:has(input#both:checked) {
+    .how-to {
+      // both is not allowed on small screens
+      @include media-breakpoint-down(lg) {
+        grid-template-columns: [gephi] var(--solo-column-width);
+        #gephi-lite {
+          section {
+            display: none;
+          }
+        }
+      }
+      @include media-breakpoint-up(lg) {
+        grid-template-columns: [gephi] 1fr [gephi-lite] 1fr;
+
+        #gephi {
+          section.common-title {
+            grid-column: 1 / 3;
+          }
+        }
+        #gephi-lite {
+          section.common-title {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .how-to {
+    display: grid;
+
+    grid-auto-rows: minmax(50px, auto);
+    grid-column-gap: 3rem;
+    grid-row-gap: 1rem;
+
+    // &:has(.form-check-input:not(:checked)) {
+    // }
+
+    .how-to-column {
+      // display contents as only logical container
+      display: contents;
+
       section {
+        // to ease image size management
+        position: relative;
+
+        h1,
         h2,
         h3,
         h4 {
-          text-align: start;
+          text-align: center;
+        }
+
+        // blockquote as actions area
+        blockquote {
+          @extend .mt-4;
+          @extend .p-2;
+          @extend .rounded;
+          background-color: $white;
+
+          // Phospore icon cursor-click as action required indicator for blockquotes
+          &::before {
+            --size: 1.8rem;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik04OCwyNFYxNmE4LDgsMCwwLDEsMTYsMHY4YTgsOCwwLDAsMS0xNiwwWk0xNiwxMDRoOGE4LDgsMCwwLDAsMC0xNkgxNmE4LDgsMCwwLDAsMCwxNlpNMTI0LjQyLDM5LjE2YTgsOCwwLDAsMCwxMC43NC0zLjU4bDgtMTZhOCw4LDAsMCwwLTE0LjMxLTcuMTZsLTgsMTZBOCw4LDAsMCwwLDEyNC40MiwzOS4xNlptLTk2LDgxLjY5LTE2LDhhOCw4LDAsMCwwLDcuMTYsMTQuMzFsMTYtOGE4LDgsMCwxLDAtNy4xNi0xNC4zMVpNMjE5LjMxLDE4NGExNiwxNiwwLDAsMSwwLDIyLjYzbC0xMi42OCwxMi42OGExNiwxNiwwLDAsMS0yMi42MywwTDEzMi43LDE2OCwxMTUsMjE0LjA5YzAsLjEtLjA4LjIxLS4xMy4zMmExNS44MywxNS44MywwLDAsMS0xNC42LDkuNTlsLS43OSwwYTE1LjgzLDE1LjgzLDAsMCwxLTE0LjQxLTExTDMyLjgsNTIuOTJBMTYsMTYsMCwwLDEsNTIuOTIsMzIuOEwyMTMsODUuMDdhMTYsMTYsMCwwLDEsMS40MSwyOS44bC0uMzIuMTNMMTY4LDEzMi42OVpNMjA4LDE5NS4zMSwxNTYuNjksMTQ0aDBhMTYsMTYsMCwwLDEsNC45My0yNmwuMzItLjE0LDQ1Ljk1LTE3LjY0TDQ4LDQ4bDUyLjIsMTU5Ljg2LDE3LjY1LTQ2YzAtLjExLjA4LS4yMi4xMy0uMzNhMTYsMTYsMCwwLDEsMTEuNjktOS4zNCwxNi43MiwxNi43MiwwLDAsMSwzLS4yOCwxNiwxNiwwLDAsMSwxMS4zLDQuNjlMMTk1LjMxLDIwOFoiPjwvcGF0aD48L3N2Zz4=");
+            background-size: var(--size);
+            width: var(--size);
+            height: var(--size);
+            content: "";
+            float: left;
+            margin-top: calc(-1 * var(--size) / 2 - 0.5rem);
+            margin-left: calc(-1 * var(--size) / 2 - 0.5rem);
+          }
+
+          p,
+          ul,
+          li {
+            margin: 0;
+          }
+          ul {
+            padding-left: 1rem;
+          }
+        }
+
+        // screen captures
+        p:has(img) {
+          text-align: center;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+          max-height: 60vh;
+          object-fit: contain;
+          text-align: center;
         }
       }
     }
-  }
 
-  #gephi {
-    > h2 {
-      grid-column: 1;
-      grid-row: 1;
-    }
-  }
-  #gephi-lite {
-    > h2 {
-      grid-column: 2;
-      grid-row: 1;
-      justify-content: end;
-    }
-    section {
-      h2,
-      h3,
-      h4 {
-        text-align: end;
-      }
-    }
-  }
+    // max number of sections
+    $nb-sections: 50;
+    // place sections in the right rows
+    @for $i from 1 through $nb-sections {
+      #gephi > section:nth-child(#{$i}) {
+        grid-column: gephi;
 
-  .how-to-column {
-    display: contents;
-
-    > h2 {
-      display: flex;
-      align-items: center;
-      column-gap: 0.5rem;
-
-      @include media-breakpoint-up(lg) {
-        // text-align: center;
-      }
-      .form-check-input {
-        margin: 0;
-      }
-    }
-    section {
-      position: relative;
-      blockquote {
-        @extend .mt-4;
-        @extend .p-2;
-        @extend .rounded;
-        background-color: $white;
-
-        // Phospore icon cursor-click as action required indicator for blockquotes
-        &::before {
-          --size: 1.8rem;
-          background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgZmlsbD0iIzAwMDAwMCIgdmlld0JveD0iMCAwIDI1NiAyNTYiPjxwYXRoIGQ9Ik04OCwyNFYxNmE4LDgsMCwwLDEsMTYsMHY4YTgsOCwwLDAsMS0xNiwwWk0xNiwxMDRoOGE4LDgsMCwwLDAsMC0xNkgxNmE4LDgsMCwwLDAsMCwxNlpNMTI0LjQyLDM5LjE2YTgsOCwwLDAsMCwxMC43NC0zLjU4bDgtMTZhOCw4LDAsMCwwLTE0LjMxLTcuMTZsLTgsMTZBOCw4LDAsMCwwLDEyNC40MiwzOS4xNlptLTk2LDgxLjY5LTE2LDhhOCw4LDAsMCwwLDcuMTYsMTQuMzFsMTYtOGE4LDgsMCwxLDAtNy4xNi0xNC4zMVpNMjE5LjMxLDE4NGExNiwxNiwwLDAsMSwwLDIyLjYzbC0xMi42OCwxMi42OGExNiwxNiwwLDAsMS0yMi42MywwTDEzMi43LDE2OCwxMTUsMjE0LjA5YzAsLjEtLjA4LjIxLS4xMy4zMmExNS44MywxNS44MywwLDAsMS0xNC42LDkuNTlsLS43OSwwYTE1LjgzLDE1LjgzLDAsMCwxLTE0LjQxLTExTDMyLjgsNTIuOTJBMTYsMTYsMCwwLDEsNTIuOTIsMzIuOEwyMTMsODUuMDdhMTYsMTYsMCwwLDEsMS40MSwyOS44bC0uMzIuMTNMMTY4LDEzMi42OVpNMjA4LDE5NS4zMSwxNTYuNjksMTQ0aDBhMTYsMTYsMCwwLDEsNC45My0yNmwuMzItLjE0LDQ1Ljk1LTE3LjY0TDQ4LDQ4bDUyLjIsMTU5Ljg2LDE3LjY1LTQ2YzAtLjExLjA4LS4yMi4xMy0uMzNhMTYsMTYsMCwwLDEsMTEuNjktOS4zNCwxNi43MiwxNi43MiwwLDAsMSwzLS4yOCwxNiwxNiwwLDAsMSwxMS4zLDQuNjlMMTk1LjMxLDIwOFoiPjwvcGF0aD48L3N2Zz4=");
-          background-size: var(--size);
-          width: var(--size);
-          height: var(--size);
-          content: "";
-          float: left;
-          margin-top: calc(-1 * var(--size) / 2 - 0.5rem);
-          margin-left: calc(-1 * var(--size) / 2 - 0.5rem);
-        }
-
-        p,
-        ul,
-        li {
-          margin: 0;
-        }
-        ul {
-          padding-left: 1rem;
+        @include media-breakpoint-up(lg) {
+          grid-row: $i;
         }
       }
-      p:has(img) {
-        text-align: center;
-      }
-      img {
-        max-width: 100%;
-        height: auto;
-        max-height: 60vh;
-        object-fit: contain;
-        text-align: center;
-      }
-    }
-  }
+      #gephi-lite > section:nth-child(#{$i}) {
+        grid-column: gephi-lite;
 
-  // place sections in the right rows
-  @for $i from 1 through $nb-sections {
-    #gephi > section:nth-child(#{$i}) {
-      @include media-breakpoint-down(lg) {
-        grid-row: 2 * $i - 2 + 1;
-        grid-column: 1/3;
-        margin-right: 5rem;
-      }
-      @include media-breakpoint-up(lg) {
-        grid-row: $i;
-        grid-column: 1;
-      }
-    }
-    #gephi-lite > section:nth-child(#{$i}) {
-      @include media-breakpoint-down(lg) {
-        grid-row: 2 * $i - 1 + 1;
-        grid-column: 1/3;
-        border-right: 4px solid $gephi-lite-bg;
-        margin-left: 5rem;
-      }
-      @include media-breakpoint-up(lg) {
-        grid-row: $i;
-        grid-column: 2;
+        @include media-breakpoint-up(lg) {
+          grid-row: $i;
+        }
       }
     }
   }

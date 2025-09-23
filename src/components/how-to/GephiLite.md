@@ -6,7 +6,7 @@
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Import a dataset
 
@@ -35,10 +35,12 @@ Creating a network based on your own data depends on your project, discipline, d
 
 </section>
 
-<section>
+<section class="common-title">
 
 ### “Data laboratory”
 
+</section>
+<section>
 Now that the GEXF has been imported, a network appears in the centre of the “Graph” window.
 
 > Before working on it, however, click on “Data” at the top of the Gephi Lite interface to open the data table window.
@@ -64,7 +66,7 @@ Using the menu on the left, you can also
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Interacting with the network
 
@@ -91,7 +93,7 @@ On the bottom right of the graph, buttons allows you to switch between a series 
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Changing the objects size and colors
 
@@ -135,9 +137,13 @@ Under "Appearance”, in the submenu “Labels”, you can change the size and d
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Playing with the layout
+
+</section>
+
+<section>
 
 ### ForceAtlas2
 
@@ -158,9 +164,12 @@ You will find that you need to play around with the settings to obtain a readabl
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Graph metrics
+
+</section>
+<section>
 
 ### “Metrics”
 
@@ -190,9 +199,12 @@ You can now return to the “Appearance” window to change the colour of the no
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Filtering the graph
+
+</section>
+<section>
 
 ### “Filters”
 

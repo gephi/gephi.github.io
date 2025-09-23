@@ -3,9 +3,14 @@
   @extend .bg-white;
   @extend .py-2;
   @extend .shadow;
-  @extend .sticky-top;
 
   height: $navbar-height;
+}
+
+body:not(.no-sticky-nav) {
+  .navbar {
+    @extend .sticky-top;
+  }
 }
 
 .navbar-nav {

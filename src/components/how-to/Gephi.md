@@ -8,7 +8,7 @@
 - On Mac OS X, click on the .dmg file and drag the Gephi app to the Applications folder.
 </section>
 
-<section>
+<section class="common-title">
 
 ## Import a dataset
 
@@ -43,9 +43,12 @@ On opening a network file, the “Import report” window allows you to check th
 
 </section>
 
-<section>
+<section class="common-title">
 
 ### “Data laboratory”
+
+</section>
+<section>
 
 Now that the GEXF has been imported, a network appears in the centre of the “Overview” tab.
 
@@ -67,7 +70,7 @@ In both of them you can
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Interacting with the network
 
@@ -114,7 +117,7 @@ Once unfolded the menu will allow you to control the rendering of the “graph�
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Changing the objects size and colors
 
@@ -138,9 +141,12 @@ You can also change the colour of the nodes (by clicking on the colour palette i
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Playing with the layout
+
+</section>
+<section>
 
 ### ForceAtlas2
 
@@ -160,9 +166,12 @@ You will find that you need to play around with the settings to obtain a readabl
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Graph metrics
+
+</section>
+<section>
 
 ### “Statistics”
 
@@ -195,9 +204,12 @@ You can now return to the ‘Appearance’ window to change the colour of the no
 
 </section>
 
-<section>
+<section class="common-title">
 
 ## Filtering the graph
+
+</section>
+<section>
 
 ### “Filters”
 
