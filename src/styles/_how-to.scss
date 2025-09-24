@@ -1,9 +1,9 @@
 #how-to-page {
   --togglers-padding: 0px;
-
+  --togglers-base-size: 48px;
   // column choice selector
   .how-to-choice {
-    @extend .py-3;
+    //@extend .mx-0;
 
     background-color: var(--bs-body-bg);
     h2 {
@@ -17,6 +17,8 @@
           img {
             display: none;
           }
+          // Force height with spacer fort vertical empty space when switch toggle => target
+          height: calc(var(--togglers-base-size) + 2 * $spacer);
         }
       }
       a {
@@ -24,9 +26,11 @@
         color: inherit;
       }
       .togglers {
-        --togglers-base-size: 48px;
         height: var(--togglers-base-size);
         width: calc(var(--togglers-base-size) * 3);
+        @include media-breakpoint-down(lg) {
+          width: calc(var(--togglers-base-size) * 2);
+        }
         border-radius: calc(var(--togglers-base-size) / 2);
         position: relative;
         display: flex;
@@ -52,6 +56,9 @@
           z-index: 0;
           //size
           width: calc(33% - var(--togglers-padding));
+          @include media-breakpoint-down(lg) {
+            width: calc(50% - var(--togglers-padding));
+          }
           height: calc(100% - var(--togglers-padding));
           border-radius: 50%;
         }
@@ -61,8 +68,15 @@
             z-index: 1;
             height: 100%;
             width: 33%;
+            @include media-breakpoint-down(lg) {
+              width: 50%;
+            }
+
             position: relative;
             &.both {
+              @include media-breakpoint-down(lg) {
+                display: none;
+              }
               // center icon
               display: flex;
               align-items: center;
@@ -111,6 +125,9 @@
   &:has(#gephi-lite:target) {
     .toggler {
       left: calc(100% - 33% - var(--togglers-padding) - var(--togglers-padding));
+      @include media-breakpoint-down(lg) {
+        left: calc(100% - 50% - var(--togglers-padding) - var(--togglers-padding));
+      }
     }
     .how-to {
       grid-template-columns: [gephi-lite] var(--solo-column-width);
@@ -222,23 +239,19 @@
       }
     }
 
-    // max number of sections
+    // // max number of sections
     $nb-sections: 50;
     // place sections in the right rows
     @for $i from 1 through $nb-sections {
       #gephi-column > section:nth-child(#{$i}) {
         grid-column: gephi;
 
-        @include media-breakpoint-up(lg) {
-          grid-row: $i;
-        }
+        grid-row: $i;
       }
       #gephi-lite-column > section:nth-child(#{$i}) {
         grid-column: gephi-lite;
 
-        @include media-breakpoint-up(lg) {
-          grid-row: $i;
-        }
+        grid-row: $i;
       }
     }
   }
