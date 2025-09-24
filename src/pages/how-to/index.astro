@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Gephi from "../../components/how-to/Gephi.md";
 import GephiLite from "../../components/how-to/GephiLite.md";
@@ -14,9 +15,9 @@ import Layout from "../../layouts/Layout.astro";
 
   <main id="how-to-page" class="py-5">
     <section class="how-to-choice w-100 sticky-top container">
-      <h2 class="d-flex justify-content-center align-item-center gap-3 w-100">
-        <div class="label-container" id="gephi">
-          <label for="onlyGephi">
+      <h2 class="d-flex justify-content-center align-items-center gap-3 w-100">
+        <div class="label-container">
+          <a href="#gephi" id="gephi-choice-label">
             <Image
               src="/icons/gephi-desktop-logo-inverted.svg"
               class="mb-3 mb-md-0"
@@ -24,16 +25,31 @@ import Layout from "../../layouts/Layout.astro";
               width="100"
               height="100"
             />
-            <span class="label-content">Gephi</span></label
+            <span class="label-content">Gephi</span>
+          </a>
+        </div>
+        <div class="togglers" role="radiogroup" aria-label="How-to columns">
+          <div class="toggler" role="none"></div>
+          <a
+            href="#gephi"
+            title="gephi"
+            class="toggle gephi"
+            id="gephi"
+            role="radio"
+            aria-labelledby="gephi-choice-label"></a>
+          <a href="#_" title="both" class="toggle both" role="radio" aria-label="Both Gephi and Gephi Lite"
+            ><Icon name="ph:text-columns" role="none" /></a
           >
+          <a
+            href="#gephi-lite"
+            title="gephi-lite"
+            id="gephi-lite"
+            class="toggle gephi-lite"
+            role="radio"
+            aria-labelledby="gephi-lite-choice-label"></a>
         </div>
-        <div class="d-flex align-items-center gap-1">
-          <input name="how-to-columns" type="radio" id="onlyGephi" />
-          <input name="how-to-columns" type="radio" id="both" />
-          <input name="how-to-columns" type="radio" id="onlyGephiLite" />
-        </div>
-        <div class="label-container" id="gephi-lite">
-          <label for="onlyGephiLite">
+        <div class="label-container">
+          <a href="#gephi-lite" id="gephi-lite-choice-label">
             <span class="label-content">Gephi Lite</span>
 
             <Image
@@ -43,15 +59,15 @@ import Layout from "../../layouts/Layout.astro";
               width="100"
               height="100"
             />
-          </label>
+          </a>
         </div>
       </h2>
     </section>
     <section class="how-to container">
-      <article class="how-to-column" id="gephi">
+      <article class="how-to-column" id="gephi-column">
         <Gephi />
       </article>
-      <article class="how-to-column" id="gephi-lite">
+      <article class="how-to-column" id="gephi-lite-column">
         <GephiLite />
       </article>
     </section>

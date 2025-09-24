@@ -1,4 +1,6 @@
 #how-to-page {
+  --togglers-padding: 0px;
+
   // column choice selector
   .how-to-choice {
     @extend .py-3;
@@ -6,12 +8,73 @@
     background-color: var(--bs-body-bg);
     h2 {
       .label-container {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-grow: 1;
         width: 1px;
         @include media-breakpoint-down(md) {
           img {
             display: none;
+          }
+        }
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .togglers {
+        --togglers-base-size: 48px;
+        height: var(--togglers-base-size);
+        width: calc(var(--togglers-base-size) * 3);
+        border-radius: calc(var(--togglers-base-size) / 2);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background-color: #0001;
+
+        .toggler {
+          //position
+          position: absolute;
+          transition: all 0.5s;
+          // default position: middle show both
+          @include media-breakpoint-up(lg) {
+            left: calc(50% - (33% - var(--togglers-padding)) / 2);
+          }
+          @include media-breakpoint-down(lg) {
+            left: var(--togglers-padding);
+          }
+          // color
+          background-color: $primary;
+          opacity: 30%;
+          z-index: 0;
+          //size
+          width: calc(33% - var(--togglers-padding));
+          height: calc(100% - var(--togglers-padding));
+          border-radius: 50%;
+        }
+
+        a {
+          &.toggle {
+            z-index: 1;
+            height: 100%;
+            width: 33%;
+            position: relative;
+            &.both {
+              // center icon
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              > * {
+                //icon size
+                width: 80%;
+                height: 80%;
+                margin: 0;
+              }
+            }
           }
         }
       }
@@ -29,45 +92,45 @@
   }
 
   // only gephi
-  &:has(input#onlyGephi:checked) {
+  &:has(#gephi:target) {
+    .toggler {
+      left: var(--togglers-padding);
+    }
     .how-to {
       grid-template-columns: [gephi] var(--solo-column-width);
       justify-content: center;
 
-      #gephi-lite {
+      #gephi-lite-column {
         section {
           display: none;
         }
       }
     }
-    label#gephi-lite {
-      @extend .text-muted;
-    }
   }
   // only gephi lite
-  &:has(input#onlyGephiLite:checked) {
+  &:has(#gephi-lite:target) {
+    .toggler {
+      left: calc(100% - 33% - var(--togglers-padding) - var(--togglers-padding));
+    }
     .how-to {
       grid-template-columns: [gephi-lite] var(--solo-column-width);
 
       justify-content: center;
 
-      #gephi {
+      #gephi-column {
         section {
           display: none;
         }
       }
     }
-    label#gephi-lite {
-      @extend .text-muted;
-    }
   }
   // both
-  &:has(input#both:checked) {
+  &:not(:has(#gephi:target)):not(:has(#gephi-lite:target)) {
     .how-to {
       // both is not allowed on small screens
       @include media-breakpoint-down(lg) {
         grid-template-columns: [gephi] var(--solo-column-width);
-        #gephi-lite {
+        #gephi-lite-column {
           section {
             display: none;
           }
@@ -76,12 +139,12 @@
       @include media-breakpoint-up(lg) {
         grid-template-columns: [gephi] 1fr [gephi-lite] 1fr;
 
-        #gephi {
+        #gephi-column {
           section.common-title {
             grid-column: 1 / 3;
           }
         }
-        #gephi-lite {
+        #gephi-lite-column {
           section.common-title {
             display: none;
           }
@@ -163,14 +226,14 @@
     $nb-sections: 50;
     // place sections in the right rows
     @for $i from 1 through $nb-sections {
-      #gephi > section:nth-child(#{$i}) {
+      #gephi-column > section:nth-child(#{$i}) {
         grid-column: gephi;
 
         @include media-breakpoint-up(lg) {
           grid-row: $i;
         }
       }
-      #gephi-lite > section:nth-child(#{$i}) {
+      #gephi-lite-column > section:nth-child(#{$i}) {
         grid-column: gephi-lite;
 
         @include media-breakpoint-up(lg) {
