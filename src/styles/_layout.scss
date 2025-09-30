@@ -3,14 +3,20 @@
   @extend .bg-white;
   @extend .py-2;
   @extend .shadow;
-
-  height: $navbar-height;
 }
 
 body:not(.no-sticky-nav) {
   .navbar {
     @extend .sticky-top;
   }
+}
+
+// Handle mobile header interaction
+.navbar-collapse {
+  display: none;
+}
+#navbar-toggler-checkbox:checked + * + .navbar-collapse {
+  display: block !important;
 }
 
 .navbar-nav {

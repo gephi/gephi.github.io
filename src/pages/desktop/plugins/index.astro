@@ -14,7 +14,7 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
   : null;
 ---
 
-<Layout>
+<Layout pageId="desktop-plugins">
   <header class="banner py-5">
     <section class="container my-5 py-4">
       <h1>Gephi plugins</h1>
@@ -51,9 +51,7 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
                         }
                       />
                       <div>
-                        <small class="small badge text-bg-light border border-primary text-primary">
-                          {p.category}
-                        </small>
+                        <small class="small badge text-bg-light border border-primary text-primary">{p.category}</small>
                       </div>
                       <h3 class="text-primary m-0 text-truncate fs-4">{p.name}</h3>
                       <p class="fs-5 m-0">{p.short_description}</p>
