@@ -7,11 +7,11 @@ const redirects: Record<string, RedirectConfig> = {
   },
   "/videos": {
     status: 301,
-    destination: "/how-to/desktop",
+    destination: "/quickstart",
   },
   "/screenshots": {
     status: 301,
-    destination: "/how-to/desktop",
+    destination: "/quickstart",
   },
   "/legal/faq": {
     status: 301,
@@ -31,7 +31,7 @@ const redirects: Record<string, RedirectConfig> = {
   },
   "/users": {
     status: 301,
-    destination: "/how-to/",
+    destination: "/quickstart",
   },
   "/users/marketing": {
     status: 301,

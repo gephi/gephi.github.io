@@ -1,8 +1,8 @@
-#how-to-page {
+#quickstart-page {
   --togglers-padding: 0px;
   --togglers-base-size: 48px;
   // column choice selector
-  .how-to-choice {
+  .quickstart-choice {
     //@extend .mx-0;
 
     background-color: var(--bs-body-bg);
@@ -110,7 +110,7 @@
     .toggler {
       left: var(--togglers-padding);
     }
-    .how-to {
+    .quickstart {
       grid-template-columns: [gephi] var(--solo-column-width);
       justify-content: center;
 
@@ -129,7 +129,7 @@
         left: calc(100% - 50% - var(--togglers-padding) - var(--togglers-padding));
       }
     }
-    .how-to {
+    .quickstart {
       grid-template-columns: [gephi-lite] var(--solo-column-width);
 
       justify-content: center;
@@ -143,7 +143,7 @@
   }
   // both
   &:not(:has(#gephi:target)):not(:has(#gephi-lite:target)) {
-    .how-to {
+    .quickstart {
       // both is not allowed on small screens
       @include media-breakpoint-down(lg) {
         grid-template-columns: [gephi] var(--solo-column-width);
@@ -170,7 +170,7 @@
     }
   }
 
-  .how-to {
+  .quickstart {
     display: grid;
 
     grid-auto-rows: minmax(50px, auto);
@@ -180,7 +180,7 @@
     // &:has(.form-check-input:not(:checked)) {
     // }
 
-    .how-to-column {
+    .quickstart-column {
       // display contents as only logical container
       display: contents;
 

@@ -1,8 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import Gephi from "../../components/how-to/Gephi.md";
-import GephiLite from "../../components/how-to/GephiLite.md";
+import Gephi from "../../components/quickstart/Gephi.md";
+import GephiLite from "../../components/quickstart/GephiLite.md";
 import Layout from "../../layouts/Layout.astro";
 ---
 
@@ -13,8 +13,8 @@ import Layout from "../../layouts/Layout.astro";
     </section>
   </header>
 
-  <main id="how-to-page" class="py-5">
-    <section class="how-to-choice w-100 sticky-top container">
+  <main id="quickstart-page" class="py-5">
+    <section class="quickstart-choice w-100 sticky-top container">
       <h2 class="d-flex justify-content-center align-items-center gap-3 w-100">
         <div class="label-container">
           <a href="#gephi" id="gephi-choice-label">
@@ -63,11 +63,11 @@ import Layout from "../../layouts/Layout.astro";
         </div>
       </h2>
     </section>
-    <section class="how-to container">
-      <article class="how-to-column" id="gephi-column">
+    <section class="quickstart container">
+      <article class="quickstart-column" id="gephi-column">
         <Gephi />
       </article>
-      <article class="how-to-column" id="gephi-lite-column">
+      <article class="quickstart-column" id="gephi-lite-column">
         <GephiLite />
       </article>
     </section>
