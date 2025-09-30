@@ -139,20 +139,6 @@
 }
 
 .plugin-page {
-  .banner .content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    @extend .gap-5;
-
-    img {
-      background: $white;
-      max-width: 30%;
-      max-height: 300px;
-      height: auto;
-    }
-  }
-
   .thumbnails {
     display: flex;
     flex-direction: row;

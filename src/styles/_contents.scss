@@ -7,21 +7,31 @@
   background-color: $gray-800;
   @extend .text-light;
 
+  .banner-top {
+    padding-bottom: $spacer-3;
+  }
+
   .banner-contents {
-    @extend .row;
+    display: flex;
+    gap: $spacer-5;
   }
 
   .banner-texts {
-    @extend .col-12;
-    @extend .col-md-7;
-
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     gap: $spacer-4;
+
+    & > * {
+      margin: 0;
+    }
   }
   .banner-image {
-    @extend .col-12;
-    @extend .col-md-5;
+    width: 28%;
+
+    &.banner-logo {
+      width: 40%;
+    }
 
     text-align: end;
     img {
@@ -185,11 +195,15 @@
     gap: $spacer-3;
   }
   .banner-image {
+    width: 100% !important;
     display: flex;
     justify-content: center;
 
     img {
       height: auto;
+      width: 100%;
+    }
+    &.banner-logo img {
       width: 80%;
     }
   }
