@@ -1,4 +1,9 @@
 .plugins-main {
+  @extend .container-fluid;
+  padding: 0;
+  display: flex;
+  align-items: start;
+
   .card {
     .card-img-top {
       height: 10rem;
@@ -7,17 +12,9 @@
   }
 
   .plugins-filters {
-    @extend .p-4;
-    position: sticky;
-    min-width: 300px;
-
-    @include media-breakpoint-down(xl) {
-      min-width: 220px;
+    input[type="search"] {
+      width: 100%;
     }
-
-    top: $navbar-height;
-    max-height: calc(100dvh - #{$navbar-height});
-    overflow-y: auto;
 
     .checkbox-group {
       .checkbox:not(:last-child) {
@@ -35,16 +32,108 @@
     gap: 2rem;
   }
 
-  .plugins-list {
-    @extend .p-4;
+  .plugins-list-container {
     flex-grow: 1;
   }
 
   article {
+    @extend .col-12;
+    @extend .col-md-6;
+    @extend .col-xl-4;
+    @extend .col-xxl-3;
+    padding: $spacer-2;
+
+    .card {
+      @extend .text-dark;
+      border: none;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: $spacer-1;
+    }
+
     .plugin-image {
+      @extend .border;
+      margin-bottom: $spacer-2;
       background: white;
       max-width: 100%;
       max-height: 300px;
+    }
+    .plugin-category {
+      @extend .small;
+      @extend .badge;
+      @extend .text-bg-light;
+      @extend .border;
+      @extend .border-primary;
+      @extend .text-primary;
+    }
+    .plugin-name {
+      @extend .text-primary;
+      @extend .text-truncate;
+      @extend .fs-4;
+      margin: 0;
+    }
+    .plugin-description {
+      @extend .fs-5;
+      margin: 0;
+    }
+    .plugin-versions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacer-1;
+
+      & > span {
+        @extend .badge;
+        @extend .text-bg-primary;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .plugins-main .plugins-filters {
+    position: sticky;
+    min-width: 300px;
+    top: $navbar-height;
+    max-height: calc(100dvh - #{$navbar-height});
+    overflow-y: auto;
+  }
+  .plugins-main .plugins-filters,
+  .plugins-main .plugins-list-container {
+    padding: $spacer-4;
+  }
+  #plugins-list-total {
+    margin-bottom: $spacer-3;
+  }
+}
+@include media-breakpoint-down(xl) {
+  .plugins-main .plugins-filters {
+    min-width: 220px;
+  }
+}
+@include media-breakpoint-down(md) {
+  .plugins-main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #plugins-list-total {
+    margin-bottom: 0;
+  }
+  .plugins-main article {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .plugins-main .plugins-filters,
+  .plugins-main .plugins-list {
+    padding: $spacer-4 calc(#{$spacer-4} * 0.5);
+  }
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .checkbox {
+      width: 48%;
     }
   }
 }
