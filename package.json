@@ -13,7 +13,6 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/markdown-remark": "^6.3.7",
     "@astrojs/react": "^4.4.0",
-    "@astropub/md": "^1.0.0",
     "@cospired/i18n-iso-languages": "^4.2.0",
     "@iconify-json/bi": "^1.2.6",
     "@iconify-json/ph": "^1.2.2",
@@ -26,6 +25,7 @@
     "marked": "^16.3.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
+    "rss-parser": "^3.13.0",
     "sass": "^1.93.2",
     "typescript": "^5.9.2"
   },

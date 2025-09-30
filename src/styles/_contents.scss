@@ -245,3 +245,28 @@ a.no-decoration {
   text-decoration: none;
   color: inherit;
 }
+
+.blog-posts {
+  .blog-post {
+    width: calc(50% - 1.5rem / 2);
+
+    @include media-breakpoint-down(md) {
+      width: 100%;
+    }
+
+    @extend .p-4;
+    @extend .shadow;
+    background: #fffffff6;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 0.5rem;
+    img {
+      max-width: 100%;
+      max-height: 50%;
+      object-fit: contain;
+    }
+  }
+}

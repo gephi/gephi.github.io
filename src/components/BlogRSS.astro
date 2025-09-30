@@ -1,0 +1,38 @@
+---
+import { identity } from "lodash-es";
+import Parser from "rss-parser";
+
+const feedUrl = "https://gephi.wordpress.com/feed/";
+
+const parser = new Parser<{ [key: string]: any }, { "media:thumbnail"?: { $: { url: string } } }>({
+  timeout: 2000,
+  customFields: {
+    item: ["media:thumbnail"],
+  },
+});
+const feed = await parser.parseURL(feedUrl);
+
+const dateFormatter = new Intl.DateTimeFormat("en-EN", { dateStyle: "long" });
+---
+
+<section class="blog-posts">
+  <h2>Latest posts on Gephi's blog</h2>
+  <div class="d-flex flex-wrap gap-4 w-100">
+    {
+      feed.items.slice(0, 4).map((item) => (
+        <article class="blog-post">
+          {" "}
+          {item["media:thumbnail"] && <img src={item["media:thumbnail"]?.$.url} />}
+          <a href={item.link}>
+            <h4>{item.title}</h4>
+          </a>
+          <div>{item.contentSnippet}</div>
+          <div class="text-end text-muted">
+            by{" "}
+            {[item.creator, item.pubDate && dateFormatter.format(new Date(item.pubDate))].filter(identity).join(" on ")}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
