@@ -13,10 +13,10 @@ import Layout from "../../layouts/Layout.astro";
       --bs-link-color-rgb: var(--bs-gephi-lite-bg-rgb);
     }
   </style>
-  <header class="banner py-5 bg-gephi-lite-bg-dark">
-    <section class="container my-5 py-4">
-      <div class="row align-items-center">
-        <div class="col-7 d-flex flex-column gap-4">
+  <header class="banner bg-gephi-lite-bg-dark">
+    <section class="container">
+      <div class="banner-contents">
+        <div class="banner-texts">
           <div>
             <h1 class="gephi-font">Gephi Lite</h1>
           </div>
@@ -34,14 +34,8 @@ import Layout from "../../layouts/Layout.astro";
             <div class="fs-5 pt-2">Works on desktop, tablets and mobiles</div>
           </div>
         </div>
-        <div class="col-5 text-end">
-          <Image
-            src="/icons/gephi-lite-logo-inverted.svg"
-            class="mb-3 mb-md-0"
-            alt="Gephi logo"
-            width="400"
-            height="400"
-          />
+        <div class="banner-image">
+          <Image src="/icons/gephi-lite-logo-inverted.svg" alt="Gephi logo" width="400" height="400" />
         </div>
       </div>
     </section>
@@ -52,7 +46,7 @@ import Layout from "../../layouts/Layout.astro";
       <LangSwitcher fromPath={Astro.originPathname} />
     </section>
 
-    <section class="container pb-5">
+    <section class="feature-container pb-5">
       <section class="feature">
         <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
         <section class="feature-headline">
