@@ -15,17 +15,17 @@ const feed = await parser.parseURL(feedUrl);
 const dateFormatter = new Intl.DateTimeFormat("en-EN", { dateStyle: "long" });
 ---
 
-<section class="blog-posts">
+<section class="blog-posts-container">
   <h2>Latest posts on Gephi's blog</h2>
-  <div class="d-flex flex-wrap gap-4 w-100">
+
+  <div class="blog-posts">
     {
       feed.items.slice(0, 4).map((item) => (
         <article class="blog-post">
-          {" "}
-          {item["media:thumbnail"] && <img src={item["media:thumbnail"]?.$.url} />}
-          <a href={item.link}>
-            <h4>{item.title}</h4>
-          </a>
+          {item["media:thumbnail"] && <img alt="" src={item["media:thumbnail"]?.$.url} />}
+          <h4>
+            <a href={item.link}>{item.title}</a>
+          </h4>
           <div>{item.contentSnippet}</div>
           <div class="text-end text-muted">
             by{" "}

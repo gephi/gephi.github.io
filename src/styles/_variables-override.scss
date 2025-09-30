@@ -8,3 +8,6 @@ $spacer-2: map.get($spacers, 2);
 $spacer-3: map.get($spacers, 3);
 $spacer-4: map.get($spacers, 4);
 $spacer-5: map.get($spacers, 5);
+
+// Use this to get the proper padding for some item that has a 100vw width:
+$base-padding: calc(#{$spacer-4} * 0.5);
