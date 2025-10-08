@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/markdown-remark": "^6.3.7",
     "@astrojs/react": "^4.4.0",
+    "@astrojs/sitemap": "^3.6.0",
     "@cospired/i18n-iso-languages": "^4.2.0",
     "@iconify-json/bi": "^1.2.6",
     "@iconify-json/ph": "^1.2.2",
