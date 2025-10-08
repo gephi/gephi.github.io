@@ -57,10 +57,6 @@ const redirects: Record<string, RedirectConfig> = {
     status: 301,
     destination: "/about",
   },
-  "/gephi-lite": {
-    status: 301,
-    destination: "https://lite.gephi.org",
-  },
 };
 
 export default redirects;
