@@ -2,8 +2,18 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Banner from "../../components/Banner.astro";
+import FeatureBackground from "../../components/FeatureBackground.astro";
 import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
+
+import GephiLitePaper from "../../images/homepage/gephi-lite-paper.png";
+import Appearance from "../../images/lite/appearance.png";
+import CaptionFilters from "../../images/lite/caption-filters.png";
+import CloneGraphs from "../../images/lite/clone-graphs.png";
+import Datatable from "../../images/lite/datatable.png";
+import Multitouch from "../../images/lite/multi-touch.jpg";
+import Responsive from "../../images/lite/responsiveness.jpg";
+import Retina from "../../images/lite/retina.png";
 ---
 
 <Layout pageId="lite">
@@ -47,7 +57,7 @@ import Layout from "../../layouts/Layout.astro";
 
     <section class="feature-container pb-5">
       <section class="feature">
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -71,21 +81,21 @@ import Layout from "../../layouts/Layout.astro";
 
         <section class="feature-arguments">
           <figure class="figure">
-            <img src="/lite/appearance.png" class="border figure-img img-fluid" alt="" />
+            <Image src={Appearance} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">
               Graph view with graph appearance customization
             </figcaption>
           </figure>
 
           <figure class="figure">
-            <img src="/lite/caption-filters.png" class="border figure-img img-fluid" alt="" />
+            <Image src={CaptionFilters} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">
               Dynamic caption for nodes and edges colors and sizes
             </figcaption>
           </figure>
 
           <figure class="figure">
-            <img src="/lite/datatable.png" class="border figure-img img-fluid" alt="" />
+            <Image src={Datatable} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">
               Data table to explore nodes and edges attributes
             </figcaption>
@@ -94,7 +104,7 @@ import Layout from "../../layouts/Layout.astro";
       </section>
 
       <section class="feature">
-        <div class="feature-background" style="opacity: 0.075; background-image: url(/lite/code.png);"></div>
+        <FeatureBackground opacity={0.075} imageRelativePath="/lite/code.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -120,14 +130,14 @@ import Layout from "../../layouts/Layout.astro";
 
         <section class="feature-arguments">
           <figure class="figure">
-            <img src="/lite/retina.png" class="border figure-img img-fluid" alt="" />
+            <Image src={Retina} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">
               <a href="https://ouestware.gitlab.io/retina">Retina</a> supports opening graphs in Gephi Lite
             </figcaption>
           </figure>
 
           <figure class="figure">
-            <img src="/lite/clone-graphs.png" class="border figure-img img-fluid" alt="" />
+            <Image src={CloneGraphs} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">
               Gephi Lite uses the driver to <strong>clone graphs</strong> in new tabs
             </figcaption>
@@ -136,7 +146,7 @@ import Layout from "../../layouts/Layout.astro";
       </section>
 
       <section class="feature">
-        <div class="feature-background" style="opacity: 0.075; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.075} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -156,12 +166,12 @@ import Layout from "../../layouts/Layout.astro";
 
         <section class="feature-arguments" style="filter: saturate(0);">
           <figure class="figure">
-            <img src="/lite/multi-touch.jpg" class="border figure-img img-fluid" alt="" />
+            <Image src={Multitouch} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">Multi-touch support</figcaption>
           </figure>
 
           <figure class="figure">
-            <img src="/lite/responsiveness.jpg" class="border figure-img img-fluid" alt="" />
+            <Image src={Responsive} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">Responsive user interfaces</figcaption>
           </figure>
         </section>
@@ -178,7 +188,7 @@ import Layout from "../../layouts/Layout.astro";
         <iframe
           id="try-gephi-lite"
           allowfullscreen
-          src="https://gephi.org/gephi-lite?file=https://gist.githubusercontent.com/jacomyal/08b9cdd4c629f64c299eaa8b922bc37b/raw/a85f7bb53a6f6bb17cf3f5c0991142708f120146/arctic-shaded.json"
+          src="https://lite.gephi.org/?file=https://raw.githubusercontent.com/gephi/gephi-lite/refs/heads/main/packages/gephi-lite/public/samples/Les%20Miserables.json"
         ></iframe>
       </section>
     </section>
@@ -188,7 +198,7 @@ import Layout from "../../layouts/Layout.astro";
         <div class="row justify-content-center fs-4 gap-5">
           <div class="col-lg-4">
             <h3 class="mb-4"><Icon name="ph:graduation-cap-bold" class="text-primary" /> How to cite Gephi Lite</h3>
-            <a href="#"><img class="border" src="/homepage/gephi-lite-paper.png" /></a>
+            <a href="#"><Image class="border" src={GephiLitePaper} alt="" /></a>
             <p class="fs-6 mt-3">
               Girard P., Jacomy A., Simard B., Jacomy M. (2025). <i>Gephi Lite: a lighter web-based version of Gephi.</i
               > Digital Humanities 2025. Lisbon.

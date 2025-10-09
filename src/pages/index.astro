@@ -5,7 +5,11 @@ import { Icon } from "astro-icon/components";
 import Banner from "../components/Banner.astro";
 import BlogRSS from "../components/BlogRSS.astro";
 import DownloadGephiDesktop from "../components/DownloadGephiDesktop.astro";
+import FeatureBackground from "../components/FeatureBackground.astro";
 import Layout from "../layouts/Layout.astro";
+
+import GephiLitePaper from "../images/homepage/gephi-lite-paper.png";
+import GephiPaper from "../images/homepage/gephi-paper.png";
 ---
 
 <Layout>
@@ -75,7 +79,10 @@ import Layout from "../layouts/Layout.astro";
 
   <main class="feature-container py-5">
     <section class="feature feature-network-analysis">
-      <div class="feature-background" style="background-image: url(/homepage/network-analysis.png);"></div>
+      <FeatureBackground
+        imageRelativePath="/homepage/network-analysis.png"
+        alt="One network visible multiple times with annotations to reveal its structure"
+      />
       <section class="feature-headline">
         <div class="feature-text">
           <h2><Icon name="ph:graph" /> <span>Powerful Network Analysis</span></h2>
@@ -107,7 +114,10 @@ import Layout from "../layouts/Layout.astro";
     </section>
 
     <section class="feature feature-visualizations mt-5">
-      <div class="feature-background" style="background-image: url(/homepage/visualizations.png);"></div>
+      <FeatureBackground
+        imageRelativePath="/homepage/visualizations.png"
+        alt="A network visualization showing two big clusters, one blue on the left, one red on the right."
+      />
       <section class="feature-headline">
         <div class="feature-text">
           <h2><Icon name="ph:chart-scatter" /> <span>Insightful Visualization</span></h2>
@@ -142,7 +152,10 @@ import Layout from "../layouts/Layout.astro";
     </section>
 
     <section class="feature feature-academic mt-5">
-      <div class="feature-background" style="background-image: url(/homepage/academic.png);"></div>
+      <FeatureBackground
+        imageRelativePath="/homepage/academic.png"
+        alt="One computer, on an academic desk with archive box and notebook, shows the Gephi desktop software on its screen"
+      />
       <section class="feature-headline">
         <div class="feature-text">
           <h2><Icon name="ph:graduation-cap" /> <span>Trusted by Researchers Worldwide</span></h2>
@@ -159,7 +172,7 @@ import Layout from "../layouts/Layout.astro";
           <h3>The <strong>Gephi</strong> Paper</h3>
           <div class="d-flex align-items-center">
             <a href="https://ojs.aaai.org/index.php/ICWSM/article/view/13937"
-              ><img class="border" src="/homepage/gephi-paper.png" /></a
+              ><Image class="border" src={GephiPaper} alt="First page of the ICWSM 2009 Gephi paper" /></a
             >
             <p class="fs-6 ms-3">
               Bastian M., Heymann S., Jacomy M. (2009). <i
@@ -176,7 +189,9 @@ import Layout from "../layouts/Layout.astro";
         <div>
           <h3>The <strong>Gephi Lite</strong> Paper</h3>
           <div class="d-flex align-items-center">
-            <a href="#"><img class="border" src="/homepage/gephi-lite-paper.png" /></a>
+            <a href="#"
+              ><Image class="border" src={GephiLitePaper} alt="First page of the DH 2025 Gephi Lite paper" /></a
+            >
             <p class="fs-6 ms-3">
               Girard P., Jacomy A., Simard B., Jacomy M. (2025). <i>Gephi Lite: a lighter web-based version of Gephi.</i
               > Digital Humanities 2025. Lisbon.
@@ -187,7 +202,11 @@ import Layout from "../layouts/Layout.astro";
     </section>
 
     <section class="feature feature-community mt-5">
-      <div class="feature-background" style="background-image: url(/homepage/community.png);"></div>
+      <FeatureBackground
+        imageRelativePath="/homepage/community.png"
+        alt="Various people in various environnement working on Gephi during Gephi weeks events."
+      />
+
       <section class="feature-headline">
         <div class="feature-text">
           <h2><Icon name="ph:heart" /> <span>Open Source &amp; Free</span></h2>

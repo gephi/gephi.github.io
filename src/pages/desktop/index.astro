@@ -3,8 +3,15 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Banner from "../../components/Banner.astro";
 import DownloadGephiDesktop from "../../components/DownloadGephiDesktop.astro";
+import FeatureBackground from "../../components/FeatureBackground.astro";
 import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
+
+import GephiDesktopScreenshotDtB from "../../images/desktop/Gephi Desktop Screenshot DtB.png";
+import layout01 from "../../images/desktop/layout_01.png";
+import layout02 from "../../images/desktop/layout_02.png";
+import realtime01 from "../../images/desktop/realtime_01.png";
+import realtime02 from "../../images/desktop/realtime_02.png";
 ---
 
 <Layout pageId="desktop">
@@ -62,8 +69,8 @@ import Layout from "../../layouts/Layout.astro";
       </section>
 
       <section class="feature">
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/desktop/Divided-they-blog.png);">
-        </div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/desktop/Divided-they-blog.png" alt="" />
+
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -90,8 +97,9 @@ import Layout from "../../layouts/Layout.astro";
 
         <section class="feature-arguments">
           <figure class="figure">
-            <img
-              src="/desktop/Gephi Desktop Screenshot DtB.png"
+            <Image
+              src={GephiDesktopScreenshotDtB}
+              height={315}
               style="height: 315px"
               class="border figure-img img-fluid"
               alt=""
@@ -114,7 +122,7 @@ import Layout from "../../layouts/Layout.astro";
       </section>
 
       <section class="feature">
-        <div class="feature-background" style="opacity: 0.15; background-image: url(/desktop/graph.png);"></div>
+        <FeatureBackground opacity={0.15} imageRelativePath="/desktop/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -140,20 +148,20 @@ import Layout from "../../layouts/Layout.astro";
 
         <section class="feature-arguments">
           <figure class="figure">
-            <img src="/desktop/realtime_01.png" class="border figure-img img-fluid" alt="" />
+            <Image src={realtime01} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">Drag and drop nodes</figcaption>
           </figure>
 
           <figure class="figure">
-            <img src="/desktop/realtime_02.png" class="border figure-img img-fluid" alt="" />
+            <Image src={realtime02} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">Highlight neighbors</figcaption>
           </figure>
         </section>
       </section>
 
       <section class="feature">
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/desktop/layout-clusters.png);">
-        </div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/desktop/layout-clusters.png" alt="" />
+
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -180,12 +188,12 @@ import Layout from "../../layouts/Layout.astro";
 
         <section class="feature-arguments">
           <figure class="figure">
-            <img src="/desktop/layout_02.png" class="border figure-img img-fluid" alt="" />
+            <Image src={layout02} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">Separate clusters</figcaption>
           </figure>
 
           <figure class="figure">
-            <img src="/desktop/layout_01.png" class="border figure-img img-fluid" alt="" />
+            <Image src={layout01} class="border figure-img img-fluid" alt="" />
             <figcaption class="figure-caption text-muted text-center">Keep your network compact</figcaption>
           </figure>
         </section>
@@ -193,7 +201,7 @@ import Layout from "../../layouts/Layout.astro";
 
       <section class="feature">
         <!-- TODO: Insert a better background image for this topic -->
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -221,7 +229,7 @@ import Layout from "../../layouts/Layout.astro";
 
       <section class="feature">
         <!-- TODO: Insert a better background image for this topic -->
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -250,7 +258,7 @@ import Layout from "../../layouts/Layout.astro";
 
       <section class="feature">
         <!-- TODO: Insert a better background image for this topic -->
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -276,7 +284,7 @@ import Layout from "../../layouts/Layout.astro";
 
       <section class="feature">
         <!-- TODO: Insert a better background image for this topic -->
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -301,7 +309,7 @@ import Layout from "../../layouts/Layout.astro";
 
       <section class="feature">
         <!-- TODO: Insert a better background image for this topic -->
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
@@ -327,7 +335,7 @@ import Layout from "../../layouts/Layout.astro";
 
       <section class="feature">
         <!-- TODO: Insert a better background image for this topic -->
-        <div class="feature-background" style="opacity: 0.1; background-image: url(/lite/graph.png);"></div>
+        <FeatureBackground opacity={0.1} imageRelativePath="/lite/graph.png" alt="" />
         <section class="feature-headline">
           <div class="feature-text">
             <h2>

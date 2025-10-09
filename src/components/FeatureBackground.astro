@@ -1,0 +1,23 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import { trimStart } from "lodash-es";
+
+interface Props {
+  imageRelativePath: string;
+  alt: string;
+  opacity?: number;
+}
+const { opacity, imageRelativePath, alt } = Astro.props;
+
+const imageAbsolutePath = `/src/images/${trimStart(imageRelativePath, "/")}`;
+
+const images = import.meta.glob<{ default: ImageMetadata }>("/src/images/**/*.{jpeg,jpg,png,gif}");
+console.log(images[imageAbsolutePath]);
+if (!images[imageAbsolutePath])
+  throw new Error(`"${imageAbsolutePath}" does not exist in glob: "src/images/*.{jpeg,jpg,png,gif}"`);
+---
+
+<div class="feature-background" style={opacity ? { opacity } : undefined}>
+  <Image src={images[imageAbsolutePath]()} alt={alt} layout="full-width" />
+</div>
