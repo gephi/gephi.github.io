@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import { isEmpty } from "lodash-es";
 import { marked } from "marked";
 
+import { Image } from "astro:assets";
 import Banner from "../../../components/Banner.astro";
 import Layout from "../../../layouts/Layout.astro";
 import type { Plugin } from "./type";
@@ -50,7 +51,9 @@ try {
       {
         !!plugin.images?.length && (
           <div class="banner-image">
-            <img
+            <Image
+              inferSize
+              layout="constrained"
               class="flex-shrink-0 bg-white"
               src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`}
               alt=""
@@ -170,7 +173,10 @@ try {
                     href={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${image}`}
                     class=""
                   >
-                    <img
+                    <Image
+                      inferSize
+                      alt={""}
+                      layout="constrained"
                       class="border img-fluid"
                       src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${image}`}
                     />

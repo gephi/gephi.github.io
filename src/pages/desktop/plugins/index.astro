@@ -1,6 +1,8 @@
 ---
-import { reverse, sortBy } from "lodash-es";
+import { Image } from "astro:assets";
+import { isNil, reverse, sortBy } from "lodash-es";
 import Banner from "../../../components/Banner.astro";
+import Default from "../../../images/plugins/default-screenshot.jpg";
 import Layout from "../../../layouts/Layout.astro";
 import { PluginsFilters } from "./PluginsFilters";
 import type { Plugin } from "./type";
@@ -39,15 +41,17 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
                   class={`category-${p.category} ${p.versions ? Object.keys(p.versions).map((v) => `version-${v}`) : ""}`}
                 >
                   <a class="card" href={`/desktop/plugins/${p.id}`}>
-                    <img
-                      alt=""
-                      class="card-img-top plugin-image"
-                      src={
-                        p.images && p.images[0]
-                          ? `https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${p.images[0].image}`
-                          : "/plugins/default-screenshot.jpg"
-                      }
-                    />
+                    {!isNil(p.images) && p.images[0] !== undefined ? (
+                      <Image
+                        inferSize
+                        alt=""
+                        class="card-img-top plugin-image"
+                        layout="constrained"
+                        src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${p.images[0].image}`}
+                      />
+                    ) : (
+                      <Image alt="" class="card-img-top plugin-image" layout="constrained" src={Default} />
+                    )}
                     <div>
                       <small class="plugin-category">{p.category}</small>
                     </div>
