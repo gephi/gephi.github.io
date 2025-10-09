@@ -15,4 +15,5 @@ export default defineConfig({
     defaultLocale: "en",
   },
   redirects,
+  image: { layout: "constrained" },
 });
