@@ -57,6 +57,30 @@ const redirects: Record<string, RedirectConfig> = {
     status: 301,
     destination: "/about",
   },
+  "/users/download": {
+    status: 301,
+    destination: "/desktop",
+  },
+  "/users/install": {
+    status: 301,
+    destination: "/desktop",
+  },
+  "/users/quick-start": {
+    status: 301,
+    destination: "/quickstart",
+  },
+  "/users/tutorial-layouts": {
+    status: 301,
+    destination: "/quickstart",
+  },
+  "/users/tutorial-visualization": {
+    status: 301,
+    destination: "/quickstart",
+  },
+  "/gephi-lite": {
+    status: 301,
+    destination: "https://lite.gephi.org/",
+  },
 };
 
 export default redirects;
