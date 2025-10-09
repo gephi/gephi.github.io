@@ -2,7 +2,7 @@
 
 ## Open Gephi Lite
 
-> - Open Gephi Lite by visiting the address https://gephi.org/gephi-lite/ in your browser (preferably Firefox or Chrome)
+> - Open Gephi Lite by visiting the address https://lite.gephi.org/ in your browser (preferably Firefox or Chrome)
 
 </section>
 
