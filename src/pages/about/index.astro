@@ -5,18 +5,28 @@ import { Image } from "astro:assets";
 import Banner from "../../components/Banner.astro";
 import Layout from "../../layouts/Layout.astro";
 
-type TeamMember = { image: string; name: string; role?: string };
+type TeamMember = { image: ImageMetadata; name: string; role?: string };
+
+import Alexis from "../../images/team/alexis-jacomy.jpg";
+import Benoit from "../../images/team/benoit-simard.jpeg";
+import Clement from "../../images/team/clement-levallois.png";
+import Eduardo from "../../images/team/eduardo-ramos-ibanez.png";
+import Martin from "../../images/team/martin-grandjean.png";
+import MathieuB from "../../images/team/mathieu-bastian.png";
+import MathieuJ from "../../images/team/mathieu-jacomy.png";
+import Matthieu from "../../images/team/matthieu-totet.png";
+import Paul from "../../images/team/paul-girard.jpeg";
 
 const TEAM: TeamMember[] = [
-  { image: "/team/mathieu-jacomy.png", name: "Mathieu Jacomy", role: "Project management and design" },
-  { image: "/team/mathieu-bastian.png", name: "Mathieu Bastian", role: "Java architect" },
-  { image: "/team/eduardo-ramos-ibanez.png", name: "Eduardo Ramos Ibáñez", role: "Java lead developer" },
-  { image: "/team/matthieu-totet.png", name: "Matthieu Totet", role: "Java codebase and plugins" },
-  { image: "/team/paul-girard.jpeg", name: "Paul Girard", role: "Gephi Lite team" },
-  { image: "/team/alexis-jacomy.jpg", name: "Alexis jacomy", role: "Gephi Lite team" },
-  { image: "/team/benoit-simard.jpeg", name: "Benoit Simard", role: "Gephi Lite team" },
-  { image: "/team/martin-grandjean.png", name: "Martin Grandjean", role: "Community management" },
-  { image: "/team/clement-levallois.png", name: "Clément Levallois", role: "Community emulation" },
+  { image: MathieuJ, name: "Mathieu Jacomy", role: "Project management and design" },
+  { image: MathieuB, name: "Mathieu Bastian", role: "Java architect" },
+  { image: Eduardo, name: "Eduardo Ramos Ibáñez", role: "Java lead developer" },
+  { image: Matthieu, name: "Matthieu Totet", role: "Java codebase and plugins" },
+  { image: Paul, name: "Paul Girard", role: "Gephi Lite team" },
+  { image: Alexis, name: "Alexis jacomy", role: "Gephi Lite team" },
+  { image: Benoit, name: "Benoit Simard", role: "Gephi Lite team" },
+  { image: Martin, name: "Martin Grandjean", role: "Community management" },
+  { image: Clement, name: "Clément Levallois", role: "Community emulation" },
 ];
 ---
 
@@ -128,6 +138,7 @@ const TEAM: TeamMember[] = [
                     width="200"
                     height="200"
                     class="img-thumbnail"
+                    layout="constrained"
                     src={member.image}
                     alt={`${member.name}'s picture`}
                   />
