@@ -1,7 +1,8 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Question from "../../components/faq/Question.astro";
+import Banner from "../../components/Banner.astro";
 import IconOrImage from "../../components/faq/IconOrImage.astro";
+import Question from "../../components/faq/Question.astro";
+import Layout from "../../layouts/Layout.astro";
 
 type Question = { question: string; answer: string };
 type Group<T> = { label: string; slug: string; children: T[]; icon?: string; image?: string };
@@ -288,22 +289,20 @@ const QUESTIONS: Group<Question | Group<Question>>[] = [
 ---
 
 <Layout class="faq-page" pageId="faq">
-  <header class="banner">
-    <section class="container my-5 py-4">
-      <h1>Frequently Asked Questions</h1>
-      <p class="fs-5 mb-1">
-        The questions list has been curated by <a href="https://www.veronicaespinoza.org/" class="fw-bold text-white"
-          >Dr. Verónica Espinoza</a
-        > and <a href="https://www.martingrandjean.ch/" class="fw-bold text-white">Martin Grandjean</a>.
-      </p>
-      <p class="fs-5">
-        Missing questions can be suggested by <a
-          href="https://github.com/gephi/gephi.github.io/issues/new"
-          class="text-white">opening a ticket</a
-        > in the website's GitHub repository.
-      </p>
-    </section>
-  </header>
+  <Banner containerClass="my-5 py-4">
+    <h1>Frequently Asked Questions</h1>
+    <p class="fs-5 mb-1">
+      The questions list has been curated by <a href="https://www.veronicaespinoza.org/" class="fw-bold text-white"
+        >Dr. Verónica Espinoza</a
+      > and <a href="https://www.martingrandjean.ch/" class="fw-bold text-white">Martin Grandjean</a>.
+    </p>
+    <p class="fs-5">
+      Missing questions can be suggested by <a
+        href="https://github.com/gephi/gephi.github.io/issues/new"
+        class="text-white">opening a ticket</a
+      > in the website's GitHub repository.
+    </p>
+  </Banner>
 
   <main class="container py-5">
     <section class="row mt-5 justify-content-center">

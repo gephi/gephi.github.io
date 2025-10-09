@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import Banner from "../../components/Banner.astro";
 import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
@@ -13,33 +14,31 @@ import Layout from "../../layouts/Layout.astro";
       --bs-link-color-rgb: var(--bs-gephi-lite-bg-rgb);
     }
   </style>
-  <header class="banner bg-gephi-lite-bg-dark">
-    <section class="container">
-      <div class="banner-contents">
-        <div class="banner-texts">
-          <div>
-            <h1 class="gephi-font">Gephi Lite</h1>
-          </div>
-
-          <p class="fs-3">
-            Gephi Lite is an <strong>open-source</strong> web application dedicated to <strong
-              >visual network analysis</strong
-            >.
-          </p>
-
-          <div>
-            <a href="https://lite.gephi.org" class="btn btn-white fs-4 fw-bold"
-              ><Icon name="ph:arrow-square-out-bold" /> Open in your browser</a
-            >
-            <div class="fs-5 pt-2">Works on desktop, tablets and mobiles</div>
-          </div>
+  <Banner className="bg-gephi-lite-bg-dark">
+    <div class="banner-contents">
+      <div class="banner-texts">
+        <div>
+          <h1 class="gephi-font">Gephi Lite</h1>
         </div>
-        <div class="banner-image banner-logo">
-          <Image src="/icons/gephi-lite-logo-inverted.svg" alt="Gephi logo" width="400" height="400" />
+
+        <p class="fs-3">
+          Gephi Lite is an <strong>open-source</strong> web application dedicated to <strong
+            >visual network analysis</strong
+          >.
+        </p>
+
+        <div>
+          <a href="https://lite.gephi.org" class="btn btn-white fs-4 fw-bold"
+            ><Icon name="ph:arrow-square-out-bold" /> Open in your browser</a
+          >
+          <div class="fs-5 pt-2">Works on desktop, tablets and mobiles</div>
         </div>
       </div>
-    </section>
-  </header>
+      <div class="banner-image banner-logo">
+        <Image src="/icons/gephi-lite-logo-inverted.svg" alt="Gephi logo" width="400" height="400" />
+      </div>
+    </div>
+  </Banner>
 
   <main class="pt-5">
     <section class="container">

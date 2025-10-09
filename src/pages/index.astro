@@ -2,77 +2,76 @@
 import { Image } from "astro:assets";
 
 import { Icon } from "astro-icon/components";
+import Banner from "../components/Banner.astro";
 import BlogRSS from "../components/BlogRSS.astro";
 import DownloadGephiDesktop from "../components/DownloadGephiDesktop.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <header class="banner">
-    <section class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-8 mb-5">
-          <h1 class="gephi-font">Gephi</h1>
+  <Banner>
+    <div class="row align-items-center">
+      <div class="col-lg-8 mb-5">
+        <h1 class="gephi-font">Gephi</h1>
 
-          <p class="fs-3">
-            <strong>Open-source</strong> project for <strong>visual network analysis</strong>
+        <p class="fs-3">
+          <strong>Open-source</strong> project for <strong>visual network analysis</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="d-flex gap-5 flex-wrap flex-xl-nowrap">
+      <div class="p-3 p-md-5 bg-gephi-desktop-bg text-dark d-flex flex-row gap-5 flex-grow-1 flex-wrap">
+        <a href="/desktop">
+          <Image src="/icons/gephi-desktop-logo.svg" alt="Gephi logo" class="h-100" width="130" height="130" />
+        </a>
+        <div class="flex-shrink-0">
+          <h2 class="gephi-font"><a href="/desktop" class="text-black">Gephi</a></h2>
+          <p class="fs-4">
+            Desktop application &nbsp;
+            <Icon name="ph:apple-logo" />
+            <Icon name="ph:windows-logo" />
+            <Icon name="ph:linux-logo" />
           </p>
+          <DownloadGephiDesktop buttonClass="btn btn-dark fs-4 me-1 fw-bold" />
         </div>
       </div>
-
-      <div class="d-flex gap-5 flex-wrap flex-xl-nowrap">
-        <div class="p-3 p-md-5 bg-gephi-desktop-bg text-dark d-flex flex-row gap-5 flex-grow-1 flex-wrap">
-          <a href="/desktop">
-            <Image src="/icons/gephi-desktop-logo.svg" alt="Gephi logo" class="h-100" width="130" height="130" />
-          </a>
-          <div class="flex-shrink-0">
-            <h2 class="gephi-font"><a href="/desktop" class="text-black">Gephi</a></h2>
-            <p class="fs-4">
-              Desktop application &nbsp;
-              <Icon name="ph:apple-logo" />
-              <Icon name="ph:windows-logo" />
-              <Icon name="ph:linux-logo" />
-            </p>
-            <DownloadGephiDesktop buttonClass="btn btn-dark fs-4 me-1 fw-bold" />
-          </div>
-        </div>
-        <div class="p-3 p-md-5 bg-gephi-lite-bg text-lite d-flex flex-row gap-5 flex-grow-1 flex-wrap">
-          <a href="/lite">
-            <Image
-              src="/icons/gephi-lite-logo-inverted.svg"
-              alt="Gephi Lite logo"
-              class="h-100"
-              width="130"
-              height="130"
-            />
-          </a>
-          <div class="flex-shrink-0">
-            <h2 class="gephi-font"><a href="/lite" class="text-white">Gephi Lite</a></h2>
-            <p class="fs-4">
-              Online tool &nbsp;
-              <Icon name="ph:desktop" />
-              <Icon name="ph:laptop" />
-              <Icon name="ph:device-tablet-camera" />
-              <Icon name="ph:device-mobile-camera" />
-            </p>
-            <a href="https://lite.gephi.org" class="btn btn-light fs-4 fw-bold"
-              ><Icon name="ph:arrow-square-out-bold" /> Open in browser</a
-            >
-          </div>
+      <div class="p-3 p-md-5 bg-gephi-lite-bg text-lite d-flex flex-row gap-5 flex-grow-1 flex-wrap">
+        <a href="/lite">
+          <Image
+            src="/icons/gephi-lite-logo-inverted.svg"
+            alt="Gephi Lite logo"
+            class="h-100"
+            width="130"
+            height="130"
+          />
+        </a>
+        <div class="flex-shrink-0">
+          <h2 class="gephi-font"><a href="/lite" class="text-white">Gephi Lite</a></h2>
+          <p class="fs-4">
+            Online tool &nbsp;
+            <Icon name="ph:desktop" />
+            <Icon name="ph:laptop" />
+            <Icon name="ph:device-tablet-camera" />
+            <Icon name="ph:device-mobile-camera" />
+          </p>
+          <a href="https://lite.gephi.org" class="btn btn-light fs-4 fw-bold"
+            ><Icon name="ph:arrow-square-out-bold" /> Open in browser</a
+          >
         </div>
       </div>
-      <div class="row align-items-center">
-        <div class="mt-5 text-md-end">
-          Too complicated? <br class="d-md-none" />Make a deal with
-          <a href="https://jacomyma.github.io/gephisto/" role="button" class="btn btn-sm fw-bold">
-            <Image src="/icons/gephisto-logo-inverted.svg" alt="Gephi Lite logo" class="h-100" width="32" height="32" />
-            <span style="color:#f4a2b9;">Gephisto</span>
-          </a>
-          the one-click Gephi.
-        </div>
+    </div>
+    <div class="row align-items-center">
+      <div class="mt-5 text-md-end">
+        Too complicated? <br class="d-md-none" />Make a deal with
+        <a href="https://jacomyma.github.io/gephisto/" role="button" class="btn btn-sm fw-bold">
+          <Image src="/icons/gephisto-logo-inverted.svg" alt="Gephi Lite logo" class="h-100" width="32" height="32" />
+          <span style="color:#f4a2b9;">Gephisto</span>
+        </a>
+        the one-click Gephi.
       </div>
-    </section>
-  </header>
+    </div>
+  </Banner>
 
   <main class="feature-container py-5">
     <section class="feature feature-network-analysis">

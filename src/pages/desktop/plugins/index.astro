@@ -1,5 +1,6 @@
 ---
 import { reverse, sortBy } from "lodash-es";
+import Banner from "../../../components/Banner.astro";
 import Layout from "../../../layouts/Layout.astro";
 import { PluginsFilters } from "./PluginsFilters";
 import type { Plugin } from "./type";
@@ -15,11 +16,9 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
 ---
 
 <Layout pageId="desktop-plugins">
-  <header class="banner">
-    <section class="container">
-      <h1>Gephi plugins</h1>
-    </section>
-  </header>
+  <Banner>
+    <h1>Gephi plugins</h1>
+  </Banner>
 
   <main class="plugins-main">
     {

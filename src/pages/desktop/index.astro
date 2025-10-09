@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import Banner from "../../components/Banner.astro";
 import DownloadGephiDesktop from "../../components/DownloadGephiDesktop.astro";
 import LangSwitcher from "../../components/LangSwitcher.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -14,26 +15,24 @@ import Layout from "../../layouts/Layout.astro";
       --bs-link-color-rgb: var(--bs-gephi-desktop-logo-rgb);
     }
   </style>
-  <header class="banner">
-    <section class="container">
-      <div class="banner-contents">
-        <div class="banner-texts">
-          <div>
-            <h1 class="gephi-font">Gephi</h1>
-          </div>
-
-          <p class="fs-3">
-            Gephi is an <strong>open-source</strong> desktop application to <strong>visually analyze networks</strong>.
-          </p>
-
-          <DownloadGephiDesktop withAlternativeLinks />
+  <Banner>
+    <div class="banner-contents">
+      <div class="banner-texts">
+        <div>
+          <h1 class="gephi-font">Gephi</h1>
         </div>
-        <div class="banner-image banner-logo">
-          <Image src="/icons/gephi-desktop-logo-inverted.svg" alt="Gephi logo" width="400" height="400" />
-        </div>
+
+        <p class="fs-3">
+          Gephi is an <strong>open-source</strong> desktop application to <strong>visually analyze networks</strong>.
+        </p>
+
+        <DownloadGephiDesktop withAlternativeLinks />
       </div>
-    </section>
-  </header>
+      <div class="banner-image banner-logo">
+        <Image src="/icons/gephi-desktop-logo-inverted.svg" alt="Gephi logo" width="400" height="400" />
+      </div>
+    </div>
+  </Banner>
 
   <main class="pt-5">
     <section class="container">

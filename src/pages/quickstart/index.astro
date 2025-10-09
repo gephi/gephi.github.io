@@ -1,17 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
+import Banner from "../../components/Banner.astro";
 import Gephi from "../../components/quickstart/Gephi.md";
 import GephiLite from "../../components/quickstart/GephiLite.md";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout class="no-sticky-nav" pageId="quickstart">
-  <header class="banner">
-    <section class="container">
-      <h1>Quickstart</h1>
-    </section>
-  </header>
+  <Banner>
+    <h1>Quickstart</h1>
+  </Banner>
 
   <main id="quickstart-page" class="py-5">
     <section class="quickstart-choice w-100 sticky-top container">

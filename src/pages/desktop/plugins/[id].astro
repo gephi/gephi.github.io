@@ -3,9 +3,9 @@ import { Icon } from "astro-icon/components";
 import { isEmpty } from "lodash-es";
 import { marked } from "marked";
 
+import Banner from "../../../components/Banner.astro";
 import Layout from "../../../layouts/Layout.astro";
 import type { Plugin } from "./type";
-import { Image } from "astro:assets";
 
 interface Props {
   plugin: Plugin;
@@ -34,34 +34,32 @@ try {
 ---
 
 <Layout class="plugin-page">
-  <header class="banner py-4">
-    <div class="container">
-      <div class="banner-top">
-        <a class="text-white" href="/desktop">Gephi</a> > <a class="text-white" href="/desktop/plugins">Gephi plugins</a
-        > > <a class="text-white" href={`/desktop/plugins?categories=${plugin.category}`}>{plugin.category} plugins</a>
-      </div>
-
-      <div class="banner-contents">
-        <div class="banner-texts gap-3">
-          <h1 class="fs-2">{plugin.name}</h1>
-
-          <p class="fs-4">{plugin.short_description}</p>
-          <p class="fs-5 opacity-75">last updated on {plugin.last_update}</p>
-        </div>
-        {
-          !!plugin.images?.length && (
-            <div class="banner-image">
-              <img
-                class="flex-shrink-0 bg-white"
-                src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`}
-                alt=""
-              />
-            </div>
-          )
-        }
-      </div>
+  <Banner className="py-4">
+    <div class="banner-top">
+      <a class="text-white" href="/desktop">Gephi</a> > <a class="text-white" href="/desktop/plugins">Gephi plugins</a> >
+      <a class="text-white" href={`/desktop/plugins?categories=${plugin.category}`}>{plugin.category} plugins</a>
     </div>
-  </header>
+
+    <div class="banner-contents">
+      <div class="banner-texts gap-3">
+        <h1 class="fs-2">{plugin.name}</h1>
+
+        <p class="fs-4">{plugin.short_description}</p>
+        <p class="fs-5 opacity-75">last updated on {plugin.last_update}</p>
+      </div>
+      {
+        !!plugin.images?.length && (
+          <div class="banner-image">
+            <img
+              class="flex-shrink-0 bg-white"
+              src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`}
+              alt=""
+            />
+          </div>
+        )
+      }
+    </div>
+  </Banner>
 
   <main class="pt-5">
     <section class="container pb-5 plugin-page">

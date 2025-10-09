@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 
+import Banner from "../../components/Banner.astro";
 import Layout from "../../layouts/Layout.astro";
 
 type TeamMember = { image: string; name: string; role?: string };
@@ -20,11 +21,9 @@ const TEAM: TeamMember[] = [
 ---
 
 <Layout pageId="about">
-  <header class="banner">
-    <section class="container">
-      <h1>About Gephi</h1>
-    </section>
-  </header>
+  <Banner>
+    <h1>About Gephi</h1>
+  </Banner>
 
   <main class="py-5">
     <section class="feature-container pb-5">

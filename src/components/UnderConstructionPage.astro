@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import Banner from "./Banner.astro";
 
 interface Props {
   title: string;
@@ -9,23 +10,21 @@ const { title } = Astro.props;
 ---
 
 <Layout>
-  <header class="banner">
-    <section class="container">
-      <div class="d-flex gap-3 fs-1 w-100">
-        <Icon name="ph:barricade" />
-        <Icon name="ph:shovel" />
-        <Icon name="ph:toolbox" />
-        <Icon name="ph:screwdriver" />
-        <Icon name="ph:hammer" />
-        <Icon name="ph:crane-tower" />
-        <Icon name="ph:pencil-ruler" />
-        <Icon name="ph:pipe" />
-      </div>
-      <h1>
-        {title} page not ready yet!
-      </h1>
-    </section>
-  </header>
+  <Banner>
+    <div class="d-flex gap-3 fs-1 w-100">
+      <Icon name="ph:barricade" />
+      <Icon name="ph:shovel" />
+      <Icon name="ph:toolbox" />
+      <Icon name="ph:screwdriver" />
+      <Icon name="ph:hammer" />
+      <Icon name="ph:crane-tower" />
+      <Icon name="ph:pencil-ruler" />
+      <Icon name="ph:pipe" />
+    </div>
+    <h1>
+      {title} page not ready yet!
+    </h1>
+  </Banner>
 
   <main class="container py-5">
     <section class="fs-2">

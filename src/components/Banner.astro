@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+import classNames from "classnames";
+import banner from "../images/homepage/banner.png";
+interface Props {
+  className?: string;
+  containerClass?: string;
+}
+const { containerClass, className } = Astro.props;
+---
+
+<header class={classNames("banner", className)}>
+  <Image src={banner} alt="banner picture showing nodes" class="banner-background" layout="full-width" />
+  <section class={classNames("container", containerClass)}>
+    <slot />
+  </section>
+</header>
