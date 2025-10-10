@@ -178,6 +178,8 @@
   }
   .banner-image img {
     width: auto;
+    object-fit: contain;
+    height: auto;
   }
 
   .feature:nth-child(2n):not(.feature-left) {
@@ -312,8 +314,9 @@ a.no-decoration {
       margin: 0;
     }
     img {
-      max-width: 100%;
-      max-height: 50%;
+      width: 100%;
+      height: auto;
+      max-height: 300px;
       object-fit: contain;
     }
   }

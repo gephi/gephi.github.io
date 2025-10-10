@@ -15,5 +15,5 @@ export default defineConfig({
     defaultLocale: "en",
   },
   redirects,
-  image: { layout: "constrained" },
+  image: { layout: "constrained", domains: ["gephi.wordpress.com", "raw.githubusercontent.com"] },
 });

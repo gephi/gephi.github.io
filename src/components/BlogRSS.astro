@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { identity } from "lodash-es";
 import Parser from "rss-parser";
 
@@ -22,7 +23,9 @@ const dateFormatter = new Intl.DateTimeFormat("en-EN", { dateStyle: "long" });
     {
       feed.items.slice(0, 4).map((item) => (
         <article class="blog-post">
-          {item["media:thumbnail"] && <img alt="" src={item["media:thumbnail"]?.$.url} />}
+          {item["media:thumbnail"] && (
+            <Image inferSize alt="" src={item["media:thumbnail"]?.$.url} layout="constrained" />
+          )}
           <h4>
             <a href={item.link}>{item.title}</a>
           </h4>
