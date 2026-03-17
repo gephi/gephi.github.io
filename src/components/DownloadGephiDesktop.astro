@@ -104,7 +104,10 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
   if (navigator.appVersion.indexOf("Win") !== -1) {
     currentBrowser = "windows64";
   } else if (navigator.appVersion.indexOf("Mac") !== -1) {
-    currentBrowser = "macSilicon";
+    if (navigator.userAgent.indexOf("Intel") !== -1)
+      currentBrowser = "macIntel"
+    else
+      currentBrowser = "macSilicon";
   } else if (navigator.userAgent.indexOf("Ubuntu") !== -1) {
     currentBrowser = "linux";
   } else if (navigator.appVersion.indexOf("X11") !== -1) {
