@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { fromPairs, map, mapValues, toPairs } from "lodash-es";
 
+
+
 const BROWSERS = {
   windows64: {
     label: "Windows",
@@ -77,7 +79,11 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
 
 ---
 
-<div class="d-flex flex-column align-items-start">
+<download-gephi-desktop
+    class="d-flex flex-column align-items-start"
+    data-browsers={JSON.stringify(BROWSERS)}
+    data-links={JSON.stringify(DOWNLOAD_LINKS)}
+    >
   <a href="https://github.com/gephi/gephi/releases" 
      id="download-gephi" 
      class={buttonClass || "btn btn-white fs-4 fw-bold mb-2"}
@@ -97,30 +103,39 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
   <a class="text-light" href="https://github.com/gephi/gephi/releases">
     <Icon name="ph:clock-counter-clockwise" /> Download Older Versions
   </a>}
-</div>
-<script define:vars={{ DOWNLOAD_LINKS, BROWSERS }}>
+</download-gephi-desktop>
+<script >
+  import { UAParser } from 'ua-parser-js';
+    class DownloadGephiDesktop extends HTMLElement {
+    connectedCallback() {
+      // Read the message from the data attribute.
+      const BROWSERS = JSON.parse(this.dataset.browsers||'{}');
+      const DOWNLOAD_LINKS = JSON.parse(this.dataset.links||'{}');
+      const { os, cpu } = UAParser(navigator.userAgent);
+      
   let currentBrowser = "windows64";
-
-  if (navigator.appVersion.indexOf("Win") !== -1) {
-    currentBrowser = "windows64";
-  } else if (navigator.appVersion.indexOf("Mac") !== -1) {
-    if (navigator.userAgent.indexOf("Intel") !== -1)
-      currentBrowser = "macIntel"
-    else
-      currentBrowser = "macSilicon";
-  } else if (navigator.userAgent.indexOf("Ubuntu") !== -1) {
-    currentBrowser = "linux";
-  } else if (navigator.appVersion.indexOf("X11") !== -1) {
-    currentBrowser = "linux";
+  switch(os.name){
+    case "Windows": currentBrowser = cpu.architecture?.includes("32") ? "windows32": "windows64" ; break;
+    case "macOS": currentBrowser = cpu.architecture?.includes("arm") ? "macSilicon" : "macIntel"; break;
+    // default to linux for all variety of linux OS + all variety of mobile...
+    // TODO: for mobile/tablet/console (detected in the device) we could advertize gephi-lite
+    default: currentBrowser = "linux";
   }
 
-  const link = document.getElementById("download-gephi");
-  const linkText = link.querySelector(".text");
-  if (DOWNLOAD_LINKS.links[currentBrowser]) {
+  const link = document.getElementById("download-gephi") as HTMLAnchorElement|null;
+  const linkText = link?.querySelector(".text");
+
+  if (link && DOWNLOAD_LINKS.links[currentBrowser]) {
     link.href = DOWNLOAD_LINKS.links[currentBrowser];
-    linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
+    if(linkText)
+      linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
   }
 
   const smallLink = document.querySelector(`a[data-browser='${currentBrowser}']`);
   if (smallLink) smallLink.remove();
+    }
+  }
+
+  customElements.define('download-gephi-desktop', DownloadGephiDesktop);
+  
 </script>
