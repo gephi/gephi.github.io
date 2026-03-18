@@ -106,17 +106,20 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
 </download-gephi-desktop>
 <script >
   import { UAParser } from 'ua-parser-js';
+import { isAppleSilicon } from 'ua-parser-js/device-detection';
     class DownloadGephiDesktop extends HTMLElement {
-    connectedCallback() {
+    async connectedCallback() {
       // Read the message from the data attribute.
       const BROWSERS = JSON.parse(this.dataset.browsers||'{}');
       const DOWNLOAD_LINKS = JSON.parse(this.dataset.links||'{}');
-      const { os, cpu } = UAParser(navigator.userAgent);
+      const detection = await UAParser(navigator.userAgent).withClientHints();
       
   let currentBrowser = "windows64";
-  switch(os.name){
-    case "Windows": currentBrowser = cpu.architecture?.includes("32") ? "windows32": "windows64" ; break;
-    case "macOS": currentBrowser = cpu.architecture?.includes("arm") ? "macSilicon" : "macIntel"; break;
+  switch(detection.os.name){
+    case "Windows": currentBrowser = detection.cpu.architecture?.includes("32") ? "windows32": "windows64" ; break;
+    case "macOS": 
+        currentBrowser = detection.cpu.architecture?.includes("arm") || 
+        isAppleSilicon(detection) ? "macSilicon" : "macIntel"; break;
     // default to linux for all variety of linux OS + all variety of mobile...
     // TODO: for mobile/tablet/console (detected in the device) we could advertize gephi-lite
     default: currentBrowser = "linux";
