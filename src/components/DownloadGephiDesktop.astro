@@ -10,11 +10,6 @@ const BROWSERS = {
     dlSuffix: "windows-x64.exe",
     icon: "ph:windows-logo-fill",
   },
-  windows32: {
-    label: "Windows (32 bits)",
-    dlSuffix: "windows-x32.exe",
-    icon: "ph:windows-logo-fill",
-  },
   macSilicon: {
     label: "Mac OS",
     dlSuffix: "macos-aarch64.dmg",
@@ -28,6 +23,11 @@ const BROWSERS = {
   linux: {
     label: "Linux",
     dlSuffix: "linux-x64.tar.gz",
+    icon: "ph:linux-logo-fill",
+  },
+  linuxAarch64: {
+    label: "Linux (aarch64)",
+    dlSuffix: "linux-aarch64.tar.gz",
     icon: "ph:linux-logo-fill",
   },
 } as const;
@@ -116,13 +116,13 @@ import { isAppleSilicon } from 'ua-parser-js/device-detection';
       
   let currentBrowser = "windows64";
   switch(detection.os.name){
-    case "Windows": currentBrowser = detection.cpu.architecture?.includes("32") ? "windows32": "windows64" ; break;
+    case "Windows": currentBrowser = "windows64"; break;
     case "macOS": 
         currentBrowser = detection.cpu.architecture?.includes("arm") || 
         isAppleSilicon(detection) ? "macSilicon" : "macIntel"; break;
     // default to linux for all variety of linux OS + all variety of mobile...
     // TODO: for mobile/tablet/console (detected in the device) we could advertize gephi-lite
-    default: currentBrowser = "linux";
+    default: currentBrowser = detection.cpu.architecture?.includes("arm") ? "linuxAarch64" : "linux";
   }
 
   const link = document.getElementById("download-gephi") as HTMLAnchorElement|null;
