@@ -1,7 +1,7 @@
 ---
 
 import Banner from "../../components/Banner.astro";
-
+import { Icon } from "astro-icon/components";
 import Layout from "../../layouts/Layout.astro";
 ---
 <Layout class="no-sticky-nav" >
@@ -12,8 +12,13 @@ import Layout from "../../layouts/Layout.astro";
 
     </p>
     <p class="fs-5">
-      <a href="https://github.com/gephi/gephi-toolkit">Download</a> the latest version of the toolkit. The Javadoc and code examples can be found on GitHub
+      <a href="https://github.com/gephi/gephi-toolkit/releases" class="btn btn-white fs-4 fw-bold">Download the latest version of the toolkit.<Icon name="ph:arrow-square-out-bold" /></a>
+      
+
     </p>
+   <p>
+        The Javadoc and Code examples can be found on <a href="https://github.com/gephi/gephi-toolkit" class="btn btn-white fs-4 fw-bold">GitHub <Icon name="ph:github-logo" /> </a>
+  </p> 
   </Banner>
   <main class="py-5">
     <section class="feature-container pb-5">
