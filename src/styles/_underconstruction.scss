@@ -22,6 +22,6 @@
 $nb_elemement: 8;
 @for $i from 1 through $nb_elemement {
   .underconstruction_icon:nth-child(#{$i}) {
-    animation-delay: -#{$i * 1 / $nb_elemement}s;
+    animation-delay: -#{calc($i * 1 / $nb_elemement)}s;
   }
 }
