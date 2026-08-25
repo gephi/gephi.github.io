@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { fromPairs, map, mapValues, toPairs } from "lodash-es";
+import Donate from "../components/Donate.astro";
 
 const BROWSERS = {
   windows64: {
@@ -83,7 +84,7 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
   <a
     href="https://github.com/gephi/gephi/releases"
     id="download-gephi"
-    class={buttonClass || "btn btn-white fs-4 fw-bold mb-2"}
+    class={`download ${buttonClass || "btn btn-white fs-4 fw-bold mb-2"}`}
   >
     <Icon name="ph:download-simple-bold" />
     <span class="text">Download Gephi</span>
@@ -95,7 +96,7 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
           BROWSERS,
           ({ label, icon }, browser: Browser) =>
             DOWNLOAD_LINKS.links[browser] && (
-              <a class="text-light" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
+              <a class="text-light download" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
                 <Icon name={icon} /> Download for {label}
               </a>
             ),
@@ -107,6 +108,23 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
     )
   }
 </download-gephi-desktop>
+
+<dialog id="sponsoring" class="shadow border-0 rounded-3 p-3">
+  <button type="button" class="close" command="close" commandfor="sponsoring" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h3>Your download has started 🎉</h3>
+  <p>Gephi is free and open source, and is built and maintained by a community of contributors.</p>
+  <p>
+    If Gephi is useful to you, consider making a donation to help us maintain the project, improve the software, and
+    keep it free for everyone.
+  </p>
+  <p>Every contribution makes a difference.</p>
+  <div class="text-center">
+    <Donate />
+  </div>
+</dialog>
+
 <script>
   import { UAParser } from "ua-parser-js";
   import { isAppleSilicon } from "ua-parser-js/device-detection";
@@ -146,4 +164,24 @@ const DOWNLOAD_LINKS = await getDownloadLinks();
   }
 
   customElements.define("download-gephi-desktop", DownloadGephiDesktop);
+
+  /**
+   * Open sponsoring dialog on download click
+   */
+  const sponsoring = document.getElementById("sponsoring") as HTMLDialogElement;
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!target || !(target instanceof Element)) return;
+
+    const link = target.closest(".download");
+    if (!link) return;
+
+    sponsoring.showModal();
+  });
+
+  sponsoring.addEventListener("click", (event) => {
+    if (event.target === sponsoring) {
+      sponsoring.close();
+    }
+  });
 </script>
