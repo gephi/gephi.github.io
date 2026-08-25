@@ -1,56 +1,111 @@
 ---
-
-import Banner from "../../components/Banner.astro";
 import { Icon } from "astro-icon/components";
-import Layout from "../../layouts/Layout.astro";
-import Architecture from "../../images/toolkit/architecture.svg";
 import { Image } from "astro:assets";
+import Banner from "../../components/Banner.astro";
+import Architecture from "../../images/toolkit/architecture.svg";
+import Layout from "../../layouts/Layout.astro";
 ---
-<Layout class="no-sticky-nav" >
-  <Banner>
-    <h1>Gephi Toolkit</h1>
-    <p class="fs-5">
-     The Gephi Toolkit project package essential modules (Graph, Layout, Filters, IO…) in a standard Java library, which any Java project can use for getting things done.
-     The toolkit is just a single JAR that anyone could reuse in new Java applications and achieve tasks that can be done in Gephi automatically, from a command-line program for instance. 
-     It enable running specific gephi feature within automated script or web services etc...
 
-    </p>
-    <p class="fs-5">
-      <a href="https://github.com/gephi/gephi-toolkit/releases" class="btn btn-white fs-4 fw-bold">Download the latest version of the toolkit.<Icon name="ph:arrow-square-out-bold" /></a>
-    </p>
-   <p>
-        The Javadoc and Code examples can be found on <a href="https://github.com/gephi/gephi-toolkit" class="btn btn-white fs-4 fw-bold">GitHub <Icon name="ph:github-logo" /> </a>
-  </p> 
+<Layout pageId="toolkit">
+  <Banner>
+    <div class="banner-contents">
+      <div class="banner-texts">
+        <div>
+          <h1 class="gephi-font">Gephi Toolkit</h1>
+        </div>
+
+        <p class="fs-3">Gephi Toolkit lets you <strong>script Gephi</strong> from any Java program.</p>
+        <p class="fs-5">
+          <a href="https://github.com/gephi/gephi-toolkit/releases" class="btn btn-white fs-4 fw-bold"
+            ><Icon name="ph:arrow-square-out-bold" /> Download Gephi Toolkit</a
+          >
+          <a href="https://github.com/gephi/gephi-toolkit-demos" class="btn btn-white fs-4 fw-bold"
+            ><Icon name="ph:shapes" /> See some demos</a
+          >
+        </p>
+      </div>
+    </div>
   </Banner>
   <main class="py-5">
     <section class="feature-container pb-5">
+      <section class="feature">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:robot" class="text-primary" />
+              <span><strong>Automate</strong> Gephi</span>
+            </h2>
+            <p>
+              The Gephi Toolkit project package essential modules (Graph, Layout, Filters, IO…) in a <strong
+                >standard Java library</strong
+              >, which any Java project can use for getting things done.
+            </p>
 
-      <h1>Use cases</h1>
-
-      <ul>
-          <li> <b>Create a layout program</b> – that receives a GEXF file, layout it, and return the resulting GEXF file.</li>
-          <li><b>Complete chain</b> – from an input graph file (DOT, GML, GEXF, …) to the resulting PDF, with a list of settings.</li>
-          <li><b>Java applet</b> – Use Gephi modules to store, filter, search in the Graph and build a new visualization applet on top of it.</li>
-          <li><b>Servlet</b> – Use Gephi toolkit to create graph snippets PNG images automatically in a servlet.</li>
-      </ul>
-
-  </section>
-  <section class="feature-container pb-5">
-    <h1>How it works</h1>
-      <p class="fs-5">
-        Gephi is designed in a modular way and splitted into different modules. All features are wrapped into separated modules, for instance a module for the graph structure, a module for the layout algorithms and so on. Moreover business modules are separated from user interfaces modules. That allows to keep only business modules and remove UI without any problems. That is the purpose of the toolkit, which wraps only core modules and remove all the UI layer.
-      </p>
-      <p class="fs-5">
-        The figure shows Gephi architecture and what part is included in the toolkit. So the toolkit is just taking what already exists in Gephi and package it.
-               <Image  alt="" class="card-img-top plugin-image fs-5" layout="constrained" src={Architecture} />
-      </p>
-
-      <p class="fs-5">
-        We have some demos available <a href="https://github.com/gephi/gephi-toolkit-demos"  class="btn btn-black fs-5 fw-bold">Here</a>
-      </p>
-  </section>
-</main>
-
+            <p>
+              The toolkit is just a single JAR that anyone could reuse in new Java applications and achieve tasks that
+              can be done in Gephi automatically, from a command-line program for instance. It enable running specific
+              gephi feature within <strong>automated script</strong>
+              or web services etc...
+            </p>
+          </div>
+        </section>
+      </section>
+      <section class="feature">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2><Icon name="ph:list-bullets" class="text-primary" />Use cases</h2>
+            <p>
+              <ul>
+                <li>
+                  <b>Create a layout program</b> – that receives a GEXF file, layout it, and return the resulting GEXF file.
+                </li>
+                <li>
+                  <b>Complete chain</b> – from an input graph file (DOT, GML, GEXF, …) to the resulting PDF, with a list
+                  of settings.
+                </li>
+                <li>
+                  <b>Java applet</b> – Use Gephi modules to store, filter, search in the Graph and build a new visualization
+                  applet on top of it.
+                </li>
+                <li>
+                  <b>Servlet</b> – Use Gephi toolkit to create graph snippets PNG images automatically in a servlet.
+                </li>
+              </ul>
+            </p>
+          </div>
+        </section>
+      </section>
+      <section class="feature">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2><Icon name="ph:question" class="text-primary" />How it works</h2>
+            <p class="fs-5">
+              Gephi is designed in a modular way and split into different modules. All features are wrapped into
+              separated modules, for instance a module for the graph structure, a module for the layout algorithms and
+              so on. Moreover business modules are separated from user interfaces modules. That allows to keep only
+              business modules and remove UI without any problems. That is the purpose of the toolkit, which wraps only
+              core modules and remove all the UI layer.
+            </p>
+            <p class="fs-5">
+              The figure shows Gephi architecture and what part is included in the toolkit. So the toolkit is just
+              taking what already exists in Gephi and package it.
+            </p>
+            <p class="fs-5">
+              The Javadoc and Code examples can be found on <a
+                href="https://github.com/gephi/gephi-toolkit"
+                class="fw-bold"
+                ><Icon name="ph:github-logo" /> GitHub
+              </a>
+            </p>
+          </div>
+        </section>
+        <section class="feature-arguments">
+          <figure class="figure">
+            <Image src={Architecture} class="border figure-img img-fluid p-2" alt="" />
+            <figcaption class="figure-caption text-muted text-center">Gephi Toolkit Architecture</figcaption>
+          </figure>
+        </section>
+      </section>
+    </section>
+  </main>
 </Layout>
-
-
