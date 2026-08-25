@@ -11,26 +11,26 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@astrojs/markdown-remark": "^6.3.7",
-    "@astrojs/react": "^4.4.0",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/react": "^6.0.4",
+    "@astrojs/sitemap": "^3.7.3",
     "@cospired/i18n-iso-languages": "^4.2.0",
-    "@iconify-json/bi": "^1.2.6",
+    "@iconify-json/bi": "^1.2.7",
     "@iconify-json/ph": "^1.2.2",
     "@ouestware/hooks": "^0.0.1-alpha.6",
-    "astro": "^5.14.1",
-    "astro-icon": "^1.1.5",
+    "astro": "^7.2.6",
+    "astro-icon": "^1.2.0",
     "bootstrap": "^5.3.8",
     "classnames": "^2.5.1",
-    "lodash-es": "^4.17.21",
-    "marked": "^16.3.0",
+    "lodash-es": "^4.18.1",
+    "marked": "^18.0.11",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "rss-parser": "^3.13.0",
-    "sass": "^1.93.2",
-    "typescript": "^5.9.2",
-    "ua-parser-js": "^2.0.9"
+    "sass": "^1.103.1",
+    "typescript": "^6.0.3",
+    "ua-parser-js": "^2.0.10"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12"
