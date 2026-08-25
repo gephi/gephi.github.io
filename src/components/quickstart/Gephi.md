@@ -6,6 +6,7 @@
 
 - On Windows, after the download completes, run the installer and follow the steps.
 - On Mac OS X, click on the .dmg file and drag the Gephi app to the Applications folder.
+
 </section>
 
 <section class="common-title">

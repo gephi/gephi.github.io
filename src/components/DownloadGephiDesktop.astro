@@ -2,8 +2,6 @@
 import { Icon } from "astro-icon/components";
 import { fromPairs, map, mapValues, toPairs } from "lodash-es";
 
-
-
 const BROWSERS = {
   windows64: {
     label: "Windows",
@@ -33,7 +31,6 @@ const BROWSERS = {
 } as const;
 
 type Browser = keyof typeof BROWSERS;
-
 
 async function getDownloadLinks() {
   try {
@@ -70,75 +67,83 @@ async function getDownloadLinks() {
 }
 
 export interface Props {
-    withAlternativeLinks?:boolean
-    buttonClass?: string
+  withAlternativeLinks?: boolean;
+  buttonClass?: string;
 }
 
-const {withAlternativeLinks, buttonClass} = Astro.props;
+const { withAlternativeLinks, buttonClass } = Astro.props;
 const DOWNLOAD_LINKS = await getDownloadLinks();
-
 ---
 
 <download-gephi-desktop
-    class="d-flex flex-column align-items-start"
-    data-browsers={JSON.stringify(BROWSERS)}
-    data-links={JSON.stringify(DOWNLOAD_LINKS)}
-    >
-  <a href="https://github.com/gephi/gephi/releases" 
-     id="download-gephi" 
-     class={buttonClass || "btn btn-white fs-4 fw-bold mb-2"}
-    ><Icon name="ph:download-simple-bold" /> <span class="text">Download Gephi</span></a
+  class="d-flex flex-column align-items-start"
+  data-browsers={JSON.stringify(BROWSERS)}
+  data-links={JSON.stringify(DOWNLOAD_LINKS)}
+>
+  <a
+    href="https://github.com/gephi/gephi/releases"
+    id="download-gephi"
+    class={buttonClass || "btn btn-white fs-4 fw-bold mb-2"}
   >
-  {withAlternativeLinks && <>{
-    map(
-      BROWSERS,
-      ({ label, icon }, browser: Browser) =>
-        DOWNLOAD_LINKS.links[browser] && (
-          <a class="text-light" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
-            <Icon name={icon} /> Download for {label}
-          </a>
-        ),
+    <Icon name="ph:download-simple-bold" />
+    <span class="text">Download Gephi</span>
+  </a>
+  {
+    withAlternativeLinks && (
+      <>
+        {map(
+          BROWSERS,
+          ({ label, icon }, browser: Browser) =>
+            DOWNLOAD_LINKS.links[browser] && (
+              <a class="text-light" data-browser={browser} href={DOWNLOAD_LINKS.links[browser]}>
+                <Icon name={icon} /> Download for {label}
+              </a>
+            ),
+        )}
+        <a class="text-light" href="https://github.com/gephi/gephi/releases">
+          <Icon name="ph:clock-counter-clockwise" /> Download Older Versions
+        </a>
+      </>
     )
-  }</>
-  <a class="text-light" href="https://github.com/gephi/gephi/releases">
-    <Icon name="ph:clock-counter-clockwise" /> Download Older Versions
-  </a>}
+  }
 </download-gephi-desktop>
-<script >
-  import { UAParser } from 'ua-parser-js';
-import { isAppleSilicon } from 'ua-parser-js/device-detection';
-    class DownloadGephiDesktop extends HTMLElement {
+<script>
+  import { UAParser } from "ua-parser-js";
+  import { isAppleSilicon } from "ua-parser-js/device-detection";
+  class DownloadGephiDesktop extends HTMLElement {
     async connectedCallback() {
       // Read the message from the data attribute.
-      const BROWSERS = JSON.parse(this.dataset.browsers||'{}');
-      const DOWNLOAD_LINKS = JSON.parse(this.dataset.links||'{}');
+      const BROWSERS = JSON.parse(this.dataset.browsers || "{}");
+      const DOWNLOAD_LINKS = JSON.parse(this.dataset.links || "{}");
       const detection = await UAParser(navigator.userAgent).withClientHints();
-      
-  let currentBrowser = "windows64";
-  switch(detection.os.name){
-    case "Windows": currentBrowser = "windows64"; break;
-    case "macOS": 
-        currentBrowser = detection.cpu.architecture?.includes("arm") || 
-        isAppleSilicon(detection) ? "macSilicon" : "macIntel"; break;
-    // default to linux for all variety of linux OS + all variety of mobile...
-    // TODO: for mobile/tablet/console (detected in the device) we could advertize gephi-lite
-    default: currentBrowser = detection.cpu.architecture?.includes("arm") ? "linuxAarch64" : "linux";
-  }
 
-  const link = document.getElementById("download-gephi") as HTMLAnchorElement|null;
-  const linkText = link?.querySelector(".text");
+      let currentBrowser = "windows64";
+      switch (detection.os.name) {
+        case "Windows":
+          currentBrowser = "windows64";
+          break;
+        case "macOS":
+          currentBrowser =
+            detection.cpu.architecture?.includes("arm") || isAppleSilicon(detection) ? "macSilicon" : "macIntel";
+          break;
+        // default to linux for all variety of linux OS + all variety of mobile...
+        // TODO: for mobile/tablet/console (detected in the device) we could advertize gephi-lite
+        default:
+          currentBrowser = detection.cpu.architecture?.includes("arm") ? "linuxAarch64" : "linux";
+      }
 
-  if (link && DOWNLOAD_LINKS.links[currentBrowser]) {
-    link.href = DOWNLOAD_LINKS.links[currentBrowser];
-    if(linkText)
-      linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
-  }
+      const link = document.getElementById("download-gephi") as HTMLAnchorElement | null;
+      const linkText = link?.querySelector(".text");
 
-  const smallLink = document.querySelector(`a[data-browser='${currentBrowser}']`);
-  if (smallLink) smallLink.remove();
+      if (link && DOWNLOAD_LINKS.links[currentBrowser]) {
+        link.href = DOWNLOAD_LINKS.links[currentBrowser];
+        if (linkText) linkText.innerHTML = `Download Gephi for ${BROWSERS[currentBrowser].label}`;
+      }
+
+      const smallLink = document.querySelector(`a[data-browser='${currentBrowser}']`);
+      if (smallLink) smallLink.remove();
     }
   }
 
-  customElements.define('download-gephi-desktop', DownloadGephiDesktop);
-  
+  customElements.define("download-gephi-desktop", DownloadGephiDesktop);
 </script>
