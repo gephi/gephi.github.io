@@ -3,6 +3,7 @@ import "../styles/main.scss";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import cx from "classnames";
+import Donate from "../components/Donate.astro";
 
 interface Props {
   class?: string;
@@ -13,6 +14,7 @@ const { class: className, pageId } = Astro.props;
 
 const pages = [
   { id: "about", href: "/about", title: "About" },
+  { id: "community", href: "/community", title: "Community" },
   { id: "quickstart", href: "/quickstart", title: "Quickstart" },
   { id: "faq", href: "/faq", title: "FAQ" },
   { id: "blog", href: "https://gephi.wordpress.com", title: "Blog" },
@@ -24,9 +26,8 @@ const appPages = [
   { id: "desktop", href: "/desktop", title: "Gephi" },
   { id: "desktop-plugins", href: "/desktop/plugins", title: "Gephi plugins" },
   { id: "lite", href: "/lite", title: "Gephi Lite" },
-  // { id: "toolkit", href: "/toolkit", title: "Gephi Toolkit" },
   { id: "gephisto", href: "https://jacomyma.github.io/gephisto", title: "Gephisto" },
-  { id: "gephi-toolkit", href: "/toolkit", title: "Gephi Toolkit" },
+  { id: "toolkit", href: "/toolkit", title: "Gephi Toolkit" },
 ];
 ---
 
@@ -113,11 +114,7 @@ const appPages = [
               </details>
             </li>
             <li class="nav-item">
-              <a
-                class="btn btn-dark fw-bold w-100 w-md-auto"
-                href="https://opencollective.com/gephi/donate?interval=oneTime&amount=5&name=&legalName=&email="
-                ><Icon name="ph:heart-fill" /> Donate 5€</a
-              >
+              <Donate />
             </li>
           </ul>
         </div>

@@ -1,0 +1,217 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Banner from "../../components/Banner.astro";
+import Layout from "../../layouts/Layout.astro";
+import Donate from "../../components/Donate.astro";
+
+const GEPHI_WEEKS = [
+  {
+    year: 2026,
+    place: "Prague, Czech Republic",
+    sponsors: [{ label: "Charles University", url: "https://cuni.cz" }],
+  },
+  {
+    year: 2025,
+    place: "Nantes, France",
+    url: "https://gephi.wordpress.com/2025/10/01/gephi-week-2025/",
+    sponsors: [{ label: "Umanit", url: "https://www.umanit.fr/" }],
+  },
+  {
+    year: 2024,
+    place: "Copenhagen, Danemark",
+    url: "https://gephi.wordpress.com/2024/06/13/gephi-week-2024-peek-from-the-inside/",
+    sponsors: [{ label: "Aalborg University", url: "https://www.en.aau.dk/" }],
+  },
+  {
+    year: 2022,
+    place: "Paris, France",
+    url: "https://gephi.wordpress.com/2024/06/13/gephi-week-2024-peek-from-the-inside/",
+    sponsors: [
+      { label: "SoBigData", url: "http://www.sobigdata.eu/" },
+      { label: "Sciences Po médialab", url: "https://medialab.sciencespo.fr/" },
+    ],
+  },
+  {
+    year: 2021,
+    place: "Copenhagen, Danemark",
+    url: "https://gephi.wordpress.com/2021/12/06/gephi-code-sustainability-retreat-2021-debriefing/",
+    sponsors: [{ label: "TANTLAB", url: "https://www.dcc.aau.dk/research/research-groups/tantlab" }],
+  },
+];
+---
+
+<Layout pageId="community">
+  <Banner>
+    <h1>Gephi Community</h1>
+  </Banner>
+
+  <main class="py-5">
+    <section class="feature-container pb-5">
+      <section class="feature feature-left feature-flat py-4" id="newsletter">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:envelope" class="text-primary" />
+              <span>Newsletter</span>
+            </h2>
+            <p>
+              To follow the important Gephi Community announcements you can subscribe to our newsletter. It's a
+              low-frequency communication channel where you'll get noticed for new releases, call for feedbacks,
+              events...
+            </p>
+
+            <form id="newsletter-register-form" class="d-flex flex-column justify-content-end">
+              <div class="d-flex gap-2">
+                <label for="newsletter-email">Email</label>
+                <div class="col-6">
+                  <input class="form-control" type="email" id="newsletter-email" placeholder="name@provider.tld" />
+                </div>
+                <button class="btn btn-primary">register</button>
+              </div>
+              <div id="newsletter-register-status" class="fs-6">status of the request</div>
+            </form>
+            <script>
+              async function registerNewsletter(e: SubmitEvent) {
+                e.stopPropagation();
+                e.preventDefault();
+                console.log("register email");
+                const statusDiv = document.getElementById("newsletter-register-status");
+                const emailInput = document.getElementById("newsletter-email") as HTMLInputElement | null;
+                if (emailInput && emailInput.value !== "" && emailInput.checkValidity()) {
+                  const r = await fetch("https://rapid-night-bc5f.gephi.workers.dev", {
+                    method: "POST",
+                    body: JSON.stringify({ email: emailInput.value }),
+                  });
+
+                  if (r.status === 201) {
+                    if (statusDiv) {
+                      statusDiv.classList.remove("text-danger");
+                      statusDiv.classList.add("text-success");
+                      statusDiv.setHTMLUnsafe(`Email ${emailInput.value} registered in Gephi Community newsletter`);
+                    }
+                  } else if (statusDiv) {
+                    statusDiv.classList.remove("text-success");
+                    statusDiv.classList.add("text-danger");
+                    statusDiv.setHTMLUnsafe(
+                      `Couldn't register email ${emailInput.value} to Gephi Community newsletter!`,
+                    );
+                  }
+                } else {
+                  if (statusDiv) {
+                    statusDiv.classList.remove("text-success");
+                    statusDiv.classList.add("text-danger");
+                    statusDiv.setHTMLUnsafe(`Invalid email input`);
+                  }
+                }
+              }
+              const form = document.getElementById("newsletter-register-form");
+              if (form) form.addEventListener("submit", registerNewsletter);
+            </script>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4" id="matrix">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:chat" class="text-primary" />
+              <span>Community Channel</span>
+            </h2>
+            <p>
+              Come discuss with the Gephi community in our <a href="https://matrix.to/#/!XKyOZNGdXvoRWJbPCL:matrix.org"
+                >Matrix channel</a
+              >. Users, newbies, plugin developers (etc) are all welcome in this discussion space to share ideas, issues
+              or achievements.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4" id="open-collective">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:bank" class="text-primary" />
+              <span>Open Collective</span>
+            </h2>
+            <p>
+              We have chosen Open Collective as our fiscal host to organize our projects financial supports. Feel free
+              to visit <a href="https://opencollective.com/gephi">the Gephi Open Collective page</a>, to follow how we
+              use donations to help maintainers designing, developing and delivering greater open source tools for your
+              networks!
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4" id="donate">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:hand-heart" class="text-primary" />
+              <span>Donate</span>
+            </h2>
+            <p>
+              We accept donations! Thanks to our fiscal host, you can easily support Gephi community efforts through
+              donations either punctual or recurrent.
+            </p>
+            <div class="mb-3 d-flex justify-content-center">
+              <Donate />
+            </div>
+            <p>
+              We also welcome sponsors for specific project such as our coding retreats "Gephi weeks". Get in touch
+              through our matrix channel if you're interested.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4" id="gephi-weeks">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:calendar-star" class="text-primary" />
+              <span>Gephi weeks</span>
+            </h2>
+            <p>
+              The Gephi community spread all over the World. To strengthen social links and boost our creativity, we
+              organize an annual workshop we call the "Gephi week":
+            </p>
+            <p>
+              <ul>
+                {
+                  GEPHI_WEEKS.map((gw) => (
+                    <li>
+                      <strong>{gw.year}</strong> <i>in</i> {gw.place} <i>sponsored by</i>{" "}
+                      {gw.sponsors.map((s, i) => [
+                        <a href={s.url}>{s.label}</a>,
+                        i === gw.sponsors.length - 2 ? " and " : i < gw.sponsors.length - 2 ? ", " : "",
+                      ])}
+                    </li>
+                  ))
+                }
+              </ul>
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4" id="blog">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:newspaper" class="text-primary" />
+              <span>Blog</span>
+            </h2>
+            <p>
+              Our <a href="https://gephi.wordpress.com/">blog on wordpress</a> is the right place to follow the Gephi community
+              news. This blog is our main publication venue.
+            </p>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+</Layout>
