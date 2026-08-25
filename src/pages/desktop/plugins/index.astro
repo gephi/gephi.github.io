@@ -4,9 +4,9 @@ import { isNil, reverse, sortBy } from "lodash-es";
 import Banner from "../../../components/Banner.astro";
 import Default from "../../../images/plugins/default-screenshot.jpg";
 import Layout from "../../../layouts/Layout.astro";
-import { PluginsFilters } from "./PluginsFilters";
-import type { Plugin } from "./type";
-import { pluginElementId } from "./utils";
+import { PluginsFilters } from "../../../components/plugins/PluginsFilters";
+import type { Plugin } from "../../../type";
+import { pluginElementId } from "../../../components/plugins/utils";
 
 const pluginsDataRequest = await fetch(
   "https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json",

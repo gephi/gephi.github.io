@@ -2,7 +2,7 @@ import { useDebounce } from "@ouestware/hooks";
 import { countBy, flatten, keys, omit, reverse, sortBy, sum, toPairs, values } from "lodash-es";
 import { useEffect, useMemo, useState, type FC } from "react";
 import { CheckboxInputGroup } from "./CheckboxInput";
-import type { Plugin } from "./type";
+import type { Plugin } from "../../type";
 import { pluginElementId } from "./utils";
 
 interface FilterStateType {

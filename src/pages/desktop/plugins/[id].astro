@@ -6,7 +6,7 @@ import { marked } from "marked";
 import { Image } from "astro:assets";
 import Banner from "../../../components/Banner.astro";
 import Layout from "../../../layouts/Layout.astro";
-import type { Plugin } from "./type";
+import type { Plugin } from "../../../type";
 
 interface Props {
   plugin: Plugin;
@@ -147,7 +147,10 @@ try {
                     .reverse()
                     .map((v) => (
                       <li>
-                        <a href={`https://raw.githubusercontent.com/gephi/gephi-plugins/gh-pages/plugins/${plugin.versions[v].url}`} class="text-decoration-none">
+                        <a
+                          href={`https://raw.githubusercontent.com/gephi/gephi-plugins/gh-pages/plugins/${plugin.versions[v].url}`}
+                          class="text-decoration-none"
+                        >
                           <Icon name="ph:download" />
                           Download plugin for Gephi v{v}
                         </a>
