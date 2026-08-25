@@ -1,20 +1,27 @@
 /* The animation code */
 @keyframes myAnimation {
-  0%   {  top:-100px;transform: translateX(50%);}
-  50%  { top:0px; transform:rotate(180deg);}
-  100% { top:-100px;transform:rotate(360deg);}
+  0% {
+    top: -100px;
+    transform: translateX(50%);
+  }
+  50% {
+    top: 0px;
+    transform: rotate(180deg);
+  }
+  100% {
+    top: -100px;
+    transform: rotate(360deg);
+  }
 }
 
 /* The element to apply the animation to */
 .underconstruction_icon {
-
-position: relative;
-  animation: 4s linear 1s infinite alternate myAnimation;;
-
+  position: relative;
+  animation: 4s linear 1s infinite alternate myAnimation;
 }
 $nb_elemement: 8;
 @for $i from 1 through $nb_elemement {
-    .underconstruction_icon:nth-child(#{$i}) {
-        animation-delay: -#{$i*1.0/$nb_elemement}s;
-    }
+  .underconstruction_icon:nth-child(#{$i}) {
+    animation-delay: -#{$i * 1 / $nb_elemement}s;
+  }
 }
