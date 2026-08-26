@@ -137,11 +137,18 @@ const GEPHI_WEEKS = [
                 {
                   GEPHI_WEEKS.map((gw) => (
                     <li>
-                      <strong>{gw.year}</strong> <i>in</i> {gw.place} <i>sponsored by</i>{" "}
+                      {gw.url ? (
+                        <a href={gw.url}>
+                          <strong>{gw.year}</strong>
+                        </a>
+                      ) : (
+                        <strong>{gw.year}</strong>
+                      )}
+                      <i> in</i> {gw.place} <i>sponsored by</i>{" "}
                       {gw.sponsors.map((s, i) => [
                         <a href={s.url}>{s.label}</a>,
                         i === gw.sponsors.length - 2 ? " and " : i < gw.sponsors.length - 2 ? ", " : "",
-                      ])}
+                      ])}{" "}
                     </li>
                   ))
                 }
