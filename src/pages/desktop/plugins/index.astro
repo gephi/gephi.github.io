@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import { isNil, reverse, sortBy } from "lodash-es";
 import Banner from "../../../components/Banner.astro";
 import Default from "../../../images/plugins/default-screenshot.jpg";
@@ -8,18 +9,39 @@ import { PluginsFilters } from "../../../components/plugins/PluginsFilters";
 import type { Plugin } from "../../../type";
 import { pluginElementId } from "../../../components/plugins/utils";
 
-const pluginsDataRequest = await fetch(
-  "https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json",
-);
+const pluginsDataUrl = "https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json";
+let pluginsData: Plugin[] | null = null;
 
-const pluginsData: Plugin[] | null = pluginsDataRequest.ok
-  ? reverse(sortBy((await pluginsDataRequest.json()).plugins as Plugin[], (p) => new Date(p.last_update)))
-  : null;
+try {
+  const pluginsDataRequest = await fetch(pluginsDataUrl);
+
+  if (pluginsDataRequest.ok) {
+    pluginsData = reverse(
+      sortBy((await pluginsDataRequest.json()).plugins as Plugin[], (p) => new Date(p.last_update)),
+    );
+  }
+} catch (error) {
+  console.error("Plugins data could not be loaded:", error);
+}
 ---
 
 <Layout pageId="desktop-plugins">
   <Banner>
-    <h1>Gephi plugins</h1>
+    <div class="banner-contents">
+      <div class="banner-texts">
+        <div>
+          <h1 class="gephi-font">Gephi plugins</h1>
+        </div>
+
+        <p class="fs-3">Extend Gephi with <strong>community-developed</strong> plugins, or create your own.</p>
+
+        <div>
+          <a href="https://docs.gephi.org/desktop/Plugins/" class="btn btn-white fs-4 fw-bold">
+            <Icon name="ph:arrow-square-out-bold" /> Read the doc
+          </a>
+        </div>
+      </div>
+    </div>
   </Banner>
 
   <main class="plugins-main">
@@ -42,11 +64,11 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
                 >
                   <a class="card" href={`/desktop/plugins/${p.id}`}>
                     {!isNil(p.images) && p.images[0] !== undefined ? (
-                      <Image
-                        inferSize
+                      <img
                         alt=""
                         class="card-img-top plugin-image"
-                        layout="constrained"
+                        loading="lazy"
+                        decoding="async"
                         src={`https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${p.images[0].image}`}
                       />
                     ) : (
