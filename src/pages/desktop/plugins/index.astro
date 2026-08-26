@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { isNil, reverse, sortBy } from "lodash-es";
+import { Icon } from "astro-icon/components";
 import Banner from "../../../components/Banner.astro";
 import Default from "../../../images/plugins/default-screenshot.jpg";
 import Layout from "../../../layouts/Layout.astro";
@@ -19,7 +20,21 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
 
 <Layout pageId="desktop-plugins">
   <Banner>
-    <h1>Gephi plugins</h1>
+    <div class="banner-contents">
+      <div class="banner-texts">
+        <div>
+          <h1 class="gephi-font">Gephi plugins</h1>
+        </div>
+
+        <p class="fs-3">Extend Gephi with <strong>community-developed</strong> plugins, or create your own.</p>
+
+        <div>
+          <a href="https://docs.gephi.org/desktop/Plugins/" class="btn btn-white fs-4 fw-bold">
+            <Icon name="ph:arrow-square-out-bold" /> Read the doc
+          </a>
+        </div>
+      </div>
+    </div>
   </Banner>
 
   <main class="plugins-main">
