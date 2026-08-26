@@ -2,8 +2,8 @@
 import { Icon } from "astro-icon/components";
 
 import Banner from "../../components/Banner.astro";
-import Layout from "../../layouts/Layout.astro";
 import Donate from "../../components/Donate.astro";
+import Layout from "../../layouts/Layout.astro";
 
 const GEPHI_WEEKS = [
   {
@@ -56,58 +56,11 @@ const GEPHI_WEEKS = [
               <span>Newsletter</span>
             </h2>
             <p>
-              To follow the important Gephi Community announcements you can subscribe to our newsletter. It's a
-              low-frequency communication channel where you'll get noticed for new releases, call for feedbacks,
-              events...
+              To follow the important Gephi Community announcements you can <a
+                href="https://gephi.wordpress.com/subscribe/">subscribe to our blog newsletter</a
+              >. It's a low-frequency communication channel where you'll get noticed for new releases, call for
+              feedbacks, events...
             </p>
-
-            <form id="newsletter-register-form" class="d-flex flex-column justify-content-end">
-              <div class="d-flex gap-2">
-                <label for="newsletter-email">Email</label>
-                <div class="col-6">
-                  <input class="form-control" type="email" id="newsletter-email" placeholder="name@provider.tld" />
-                </div>
-                <button class="btn btn-primary">register</button>
-              </div>
-              <div id="newsletter-register-status" class="fs-6">status of the request</div>
-            </form>
-            <script>
-              async function registerNewsletter(e: SubmitEvent) {
-                e.stopPropagation();
-                e.preventDefault();
-                console.log("register email");
-                const statusDiv = document.getElementById("newsletter-register-status");
-                const emailInput = document.getElementById("newsletter-email") as HTMLInputElement | null;
-                if (emailInput && emailInput.value !== "" && emailInput.checkValidity()) {
-                  const r = await fetch("https://rapid-night-bc5f.gephi.workers.dev", {
-                    method: "POST",
-                    body: JSON.stringify({ email: emailInput.value }),
-                  });
-
-                  if (r.status === 201) {
-                    if (statusDiv) {
-                      statusDiv.classList.remove("text-danger");
-                      statusDiv.classList.add("text-success");
-                      statusDiv.setHTMLUnsafe(`Email ${emailInput.value} registered in Gephi Community newsletter`);
-                    }
-                  } else if (statusDiv) {
-                    statusDiv.classList.remove("text-success");
-                    statusDiv.classList.add("text-danger");
-                    statusDiv.setHTMLUnsafe(
-                      `Couldn't register email ${emailInput.value} to Gephi Community newsletter!`,
-                    );
-                  }
-                } else {
-                  if (statusDiv) {
-                    statusDiv.classList.remove("text-success");
-                    statusDiv.classList.add("text-danger");
-                    statusDiv.setHTMLUnsafe(`Invalid email input`);
-                  }
-                }
-              }
-              const form = document.getElementById("newsletter-register-form");
-              if (form) form.addEventListener("submit", registerNewsletter);
-            </script>
           </div>
         </section>
       </section>
