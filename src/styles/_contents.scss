@@ -64,6 +64,9 @@
   flex-direction: column;
   position: relative;
 
+  // avoid anchor scroll to hide section title
+  scroll-margin-top: 60px;
+
   &:has(.feature-background) {
     padding: 3rem 0;
   }
@@ -128,6 +131,12 @@
 
   .feature-text {
     @extend .fs-4;
+
+    h2 {
+      svg {
+        margin-right: $spacer-2;
+      }
+    }
 
     p {
       &:last-child {

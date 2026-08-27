@@ -15,6 +15,7 @@ import Martin from "../../images/team/martin-grandjean.png";
 import MathieuB from "../../images/team/mathieu-bastian.png";
 import MathieuJ from "../../images/team/mathieu-jacomy.png";
 import Matthieu from "../../images/team/matthieu-totet.png";
+import Nicolas from "../../images/team/nicolas-bouchaib.jpeg";
 import Paul from "../../images/team/paul-girard.jpeg";
 
 const TEAM: TeamMember[] = [
@@ -27,6 +28,7 @@ const TEAM: TeamMember[] = [
   { image: Benoit, name: "Benoit Simard", role: "Gephi Lite team" },
   { image: Martin, name: "Martin Grandjean", role: "Community management" },
   { image: Clement, name: "Clément Levallois", role: "Community emulation" },
+  { image: Nicolas, name: "Nicolas Bouchaïb", role: "Community emulation" },
 ];
 ---
 
@@ -54,18 +56,49 @@ const TEAM: TeamMember[] = [
               > at JavaOne 2010.
             </p>
             <p>
-              After a less active period of development, the Gephi team gathers <a
-                href="https://gephi.wordpress.com/2021/12/06/gephi-code-sustainability-retreat-2021-debriefing/"
-                >almost</a
-              >
-              <a href="https://gephi.wordpress.com/2022/10/16/gephi-week-2022-debriefing/">every</a>
-              <a href="https://gephi.wordpress.com/2024/06/13/gephi-week-2024-peek-from-the-inside/">year</a> since 2021 to
-              maintain the codebase, meets users, and discuss and design new features.
+              After a less active period of development, the <a href="/community#gephi-weeks">Gephi team gathers</a>
+              every year since 2021 to maintain the codebase, meets users, discuss and design new features.
+            </p>
+            <p>
+              In the 2022 gephi week, we decided to create a new product in the Gephi community called <a href="/lite"
+                >Gephi Lite</a
+              >, a web version of Gephi.
             </p>
             <p>
               For more information about the evolution of the project, check our <a href="https://gephi.wordpress.com"
                 >blog</a
               >.
+            </p>
+          </div>
+        </section>
+      </section>
+
+      <section class="feature feature-left feature-flat py-4" id="roadmap">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:scales" class="text-primary" />
+              <span>Project governance</span>
+            </h2>
+
+            <p>
+              The Gephi community organized itself around the Gephi committee which gathers top contributors. The
+              committee is responsible for deciding how to use the ressources we have at end: free times and donations.
+              The Gephi committee takes decisions through a lazy consensus model: the unanimity of members voicing their
+              position, with a timeframe of at least two weeks for making their position known. In other words,
+              committee members who decide to not take position in a given discussion consent to its outcome.
+            </p>
+            <p>
+              The committee can decide to change those rules, and add or remove members of the committee. Changing rules
+              and adding is decided using the lazy consensus described above. Removing a member is decided using the
+              same lazy consensus rule minus that member. Each member must consent to participate, and can unilaterally
+              leave the committee at any point.
+            </p>
+            <p>
+              Our financial activities are organized under the umbrella of our fiscal host <a
+                href="https://opencollective.com/gephi">Open Collective</a
+              >. Donations are managed by their team and we decide how to use it in total transparent way. So far our
+              main expenses are the organization of our yearly <a href="/community#gephi-weeks">Gephi Weeks</a>.
             </p>
           </div>
         </section>
@@ -84,8 +117,8 @@ const TEAM: TeamMember[] = [
             </p>
             <ul class="fs-4 ps-md-0 mt-0">
               <li>
-                <strong>Consolidate governance.</strong> Clarify roles, add content to our Open Collective platform, and improve
-                onboarding.
+                <strong>Consolidate our community.</strong> More frequent communication with contributors and users about
+                what we do and how everyone can take a role in our community.
               </li>
               <li>
                 <strong>Raise funds and facilitate donations.</strong> We need funds for the Gephi Weeks and ultimately, for
@@ -101,31 +134,25 @@ const TEAM: TeamMember[] = [
               </li>
             </ul>
             <p>
-              Follow the evolution of the project on our <a href="https://gephi.wordpress.com/">blog</a>, and notably
-              the Gephi Weeks:
-              <a href="https://gephi.wordpress.com/2021/12/06/gephi-code-sustainability-retreat-2021-debriefing/"
-                >2021</a
-              >,
-              <a href="https://gephi.wordpress.com/2022/10/16/gephi-week-2022-debriefing/">2022</a>, <a
-                href="https://gephi.wordpress.com/2024/06/13/gephi-week-2024-peek-from-the-inside/">2024</a
-              >, and <a href="https://gephi.wordpress.com/2025/10/01/gephi-week-2025/">2025</a>.
+              To learn more about the various ways to engage with the project, read our <a href="/community"
+                >community page</a
+              >.
             </p>
           </div>
         </section>
       </section>
 
-      <section class="feature feature-left feature-flat py-4" id="team">
+      <section class="feature feature-left feature-flat py-4" id="committee">
         <section class="feature-headline">
           <div class="feature-text">
             <h2>
               <Icon name="ph:users-three" class="text-primary" />
-              <span>Team</span>
+              <span>The Gephi committee</span>
             </h2>
             <p>
-              Gephi has been made possible by so many people that it's hard to name them all, from developers, to
-              content creators, to translators...
+              Our project is lead by a committee of top contributors which organizes the project. Here is the current
+              list of committee members:
             </p>
-            <p>Here is a non-exhaustive list of currently active members:</p>
           </div>
         </section>
 
@@ -149,34 +176,46 @@ const TEAM: TeamMember[] = [
             }
           </div>
         </div>
-        <div class="feature-text">
-          <p>
-            We thank the following contributors, who have improved the code or added new features: Clément Levallois,
-            Anna Kharitonova, Antonin Delpeuch, Côme Brocas, Sukankana Chakraborty, Walton Goga.
-          </p>
-          <p>
-            Plugin developers meaningfully contribute to the community, and we want to thank all of their contributions.
-            You can directly find plugin authors in <a href="desktop/plugins">Plugins</a>.
-          </p>
-          <p>
-            The years Gephi participated in the Google Summer of Code was rich in collaboration and contributions. We
-            thank mentors Eytan Adar, Christian Tominski, Cezary Bartosiak, Julian Bilcke, Antonio Patriarca and Eduardo
-            Ramos Ibáñez. We also thank Helder Suzuki, Jeremy Subtil, Patrick McSweeney, André Panisson, Antonio
-            Patriarca, Martin Škurla, Yi Du, Yudi Xue, Vojtech Bardiovsky, Ernesto Aneiros, Urban Škudnik, Keheliya
-            Gallaba, Daniel Bernardes, Luiz Ribeiro, Min Wu, Vikash Anand, Taras Klaskovsky, Romain Yon, Eduardo
-            Espinoza, Vijesh M. and Nitesh Bhargava for their student contributions.
-          </p>
-          <p>
-            Gephi is a multilingual software thanks to its many translators. We are grateful for their work. You can
-            find them directly on our <a href="https://hosted.weblate.org/projects/gephi/">Weblate</a>.
-          </p>
-          <p>
-            Finally, we thank key early-days contributors and supporters Sébastien Heymann, Guillaume Lebourgeois, Dana
-            Diminescu, Camille Maussang, Aurélien Beltrame, Stéphane Raux, Alain Le Berre, Guilhem Fouetillou and Franck
-            Ghitalla.
-          </p>
-        </div>
+      </section>
+      <section class="feature feature-left feature-flat py-4" id="contributors">
+        <section class="feature-headline">
+          <div class="feature-text">
+            <h2>
+              <Icon name="ph:users-four" class="text-primary" />
+              <span>The Gephi contributors</span>
+            </h2>
+            <p>
+              Gephi tools have been made possible by so many people that it's hard to name them all, from developers, to
+              content creators, to translators, to issue reporters...
+            </p>
+            <p>
+              We thank the following contributors, who have improved the code or added new features: Anna Kharitonova,
+              Antonin Delpeuch, Côme Brocas, Sukankana Chakraborty, Walton Goga.
+            </p>
+            <p>
+              Plugin developers meaningfully contribute to the communusers-fourity, and we want to thank all of their
+              contributions. You can directly find plugin authors in <a href="desktop/plugins">Plugins</a>.
+            </p>
+            <p>
+              The years Gephi participated in the Google Summer of Code was rich in collaboration and contributions. We
+              thank mentors Eytan Adar, Christian Tominski, Cezary Bartosiak, Julian Bilcke, Antonio Patriarca and
+              Eduardo Ramos Ibáñez. We also thank Helder Suzuki, Jeremy Subtil, Patrick McSweeney, André Panisson,
+              Antonio Patriarca, Martin Škurla, Yi Du, Yudi Xue, Vojtech Bardiovsky, Ernesto Aneiros, Urban Škudnik,
+              Keheliya Gallaba, Daniel Bernardes, Luiz Ribeiro, Min Wu, Vikash Anand, Taras Klaskovsky, Romain Yon,
+              Eduardo Espinoza, Vijesh M. and Nitesh Bhargava for their student contributions.
+            </p>
+            <p>
+              Gephi is a multilingual software thanks to its many translators. We are grateful for their work. You can
+              find them directly on our <a href="https://hosted.weblate.org/projects/gephi/">Weblate</a>.
+            </p>
+            <p>
+              Finally, we thank key early-days contributors and supporters Sébastien Heymann, Guillaume Lebourgeois,
+              Dana Diminescu, Camille Maussang, Aurélien Beltrame, Stéphane Raux, Alain Le Berre, Guilhem Fouetillou and
+              Franck Ghitalla.
+            </p>
+          </div>
+        </section>
       </section>
     </section>
-  </main></Layout
->
+  </main>
+</Layout>
