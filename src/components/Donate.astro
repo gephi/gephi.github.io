@@ -1,10 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
+
+interface Props {
+  tag?: string;
+}
+
+const { tag = "gephi-website" } = Astro.props;
 ---
 
 <a
   class="btn btn-dark fw-bold w-md-auto"
-  href="https://opencollective.com/gephi/donate?interval=oneTime&amount=5&name=&legalName=&email="
+  href={`https://opencollective.com/gephi/donate?tags=${encodeURIComponent(tag)}&interval=oneTime&amount=5&name=&legalName=&email=`}
 >
   <Icon name="ph:heart-fill" /> Donate 5€
 </a>
