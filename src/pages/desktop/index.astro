@@ -365,35 +365,34 @@ import realtime02 from "../../images/desktop/realtime_02.png";
 
           <p>
             Gephi Desktop has been a “beta” version for more than a decade. This just means that the team does not
-            consider the tool to be complete yet. We aim to implement the following features before getting “version
-            1.0”:
+            consider the tool to be complete yet. We aim to implement the following features before reaching version 1.0:
           </p>
 
           <ul class="fs-4 ps-md-0 mt-0">
             <li>
-              <strong>Undo feature</strong>, limited to the “GEXF scope”: network data, metadata, positions, sizes,
-              colors…
+              <strong>Undo/redo</strong> with an <strong>activity log</strong> (concept: a subset of the undo stack; stored
+              in the GEXF).
             </li>
-            <li><strong>More readable UI</strong> with clearer icons.</li>
-            <li><strong>Activity log</strong>, possibly coordinated to undo, possibly stored in the GEXF.</li>
             <li>
-              <strong>Parallel edges.</strong> The GraphStore (Gephi’s internal engine) supports them but they are not currently
-              visualized or accessible from the user interface.
+              <strong>Parallel edges</strong>, which are supported by our graph engine but not visualized or
+              accessible from the user interface.
             </li>
-            <li><strong>Improved timeline</strong> for dynamic graphs.</li>
+            <li><strong>Better timeline</strong> for dynamic (i.e. temporal) graphs.</li>
             <li>
-              <strong>New GPU visualization engine.</strong> We aim for comfortably visualizing 200K nodes and 1M edges on
-              an average consumer laptop. Might be ready soon!
+              <strong>Improved statistics panel</strong> (better distribution reports, support for more statistics…).
             </li>
-            <li><strong>Legend generator</strong> (note: available in Gephi Lite)</li>
+            <li><strong>Legend generator</strong> within Preview, at least for simple cases (note: available in Gephi Lite).</li>
+            <li><strong>Unify filtering and search</strong> within the Data Laboratory.</li>
           </ul>
 
-          <p>We are also considering the following features, but for a more distant future:</p>
+          <p>We are also considering the following features, beyond 1.0:</p>
 
           <ul class="fs-4 ps-md-0 mt-0">
-            <li>Local exploration, i.e. at least a quick overview of a subgraph.</li>
-            <li>Integrate other visualization (treemap, scatter plots...)</li>
-            <li>Rework the image export with more advanced renderers</li>
+            <li><strong>Improved filters panel</strong> (potentially unified with appearance settings).</li>
+            <li><strong>Local exploration</strong>, i.e. at least a quick overview of a subgraph.</li>
+            <li><strong>Integrate other visualizations</strong> (e.g., a matrix view).</li>
+            <li><strong>Rework the image export</strong> with more advanced renderers.</li>
+            <li><strong>Dedicated comparison UI</strong> for networks or subgraphs.</li>
           </ul>
         </div>
       </section>
