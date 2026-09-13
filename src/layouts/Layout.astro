@@ -8,9 +8,23 @@ import Donate from "../components/Donate.astro";
 interface Props {
   class?: string;
   pageId?: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
 }
 
-const { class: className, pageId } = Astro.props;
+const DEFAULT_TITLE = "Gephi - The Open Graph Viz Platform";
+const DEFAULT_DESCRIPTION =
+  "Gephi is the leading visualization and exploration software for all kinds of graphs and networks. Gephi is open-source and free.";
+const DEFAULT_IMAGE = "/gephi-screenshot.jpg";
+
+const { class: className, pageId, title, description, image, noindex } = Astro.props;
+
+const pageTitle = title ? `${title} | Gephi` : DEFAULT_TITLE;
+const pageDescription = description || DEFAULT_DESCRIPTION;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(image || DEFAULT_IMAGE, Astro.site);
 
 const pages = [
   { id: "about", href: "/about", title: "About" },
@@ -32,11 +46,11 @@ const appPages = [
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="canonical" href="https://gephi.org" />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -44,11 +58,21 @@ const appPages = [
     <meta name="apple-mobile-web-app-title" content="MyWebSite" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta
-      name="description"
-      content="Gephi is the leading visualization and exploration software for all kinds of graphs and networks. Gephi is open-source and free."
-    />
-    <title>Gephi - The Open Graph Viz Platform</title>
+    <meta name="description" content={pageDescription} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <title>{pageTitle}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gephi" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImageURL} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImageURL} />
   </head>
   <body class={className}>
     <nav class="navbar navbar-expand-md">
