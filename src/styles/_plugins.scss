@@ -42,18 +42,23 @@
     @extend .col-xl-4;
     @extend .col-xxl-3;
     padding: $spacer-2;
+    display: flex;
 
     .card {
+      @extend .shadow;
       @extend .text-dark;
+      background: $white;
       border: none;
+      padding: $spacer-3;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       gap: $spacer-1;
+      height: 100%;
+      width: 100%;
     }
 
     .plugin-image {
-      @extend .border;
       margin-bottom: $spacer-2;
       background: white;
       max-width: 100%;
@@ -76,6 +81,7 @@
     .plugin-description {
       @extend .fs-5;
       margin: 0;
+      flex-grow: 1;
     }
   }
 }
@@ -129,6 +135,10 @@
 }
 
 .plugin-page {
+  h2 svg {
+    margin-right: $spacer-2;
+  }
+
   .older-versions {
     summary {
       display: inline-flex;

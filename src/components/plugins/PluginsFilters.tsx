@@ -142,6 +142,7 @@ export const PluginsFilters: FC<{ plugins: Plugin[] }> = ({ plugins }) => {
             <legend>Search</legend>
             <input
               type="search"
+              className="form-control"
               value={query || ""}
               onChange={(e) => {
                 setQuery(e.target.value);
