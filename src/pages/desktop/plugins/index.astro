@@ -51,10 +51,7 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
             </h2>
             <div class="plugins-list row">
               {pluginsData.map((p) => (
-                <article
-                  id={pluginElementId(p.id)}
-                  class={`category-${p.category} ${p.versions ? Object.keys(p.versions).map((v) => `version-${v}`) : ""}`}
-                >
+                <article id={pluginElementId(p.id)} class={`category-${p.category}`}>
                   <a class="card" href={`/desktop/plugins/${p.id}`}>
                     {!isNil(p.images) && p.images[0] !== undefined ? (
                       <Image
@@ -73,13 +70,6 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
                     <h3 class="plugin-name">{p.name}</h3>
                     <p class="plugin-description">{p.short_description}</p>
                     <div class="text-muted">last updated on {p.last_update}</div>
-                    <div class="plugin-versions">
-                      {Object.keys(p.versions)
-                        .reverse()
-                        .map((v) => (
-                          <span>{v}</span>
-                        ))}
-                    </div>
                   </a>
                 </article>
               ))}

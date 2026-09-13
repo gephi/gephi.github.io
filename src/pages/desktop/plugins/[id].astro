@@ -1,30 +1,32 @@
 ---
 import { Icon } from "astro-icon/components";
-import { isEmpty } from "lodash-es";
 import { marked } from "marked";
 
 import { Image } from "astro:assets";
 import Banner from "../../../components/Banner.astro";
 import Layout from "../../../layouts/Layout.astro";
 import type { Plugin } from "../../../type";
+import { getLatestGephiVersion, isLegacyGephiVersion, normalizeGephiVersion } from "../../../components/plugins/utils";
 
 interface Props {
   plugin: Plugin;
+  latestGephiVersion: string | null;
 }
 
 export async function getStaticPaths() {
-  const pluginsDataRequest = await fetch(
-    "https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json",
-  );
+  const [pluginsDataRequest, latestGephiVersion] = await Promise.all([
+    fetch("https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json"),
+    getLatestGephiVersion(),
+  ]);
 
   if (pluginsDataRequest.ok) {
     const pluginsData = (await pluginsDataRequest.json()).plugins as Plugin[];
-    return pluginsData.map((p) => ({ params: { id: p.id }, props: { plugin: p } }));
+    return pluginsData.map((p) => ({ params: { id: p.id }, props: { plugin: p, latestGephiVersion } }));
   }
   return [];
 }
 
-const { plugin } = Astro.props;
+const { plugin, latestGephiVersion } = Astro.props;
 
 let readme = "";
 try {
@@ -32,6 +34,22 @@ try {
 } catch (err) {
   console.log(`README.md markdown generation failed for plugin ${plugin.name}.`);
 }
+
+// Since Gephi 0.10, plugin builds are no longer version-specific at the patch level, so
+// group download links by normalized version, keeping the most recently updated build per group.
+const groupedVersions = Object.entries(plugin.versions).reduce<Record<string, Plugin["versions"][string]>>(
+  (acc, [v, info]) => {
+    const tag = normalizeGephiVersion(v);
+    if (!acc[tag] || new Date(info.last_update) > new Date(acc[tag].last_update)) acc[tag] = info;
+    return acc;
+  },
+  {},
+);
+const sortedVersionTags = Object.keys(groupedVersions).reverse();
+const modernVersionTags = sortedVersionTags.filter((v) => !isLegacyGephiVersion(v));
+const legacyVersionTags = sortedVersionTags.filter(isLegacyGephiVersion);
+const topVersionTag = modernVersionTags[0];
+const topVersionIsLatestGephi = !!topVersionTag && topVersionTag === latestGephiVersion;
 ---
 
 <Layout class="plugin-page">
@@ -47,6 +65,19 @@ try {
 
         <p class="fs-4">{plugin.short_description}</p>
         <p class="fs-5 opacity-75">last updated on {plugin.last_update}</p>
+        {
+          topVersionIsLatestGephi && (
+            <div>
+              <a
+                href={`https://raw.githubusercontent.com/gephi/gephi-plugins/gh-pages/plugins/${groupedVersions[topVersionTag].url}`}
+                class="btn btn-white fs-4 fw-bold"
+              >
+                <Icon name="ph:download" />
+                Download plugin for Gephi v{topVersionTag}
+              </a>
+            </div>
+          )
+        }
       </div>
       {
         !!plugin.images?.length && (
@@ -141,22 +172,45 @@ try {
               instance.
             </div>
             {
-              !isEmpty(plugin.versions) ? (
-                <ul class="list-unstyled">
-                  {Object.keys(plugin.versions)
-                    .reverse()
-                    .map((v) => (
-                      <li>
-                        <a
-                          href={`https://raw.githubusercontent.com/gephi/gephi-plugins/gh-pages/plugins/${plugin.versions[v].url}`}
-                          class="text-decoration-none"
-                        >
-                          <Icon name="ph:download" />
-                          Download plugin for Gephi v{v}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
+              modernVersionTags.length > 0 || legacyVersionTags.length > 0 ? (
+                <>
+                  {modernVersionTags.length > 0 && (
+                    <ul class="list-unstyled">
+                      {modernVersionTags.map((v) => (
+                        <li>
+                          <a
+                            href={`https://raw.githubusercontent.com/gephi/gephi-plugins/gh-pages/plugins/${groupedVersions[v].url}`}
+                            class="text-decoration-none"
+                          >
+                            <Icon name="ph:download" />
+                            Download plugin for Gephi v{v}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {legacyVersionTags.length > 0 && (
+                    <details class="older-versions mt-2">
+                      <summary>
+                        Show older versions
+                        <Icon name="ph:caret-down" />
+                      </summary>
+                      <ul class="list-unstyled mt-2">
+                        {legacyVersionTags.map((v) => (
+                          <li>
+                            <a
+                              href={`https://raw.githubusercontent.com/gephi/gephi-plugins/gh-pages/plugins/${groupedVersions[v].url}`}
+                              class="text-decoration-none"
+                            >
+                              <Icon name="ph:download" />
+                              Download plugin for Gephi v{v}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
+                </>
               ) : (
                 <div class="text-muted">No compatible version specified.</div>
               )

@@ -77,16 +77,6 @@
       @extend .fs-5;
       margin: 0;
     }
-    .plugin-versions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: $spacer-1;
-
-      & > span {
-        @extend .badge;
-        @extend .text-bg-primary;
-      }
-    }
   }
 }
 
@@ -139,6 +129,27 @@
 }
 
 .plugin-page {
+  .older-versions {
+    summary {
+      display: inline-flex;
+      align-items: center;
+      @extend .gap-1;
+      cursor: pointer;
+      list-style: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+    }
+
+    svg {
+      transition: all 0.2s ease-out;
+    }
+    &[open] svg {
+      transform: rotate(180deg);
+    }
+  }
+
   .thumbnails {
     display: flex;
     flex-direction: row;
