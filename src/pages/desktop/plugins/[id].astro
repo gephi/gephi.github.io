@@ -54,12 +54,7 @@ const topVersionTag = modernVersionTags[0];
 const topVersionIsLatestGephi = !!topVersionTag && topVersionTag === latestGephiVersion;
 ---
 
-<Layout
-  class="plugin-page"
-  title={plugin.name}
-  description={plugin.short_description}
-  image={pluginImage}
->
+<Layout class="plugin-page" title={plugin.name} description={plugin.short_description} image={pluginImage}>
   <Banner className="py-4">
     <div class="banner-top">
       <a class="text-white" href="/desktop">Gephi</a> > <a class="text-white" href="/desktop/plugins">Gephi plugins</a> >
