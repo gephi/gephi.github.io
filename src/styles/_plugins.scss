@@ -140,12 +140,12 @@
       &::-webkit-details-marker {
         display: none;
       }
-    }
 
-    svg {
-      transition: all 0.2s ease-out;
+      svg {
+        transition: all 0.2s ease-out;
+      }
     }
-    &[open] svg {
+    &[open] summary svg {
       transform: rotate(180deg);
     }
   }

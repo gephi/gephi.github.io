@@ -13,19 +13,23 @@ interface FilterStateType {
 }
 
 function searchToState(urlSearchParam: URLSearchParams): FilterStateType {
+  const showLegacy = urlSearchParam.get("legacy") === "1";
+  const versions =
+    urlSearchParam
+      .get("versions")
+      ?.split("|")
+      .map((v) => decodeURIComponent(v)) || [];
   return {
     query: urlSearchParam.get("query") || undefined,
-    versions:
-      urlSearchParam
-        .get("versions")
-        ?.split("|")
-        .map((v) => decodeURIComponent(v)) || [],
+    // Drop any legacy version stuck in a bookmarked/old URL when legacy versions aren't shown,
+    // otherwise it can never match a visible tag and silently zeroes the results.
+    versions: showLegacy ? versions : versions.filter((v) => !isLegacyGephiVersion(v)),
     categories:
       urlSearchParam
         .get("categories")
         ?.split("|")
         .map((v) => decodeURIComponent(v)) || [],
-    showLegacy: urlSearchParam.get("legacy") === "1",
+    showLegacy,
   };
 }
 function stateToSearch(state: FilterStateType): string {
@@ -163,7 +167,14 @@ export const PluginsFilters: FC<{ plugins: Plugin[] }> = ({ plugins }) => {
                 id="show-legacy-checkbox"
                 checked={state.showLegacy}
                 onChange={(e) => {
-                  setState((state) => ({ ...state, showLegacy: e.target.checked }));
+                  const showLegacy = e.target.checked;
+                  setState((state) => ({
+                    ...state,
+                    showLegacy,
+                    // Drop any checked legacy versions so they don't keep filtering to nothing
+                    // once their checkboxes disappear from the facet list.
+                    versions: showLegacy ? state.versions : state.versions.filter((v) => !isLegacyGephiVersion(v)),
+                  }));
                 }}
                 className="form-check-input"
               />

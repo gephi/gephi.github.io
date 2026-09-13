@@ -7,7 +7,7 @@ import Default from "../../../images/plugins/default-screenshot.jpg";
 import Layout from "../../../layouts/Layout.astro";
 import { PluginsFilters } from "../../../components/plugins/PluginsFilters";
 import type { Plugin } from "../../../type";
-import { pluginElementId } from "../../../components/plugins/utils";
+import { pluginElementId, pluginHasModernVersion } from "../../../components/plugins/utils";
 
 const pluginsDataRequest = await fetch(
   "https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json",
@@ -16,6 +16,10 @@ const pluginsDataRequest = await fetch(
 const pluginsData: Plugin[] | null = pluginsDataRequest.ok
   ? reverse(sortBy((await pluginsDataRequest.json()).plugins as Plugin[], (p) => new Date(p.last_update)))
   : null;
+
+// Matches PluginsFilters' default (legacy plugins hidden) so the count doesn't flash/mismatch
+// before hydration, and stays correct for no-JS clients.
+const defaultVisibleCount = pluginsData?.filter(pluginHasModernVersion).length ?? 0;
 ---
 
 <Layout pageId="desktop-plugins">
@@ -47,7 +51,7 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
 
           <section class="plugins-list-container container-fluid">
             <h2 id="plugins-list-total">
-              {pluginsData.length || "No"} {pluginsData.length > 1 ? "plugins" : "plugin"}
+              {defaultVisibleCount || "No"} {defaultVisibleCount > 1 ? "plugins" : "plugin"}
             </h2>
             <div class="plugins-list row">
               {pluginsData.map((p) => (

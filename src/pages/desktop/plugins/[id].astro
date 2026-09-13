@@ -6,7 +6,12 @@ import { Image } from "astro:assets";
 import Banner from "../../../components/Banner.astro";
 import Layout from "../../../layouts/Layout.astro";
 import type { Plugin } from "../../../type";
-import { getLatestGephiVersion, isLegacyGephiVersion, normalizeGephiVersion } from "../../../components/plugins/utils";
+import {
+  compareGephiVersionsDesc,
+  getLatestGephiVersion,
+  groupPluginVersionsByTag,
+  isLegacyGephiVersion,
+} from "../../../components/plugins/utils";
 
 interface Props {
   plugin: Plugin;
@@ -37,15 +42,8 @@ try {
 
 // Since Gephi 0.10, plugin builds are no longer version-specific at the patch level, so
 // group download links by normalized version, keeping the most recently updated build per group.
-const groupedVersions = Object.entries(plugin.versions).reduce<Record<string, Plugin["versions"][string]>>(
-  (acc, [v, info]) => {
-    const tag = normalizeGephiVersion(v);
-    if (!acc[tag] || new Date(info.last_update) > new Date(acc[tag].last_update)) acc[tag] = info;
-    return acc;
-  },
-  {},
-);
-const sortedVersionTags = Object.keys(groupedVersions).reverse();
+const groupedVersions = groupPluginVersionsByTag(plugin.versions);
+const sortedVersionTags = Object.keys(groupedVersions).sort(compareGephiVersionsDesc);
 const modernVersionTags = sortedVersionTags.filter((v) => !isLegacyGephiVersion(v));
 const legacyVersionTags = sortedVersionTags.filter(isLegacyGephiVersion);
 const topVersionTag = modernVersionTags[0];
@@ -172,7 +170,7 @@ const topVersionIsLatestGephi = !!topVersionTag && topVersionTag === latestGephi
               instance.
             </div>
             {
-              modernVersionTags.length > 0 || legacyVersionTags.length > 0 ? (
+              sortedVersionTags.length > 0 ? (
                 <>
                   {modernVersionTags.length > 0 && (
                     <ul class="list-unstyled">
