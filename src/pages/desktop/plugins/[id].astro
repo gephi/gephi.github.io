@@ -33,6 +33,10 @@ export async function getStaticPaths() {
 
 const { plugin, latestGephiVersion } = Astro.props;
 
+const pluginImage = plugin.images?.[0]
+  ? `https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`
+  : undefined;
+
 let readme = "";
 try {
   readme = await marked(plugin.readme);
@@ -50,7 +54,7 @@ const topVersionTag = modernVersionTags[0];
 const topVersionIsLatestGephi = !!topVersionTag && topVersionTag === latestGephiVersion;
 ---
 
-<Layout class="plugin-page">
+<Layout class="plugin-page" title={plugin.name} description={plugin.short_description} image={pluginImage}>
   <Banner className="py-4">
     <div class="banner-top">
       <a class="text-white" href="/desktop">Gephi</a> > <a class="text-white" href="/desktop/plugins">Gephi plugins</a> >

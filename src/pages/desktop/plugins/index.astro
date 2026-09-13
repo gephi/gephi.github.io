@@ -22,7 +22,11 @@ const pluginsData: Plugin[] | null = pluginsDataRequest.ok
 const defaultVisibleCount = pluginsData?.filter(pluginHasModernVersion).length ?? 0;
 ---
 
-<Layout pageId="desktop-plugins">
+<Layout
+  pageId="desktop-plugins"
+  title="Gephi Plugins"
+  description="Browse community-developed plugins for Gephi, the open graph viz platform, or learn how to create and share your own."
+>
   <Banner>
     <div class="banner-contents">
       <div class="banner-texts">
