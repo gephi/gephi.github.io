@@ -10,9 +10,30 @@ import Layout from "../layouts/Layout.astro";
 
 import GephiLitePaper from "../images/homepage/gephi-lite-paper.png";
 import GephiPaper from "../images/homepage/gephi-paper.png";
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Gephi",
+    url: "https://gephi.org/",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Gephi",
+    url: "https://gephi.org/",
+    logo: "https://gephi.org/gephi-logo.svg",
+    sameAs: ["https://github.com/gephi", "https://www.reddit.com/r/Gephi/", "https://www.youtube.com/@gephi-official"],
+  },
+];
 ---
 
-<Layout>
+<Layout
+  fullTitle="Gephi: Open-Source Network Visualization and Analysis Software"
+  description="Gephi is free, open-source software for network visualization and analysis. Explore graphs and networks with Gephi desktop or Gephi Lite, right in your browser."
+  jsonLd={jsonLd}
+>
   <Banner>
     <div class="row align-items-center">
       <div class="col-lg-8 mb-5">

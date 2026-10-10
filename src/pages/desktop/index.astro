@@ -12,12 +12,26 @@ import layout01 from "../../images/desktop/layout_01.png";
 import layout02 from "../../images/desktop/layout_02.png";
 import realtime01 from "../../images/desktop/realtime_01.png";
 import realtime02 from "../../images/desktop/realtime_02.png";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Gephi",
+  url: "https://gephi.org/desktop/",
+  description: "Open-source desktop application to visualize, analyze and explore networks and graphs.",
+  applicationCategory: "DataVisualization",
+  operatingSystem: "Windows, macOS, Linux",
+  license: "https://www.gnu.org/licenses/gpl-3.0.html",
+  image: "https://gephi.org/gephi-screenshot.jpg",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
 ---
 
 <Layout
   pageId="desktop"
-  title="Gephi Desktop"
-  description="Gephi is an open-source desktop application to visually analyze and explore networks and graphs. Free download for Windows, macOS and Linux."
+  fullTitle="Gephi Desktop: Free Network Analysis and Visualization Software"
+  description="Gephi is a free, open-source desktop application to visualize, analyze and explore networks and graphs. Download for Windows, macOS and Linux."
+  jsonLd={jsonLd}
 >
   <style>
     :root {

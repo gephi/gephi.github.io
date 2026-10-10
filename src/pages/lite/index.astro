@@ -14,12 +14,26 @@ import Datatable from "../../images/lite/datatable.png";
 import Multitouch from "../../images/lite/multi-touch.jpg";
 import Responsive from "../../images/lite/responsiveness.jpg";
 import Retina from "../../images/lite/retina.png";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Gephi Lite",
+  url: "https://gephi.org/lite/",
+  description: "Open-source web application for network visualization and analysis, no install required.",
+  applicationCategory: "DataVisualization",
+  operatingSystem: "Any (web browser)",
+  browserRequirements: "Requires a modern web browser with WebGL",
+  license: "https://github.com/gephi/gephi-lite/blob/main/LICENSE.md",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+};
 ---
 
 <Layout
   pageId="lite"
-  title="Gephi Lite"
-  description="Gephi Lite is an open-source web application dedicated to visual network analysis. Works on desktop, tablets and mobiles, no install required."
+  fullTitle="Gephi Lite: Online Network Visualization Tool, No Install"
+  description="Gephi Lite is a free, open-source web application for network visualization and analysis. Works on desktop, tablets and mobiles, no install required."
+  jsonLd={jsonLd}
 >
   <style>
     :root {

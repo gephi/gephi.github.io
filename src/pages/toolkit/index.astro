@@ -4,12 +4,23 @@ import { Image } from "astro:assets";
 import Banner from "../../components/Banner.astro";
 import Architecture from "../../images/toolkit/architecture.svg";
 import Layout from "../../layouts/Layout.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  name: "Gephi Toolkit",
+  url: "https://gephi.org/toolkit/",
+  description: "Java library to script Gephi and reuse its Graph, Layout, Filters and I/O modules in any Java program.",
+  programmingLanguage: "Java",
+  codeRepository: "https://github.com/gephi/gephi-toolkit",
+};
 ---
 
 <Layout
   pageId="toolkit"
   title="Gephi Toolkit"
   description="Gephi Toolkit lets you script Gephi from any Java program. Reuse Gephi's core modules, including Graph, Layout, Filters, and I/O."
+  jsonLd={jsonLd}
 >
   <Banner>
     <div class="banner-contents">
