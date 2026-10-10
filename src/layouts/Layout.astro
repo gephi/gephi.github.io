@@ -9,9 +9,11 @@ interface Props {
   class?: string;
   pageId?: string;
   title?: string;
+  fullTitle?: string;
   description?: string;
   image?: string;
   noindex?: boolean;
+  jsonLd?: object | object[];
 }
 
 const DEFAULT_TITLE = "Gephi - The Open Graph Viz Platform";
@@ -19,9 +21,9 @@ const DEFAULT_DESCRIPTION =
   "Gephi is the leading visualization and exploration software for all kinds of graphs and networks. Gephi is open-source and free.";
 const DEFAULT_IMAGE = "/gephi-screenshot.jpg";
 
-const { class: className, pageId, title, description, image, noindex } = Astro.props;
+const { class: className, pageId, title, fullTitle, description, image, noindex, jsonLd } = Astro.props;
 
-const pageTitle = title ? `${title} | Gephi` : DEFAULT_TITLE;
+const pageTitle = fullTitle ? fullTitle : title ? `${title} | Gephi` : DEFAULT_TITLE;
 const pageDescription = description || DEFAULT_DESCRIPTION;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(image || DEFAULT_IMAGE, Astro.site);
@@ -55,12 +57,13 @@ const appPages = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <meta name="apple-mobile-web-app-title" content="Gephi" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="description" content={pageDescription} />
     {noindex && <meta name="robots" content="noindex" />}
     <title>{pageTitle}</title>
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Gephi" />
