@@ -15,11 +15,7 @@ const redirects: Record<string, RedirectConfig> = {
   },
   "/legal/faq": {
     status: 301,
-    destination: "/faq",
-  },
-  "/legal/": {
-    status: 301,
-    destination: "/about",
+    destination: "/legal#license",
   },
   "/features": {
     status: 301,

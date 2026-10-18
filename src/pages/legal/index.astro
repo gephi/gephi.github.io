@@ -1,0 +1,107 @@
+---
+import Banner from "../../components/Banner.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  pageId="legal"
+  fullTitle="Legal: License, Privacy and Accessibility | Gephi"
+  description="Gephi license, privacy and GDPR information, security policy and accessibility statement."
+>
+  <Banner containerClass="my-5 py-4">
+    <h1>Legal</h1>
+    <p class="fs-5 mb-1">
+      Gephi is a community-driven open-source project. Its finances are held by our fiscal host, <a
+        href="https://opencollective.com/gephi"
+        class="fw-bold text-white">Open Collective</a
+      >. Contact: <a href="mailto:contact@gephi.org" class="fw-bold text-white">contact@gephi.org</a>.
+    </p>
+  </Banner>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <section id="license" class="mb-5">
+          <h2>License</h2>
+          <p>
+            <strong>Gephi Desktop</strong> is free, open-source software, dual-licensed under the <a
+              href="https://opensource.org/licenses/CDDL-1.0">CDDL 1.0</a
+            > and the <a href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a>. Where a
+            choice of GPL versions is offered, the project elects to use GPLv3 only. The full texts are in the
+            <a href="https://github.com/gephi/gephi">source repository</a>.
+          </p>
+          <p>
+            <strong>Gephi Lite</strong>, the web version, is free, open-source software under the <a
+              href="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License v3</a
+            >. Its source code is in the <a href="https://github.com/gephi/gephi-lite">gephi-lite repository</a>.
+          </p>
+          <p>
+            You can use Gephi Desktop and Gephi Lite for commercial and non-commercial purposes at no cost, and build
+            applications on top of the Gephi Toolkit without opening your own code. If you modify Gephi's own source
+            files and distribute the result, you must publish those changes under the same license terms.
+          </p>
+        </section>
+
+        <section id="privacy" class="mb-5">
+          <h2>Privacy and GDPR</h2>
+          <h3 class="h5">This website</h3>
+          <p>
+            gephi.org does not use cookies or JavaScript trackers. To count visits we use a Matomo tracking pixel hosted
+            by <a href="https://www.ouestware.com">OuestWare</a>, which records only the information any web server
+            receives (page, browser type, referrer, IP address).
+          </p>
+          <h3 class="h5">Gephi Lite</h3>
+          <p>
+            Gephi Lite runs in your browser. The graphs you open are processed locally and are not uploaded to our
+            servers. Your preferences and, if you connect, your GitHub session are stored in your browser's local
+            storage. To count visits and page views, Gephi Lite uses Matomo hosted by <a
+              href="https://www.ouestware.com">OuestWare</a
+            >, configured without cookies.
+          </p>
+          <p>
+            Signing in with GitHub is optional. It lets you save and open graphs in your own GitHub Gists, with requests
+            relayed through a proxy to work around browser restrictions. Gephi Lite does not send crash reports.
+          </p>
+          <h3 class="h5">Gephi Desktop</h3>
+          <p>
+            Gephi runs entirely on your computer and does not send your data anywhere. The one exception is error
+            reporting: when Gephi encounters an error, it can send a report to our Sentry account. Reports contain
+            application logs only, with personal information such as the username removed. Sending reports is optional,
+            and all tracking can be disabled in Gephi's Settings.
+          </p>
+        </section>
+
+        <section id="security" class="mb-5">
+          <h2>Security</h2>
+          <p>
+            Gephi Desktop only works with local files and does not connect to the web, apart from optional crash
+            reporting. Gephi Lite runs in your browser and keeps your graphs on your device. Our <a
+              href="https://github.com/gephi/gephi/blob/master/SECURITY.md">security policy</a
+            > covers supported versions, how releases are secured and plugin safety.
+          </p>
+          <p>
+            To report a vulnerability in Gephi Desktop or Gephi Lite, email <a href="mailto:contact@gephi.org"
+              >contact@gephi.org</a
+            >. For Gephi Desktop you can also <a href="https://github.com/gephi/gephi/security/advisories/new"
+              >report it privately on GitHub</a
+            >.
+          </p>
+        </section>
+
+        <section id="accessibility" class="mb-5">
+          <h2>Accessibility</h2>
+          <p>Our accessibility conformance report (VPAT) will be published here.</p>
+        </section>
+
+        <section id="disclaimer" class="mb-5">
+          <h2>Disclaimer</h2>
+          <p>
+            Gephi Desktop, Gephi Lite and the content of this website are provided "as is", without warranty of any
+            kind. We aim for accuracy but cannot guarantee it. We are not responsible for the content of third-party
+            sites we link to.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
