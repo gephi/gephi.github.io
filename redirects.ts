@@ -3,7 +3,7 @@ import type { RedirectConfig } from "astro";
 const redirects: Record<string, RedirectConfig> = {
   "/developers": {
     status: 301,
-    destination: "/contribute",
+    destination: "/community",
   },
   "/videos": {
     status: 301,
@@ -39,7 +39,7 @@ const redirects: Record<string, RedirectConfig> = {
   },
   "/users/contribute": {
     status: 301,
-    destination: "/contribute",
+    destination: "/community",
   },
   "/users/support": {
     status: 301,
