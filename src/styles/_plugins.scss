@@ -193,4 +193,40 @@
       @extend .fs-6;
     }
   }
+
+  .plugin-readme {
+    table {
+      display: block;
+      max-width: 100%;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+      border-collapse: collapse;
+
+      th,
+      td {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--bs-border-color, #dee2e6);
+        vertical-align: top;
+      }
+
+      th {
+        text-align: left;
+      }
+    }
+
+    blockquote {
+      margin: 0 0 1rem;
+      padding: 0.5rem 1rem;
+      border-left: 0.25rem solid var(--bs-border-color);
+      background: var(--bs-tertiary-bg);
+
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    pre {
+      overflow-x: auto;
+    }
+  }
 }
