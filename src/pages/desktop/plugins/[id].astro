@@ -51,7 +51,7 @@ let readme = "";
 try {
   const readmeMarked = new Marked({
     walkTokens(token) {
-      if (!readmeBase) return;
+      if (!readmeBase || !treeBase) return;
       if (token.type === "image") token.href = resolveRelative(token.href, readmeBase);
       else if (token.type === "link") token.href = resolveRelative(token.href, treeBase);
     },
