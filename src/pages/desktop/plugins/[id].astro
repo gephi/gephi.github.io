@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { marked } from "marked";
+import { Marked } from "marked";
 
 import { Image } from "astro:assets";
 import Banner from "../../../components/Banner.astro";
@@ -37,9 +37,26 @@ const pluginImage = plugin.images?.[0]
   ? `https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/${plugin.images[0].image}`
   : undefined;
 
+// README relative links/images (e.g. `src/img/a.png`) only resolve on GitHub, so point them at the plugin's source folder.
+const sourceMatch = plugin.sourcecode?.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/tree\/([^/]+)(?:\/(.*))?$/);
+const readmeBase = sourceMatch
+  ? `https://raw.githubusercontent.com/${sourceMatch[1]}/${sourceMatch[2]}/refs/heads/${sourceMatch[3]}/${sourceMatch[4] ? sourceMatch[4].replace(/\/$/, "") + "/" : ""}`
+  : undefined;
+const treeBase = readmeBase && plugin.sourcecode.replace(/\/$/, "") + "/";
+
+const resolveRelative = (url: string, base: string) =>
+  !url || /^([a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url) ? url : new URL(url, base).href;
+
 let readme = "";
 try {
-  readme = await marked(plugin.readme);
+  const readmeMarked = new Marked({
+    walkTokens(token) {
+      if (!readmeBase || !treeBase) return;
+      if (token.type === "image") token.href = resolveRelative(token.href, readmeBase);
+      else if (token.type === "link") token.href = resolveRelative(token.href, treeBase);
+    },
+  });
+  readme = await readmeMarked.parse(plugin.readme);
 } catch (err) {
   console.log(`README.md markdown generation failed for plugin ${plugin.name}.`);
 }
