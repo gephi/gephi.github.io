@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { isNil, orderBy, reverse, sum, uniq } from "lodash-es";
+import { isNil, maxBy, orderBy, reverse } from "lodash-es";
 import { Icon } from "astro-icon/components";
 import Banner from "../../../components/Banner.astro";
 import Default from "../../../images/plugins/default-screenshot.jpg";
@@ -12,31 +12,38 @@ import { pluginElementId, pluginHasModernVersion } from "../../../components/plu
 const pluginsDataRequest = await fetch(
   "https://raw.githubusercontent.com/gephi/gephi-plugins/refs/heads/gh-pages/plugins/plugins.json",
 );
+const plugins: Plugin[] | null = pluginsDataRequest.ok ? (await pluginsDataRequest.json()).plugins : null;
 
 // Downloads per plugin file over the last 90 days, counted by workers/plugin-downloads. The list stays
 // ordered by last update if they can't be loaded.
 const downloadsRequest = await fetch("https://gephi.org/gephi-plugins/plugins/downloads.json").catch(() => null);
 const downloadsByFile: Record<string, number> = downloadsRequest?.ok ? (await downloadsRequest.json()).downloads : {};
 
+// Plugin files are named <plugin id>-<version>, so downloads of earlier versions, which plugins.json no longer
+// lists, still count. Gephi downloads a suite's modules separately, its main one named after the plugin id. A file
+// goes to the longest matching id: spanning-tree-plugin-1.0.nbm to spanning-tree-plugin, not spanning-tree.
+const downloadsByPlugin: Record<string, number> = {};
+for (const [file, downloads] of Object.entries(downloadsByFile)) {
+  const name = file.slice(file.indexOf("/") + 1);
+  const id = maxBy(
+    plugins?.map((p) => p.id).filter((id) => name.startsWith(`${id}-`) && /^\d/.test(name.slice(id.length + 1))),
+    (id) => id.length,
+  );
+  if (id) downloadsByPlugin[id] = (downloadsByPlugin[id] ?? 0) + downloads;
+}
+
 // Plugins with at least this many downloads come first, most downloaded first. The others follow, most
 // recently updated first.
 const POPULAR_DOWNLOADS = 25;
 
 function popularity(p: Plugin): number {
-  // Gephi versions with the same minor version share a file
-  const files = uniq(Object.values(p.versions).map((v) => v.url));
-  const downloads = sum(files.map((file) => downloadsByFile[file] ?? 0));
+  const downloads = downloadsByPlugin[p.id] ?? 0;
   return downloads >= POPULAR_DOWNLOADS ? downloads : 0;
 }
 
 // Reversed first, so that among plugins updated the same day, the last added comes first
-const pluginsData: Plugin[] | null = pluginsDataRequest.ok
-  ? orderBy(
-      reverse((await pluginsDataRequest.json()).plugins as Plugin[]),
-      [popularity, (p) => new Date(p.last_update)],
-      ["desc", "desc"],
-    )
-  : null;
+const pluginsData: Plugin[] | null =
+  plugins && orderBy(reverse(plugins), [popularity, (p) => new Date(p.last_update)], ["desc", "desc"]);
 
 // Matches PluginsFilters' default (legacy plugins hidden) so the count doesn't flash/mismatch
 // before hydration, and stays correct for no-JS clients.
