@@ -23,3 +23,6 @@ pnpm-debug.log*
 # IDEs
 .idea/
 .vscode/
+
+# wrangler local state
+.wrangler/
