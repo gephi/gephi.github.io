@@ -6,3 +6,6 @@ CREATE TABLE IF NOT EXISTS downloads (
   count INTEGER NOT NULL,
   PRIMARY KEY (file, client, day)
 ) WITHOUT ROWID;
+
+-- downloads.json reads only the last days, through this index (without stats, SQLite would scan the table)
+CREATE INDEX IF NOT EXISTS downloads_day ON downloads (day);

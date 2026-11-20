@@ -2,8 +2,11 @@
 
 Cloudflare Worker on `gephi.org/gephi-plugins/plugins/*`, where Gephi's Plugin Manager and the plugin pages of this
 website download plugins from. It passes every request through to GitHub Pages unchanged and counts `.nbm` and `.zip`
-downloads per file, client (`gephi`, `browser` or `other`) and day in a D1 database. Requests from the gephi-plugins
-release build are not counted.
+downloads per file, client (`gephi`, `browser` or `other`, which includes crawlers) and day in a D1 database. Requests
+from the gephi-plugins release build are not counted.
+
+It also serves `gephi.org/gephi-plugins/plugins/downloads.json`: downloads by Gephi and browsers over the last 90 days,
+per file, cached for an hour. The website's plugin list is ordered by it (`src/pages/desktop/plugins/index.astro`).
 
 ## Deploy
 
