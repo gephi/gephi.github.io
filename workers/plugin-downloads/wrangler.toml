@@ -1,0 +1,12 @@
+name = "gephi-plugin-downloads"
+main = "src/index.js"
+compatibility_date = "2026-10-27"
+workers_dev = false
+
+# The route (gephi.org/gephi-plugins/plugins/*) is managed outside wrangler, which would reset its fail-open
+# setting on every deploy. See README.md.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "gephi-plugin-downloads"
+database_id = "f6a8d2c6-e2a0-4898-8a39-9c97e821368e"
